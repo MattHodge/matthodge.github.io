@@ -4,7 +4,7 @@ description: 'System Engineer, PowerShell, Chef and Automation lover and Aussie.
 url: 'https://hodgkins.io/'
 enforce_ssl: hodgkins.io
 baseurl: '/'
-# google_analytics: 'UA-XXXXXX-X'
+google_analytics: 'UA-72498951-1'
 
 author:
   name: 'Matthew Hodgkins'
