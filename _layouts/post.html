@@ -4,7 +4,7 @@ layout: default
 <article class="post-container post-container--single">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="{{ page.date | date: "%-d %b %Y" }}" class="post-meta__date date">{{ page.date | date: "%-d %b %Y" }}</time> &#8226; <span class="post-meta__tags">on {% for tag in page.tags %}<a href="{{ site.baseurl }}tags/#{{ tag }}">{{ tag }}</a> {% endfor %}</span>
+      <time datetime="{{ page.date | date: "%-d %b %Y" }}" class="post-meta__date date">Posted {{ page.date | date: "%-d %b %Y" }} &#x2622;</time> </span>
     </div>
     <h1 class="post-title">{{ page.title }}</h1>
   </header>
@@ -21,13 +21,12 @@ layout: default
 * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
 * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
 */
-/*
+
 var disqus_config = function () {
-this.page.url = "{{ page.url }}"; // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = "{{ page.id }}"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url = '{{ page.url }}'; // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
-*/
-var disqus_developer = 1;
+
 
 (function() { // DON'T EDIT BELOW THIS LINE
 var d = document, s = d.createElement('script');

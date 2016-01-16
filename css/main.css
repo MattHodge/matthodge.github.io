@@ -50,3 +50,21 @@
   border: 3px solid #fff;
   border-radius:100%;
 }
+
+#table-of-contents {
+	margin-bottom: 0.5em;
+}
+
+#markdown-toc {
+	font-size: 0.9em;
+	display: inline-block;
+	background: #f8f8f8;
+	border-radius: 5px;
+	border: 1px solid #e5e5e5;
+	padding: 0.5em 1em 0.5em 2em;
+  margin: 0;
+}
+
+#markdown-toc li > ul {
+	margin-bottom: 0;
+}

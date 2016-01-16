@@ -76,6 +76,8 @@ GEM
     jekyll-feed (0.3.1)
     jekyll-gist (1.4.0)
       octokit (~> 4.2)
+    jekyll-last-modified-at (0.3.4)
+      jekyll
     jekyll-mentions (0.2.1)
       html-pipeline (~> 1.9.0)
       jekyll (~> 2.0)
@@ -141,6 +143,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
+  jekyll-last-modified-at
 
 BUNDLED WITH
    1.11.2
