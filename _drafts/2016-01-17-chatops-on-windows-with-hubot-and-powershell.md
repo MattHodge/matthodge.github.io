@@ -15,7 +15,7 @@ Bots can also be a great way to expose functionality to low-privledged users suc
 
 I won't go into any details on the concepts of ChatOps, but I recommend watching **[ChatOps, a Beginners Guide](https://www.youtube.com/watch?v=F8Vfoz7GeHw)** presented by [Jason Hand](https://twitter.com/jasonhand) if you are new to the term.
 
-A popular combination of tools for ChatOps is [Slack](https://slack.com/) for the chat client, and [Hubot](https://hubot.github.com/) as the bot, which is what this post will be targeting. This post will also be using a PowerShell module I've written called [Hubot-PowerShell](https://github.com/MattHodge/Hubot-PowerShell). The module will handle installation and basic administration Hubot.
+A popular combination of tools for ChatOps is [Slack](https://slack.com/) for the chat client, and [Hubot](https://hubot.github.com/) as the bot, which is what this post will be targeting. This post will also be using a PowerShell module I've written called [PoshHubot](https://github.com/MattHodge/PoshHubot). The module will handle installation and basic administration Hubot.
 
 * TOC
 {:toc}
@@ -25,7 +25,7 @@ A popular combination of tools for ChatOps is [Slack](https://slack.com/) for th
 There are a few basic Hubot concepts I want to introduce to you before we continue.
 
 ### Node.js and CoffeeScript
-Hubot is built in CoffeeScript, which is a programming language that complies into JavaScript. Hubot is built on Node.js. This means the server running the bot will need to have Node.js and CoffeeScript installed. The `Hubot-PowerShell` module will handle this.
+Hubot is built in CoffeeScript, which is a programming language that complies into JavaScript. Hubot is built on Node.js. This means the server running the bot will need to have Node.js and CoffeeScript installed. The `PoshHubot` module will handle this.
 
 When writing scripts for your bot, you will have to get your hands a little dirty with CoffeeScript. We will be calling PowerShell from inside CoffeeScript, so we only need to know a tiny bit to get by.
 
@@ -47,7 +47,7 @@ There are 3 possible ways to do this:
   $env:NODE_TLS_REJECT_UNAUTHORIZED = '0'
 {% endhighlight %}
 
-* You can store the environment variable in the `config.json` file that we generate during the Hubot installation, which the  `Hubot-PowerShell` module will load before starting the bot.
+* You can store the environment variable in the `config.json` file that we generate during the Hubot installation, which the  `PoshHubot` module will load before starting the bot.
 
 
 ### Bot Brain
@@ -80,13 +80,13 @@ Additionally, you can customize your bots icon and add channels at this screen.
 ![Slack - Bot name & Icon](/images/posts/chatops_on_windows/slack_choose_icon.png "Slack - Bot name & Icon")
 
 ## Installing Hubot
-Install the `Hubot-PowerShell` module by downloading it from git and placing it into your PowerShell Module directory.
+Install the `PoshHubot` module by downloading it from git and placing it into your PowerShell Module directory.
 
-First we are going to create a configuration file that `Hubot-PowerShell` will use.
+First we are going to create a configuration file that `PoshHubot` will use.
 
 {% highlight powershell %}
 # Import the module
-Import-Module -Name Hubot-PowerShell -Force
+Import-Module -Name PoshHubot -Force
 
 # Create hash of configuration options
 $newBot = @{
@@ -191,7 +191,111 @@ Start-Hubot -ConfigPath 'C:\PoshHubot\config.json'
 
 Open up Slack and check if your bot came online! Hubot comes with some built in commands, so you can directly message your bot with `help` and see if you get a response back.
 
+:warning: If for some reason your bot doesn't connect, you can find the logs in the `LogPath` defined earlier in the `config.json` file.
+
 ![Speaking to Hubot for the first time](/images/posts/chatops_on_windows/speaking_to_hubot_in_slack.png "Speaking to Hubot for the first time")
 
+If you want your bot to join certain channels, you can enter `/invite @bender` in Slack to bring him into the channel. To have Hubot perform commands, you need to address him in the channel. Try a `@bender pug bomb me`.
+
+![Yay! Pug Bombed!](/images/posts/chatops_on_windows/bot_pug_bomb.png "Yay! Pug Bombed!")
 
 ## Integrating Hubot with PowerShell
+
+We have our Hubot joined to Slack and we have triggered a few pug bombs, but it is time to do something useful - create our own script.
+
+The [Hubot documentation](https://hubot.github.com/docs/scripting/) covers scripting in detail and I recommend giving it a read before continuing on.
+
+We are going to write a basic script to find the status of a Windows service on the machine hosting the Hubot. The plan is:
+
+* Send the bot a message saying `@bender: get service dhcp` - where `dhcp` could by any string.
+* The Hubot script will use a capture group to select out the name of the service (in this case `DCHP`)
+* The Hubot script will pass this captured service name into a PowerShell script to find the status of the service.
+  * If the service exists, it will return the status.
+  * If the service does not exist, it will say the service does not exist.
+* The PowerShell script will return the results in a json format. This will make it far easier to work with in CoffeeScript
+
+### Install Edge.js and Edge-PS
+
+[Edge.js](https://github.com/tjanczuk/edge) and [Edge-PS](https://github.com/dfinke/edge-ps) are Node.js script which allow calling .NET and PowerShell (among other things) from Node.js.
+
+To use them inside Hubot, we need to add them to `package.json` file which is generated when we install Hubot for the first time. You can find `package.json` in the `BotPath` specified above, in our case it is `C:\myhubot\packages.json`. We will also add a version constraint. The latest version of each package can be found by searching the [npm package manager](https://www.npmjs.com).
+
+After you have added them your `package.json` should look similar to this:
+
+{% highlight json %}
+{
+  "name": "bender",
+  "version": "0.0.0",
+  "private": true,
+  "author": "PoshHubot <posh@hubot.com>",
+  "description": "PoshHubot is awesome.",
+  "dependencies": {
+    "hubot": "^2.18.0",
+    "hubot-diagnostics": "0.0.1",
+    "hubot-google-images": "^0.2.6",
+    "hubot-google-translate": "^0.2.0",
+    "hubot-help": "^0.1.3",
+    "hubot-heroku-keepalive": "^1.0.2",
+    "hubot-maps": "0.0.2",
+    "hubot-pugme": "^0.1.0",
+    "hubot-redis-brain": "0.0.3",
+    "hubot-rules": "^0.1.1",
+    "hubot-scripts": "^2.16.2",
+    "hubot-shipit": "^0.2.0",
+    "hubot-slack": "^3.4.2",
+    "edge": "^5.0.0",
+    "edge-ps": "^0.1.0-pre"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
+{% endhighlight %}
+
+### Create the PowerShell Script
+
+We need to design a script that can be called from CoffeeScript, the Hubot scripting language. I have some standard methods of creating PowerShell scripts that will be called from Hubot to make things easier.
+
+* **Create functions with paramaters** - All advanced scripts should be functions, but it just makes it nice and easy to call from CoffeeScript when they have well defined parameters
+* **Put error handling in your script** - Use try-catch blocks inside your PowerShell functions so you can return a message to the bot if the command has failed
+* **Always output in json** - This is a far easier way to pass data back to CoffeeScript and means you can use PowerShell objects to send data back and have CoffeeScript pick out the parts you want
+
+With this methods in mind, here is the function I came up with to find the service status:
+
+{% gist 66bf00bedb98d72c2506 %}
+
+I am applying some [Slack formatting](https://get.slack.help/hc/en-us/articles/202288908-Formatting-your-messages) in my output, including the use of asterisks around words for bold and back ticks for code blocks. You will notice there are double backticks in the code so PowerShell does not interpret them.
+
+Here is some example output from the PowerShell when the function is run against a service that exists:
+
+{% highlight powershell %}
+# Dot Source the function
+. .\Get-ServiceHubot.ps1
+
+# Get a service that exists on the system
+Get-ServiceHubot -Name dhcp
+{% endhighlight %}
+
+{% highlight json %}
+{
+    "success":  true,
+    "output":  "Service dhcp (*DHCP Client*) is currently `Running`"
+}
+{% endhighlight %}
+
+Here is some example output from the PowerShell when the function is run against a service that doesn't exist on the machine:
+
+{% highlight powershell %}
+# Dot Source the function
+. .\Get-ServiceHubot.ps1
+
+# Get a service that exists on the system
+Get-ServiceHubot -Name MyFakeService
+{% endhighlight %}
+
+{% highlight json %}
+{
+    "success":  false,
+    "output":  "Service MyFakeService does not exist on this server."
+}
+{% endhighlight %}

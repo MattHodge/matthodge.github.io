@@ -26,4 +26,8 @@ kramdown:
   # do not replace newlines by <br>s
   hard_wrap: false
 
+gems:
+  - jemoji
+  - jekyll_github_sample
+
 exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
