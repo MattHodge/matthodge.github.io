@@ -17,7 +17,7 @@ Bots can also be a great way to expose functionality to low-privledged users suc
 
 If you want more details on the concept of ChatOps, I recommend watching **[ChatOps, a Beginners Guide](https://www.youtube.com/watch?v=F8Vfoz7GeHw)** presented by [Jason Hand](https://twitter.com/jasonhand).
 
-A popular toolset for ChatOps is [Slack](https://slack.com/) as the chat client, and [Hubot](https://hubot.github.com/) as the bot. In this post we will use Slack and Hubot together with a PowerShell module I've written called [PoshHubot](https://github.com/MattHodge/PoshHubot). The module will handle installation and basic administration Hubot. From there, we will integrate Hubot with PowerShell so we can perform some ChatOps in the Windows ecosystem.
+A popular toolset for ChatOps is [Slack](https://slack.com/) as the chat client, and [Hubot](https://hubot.github.com/) as the bot. In this post we will use Slack and Hubot together with a PowerShell module I've written called [PoshHubot](https://github.com/MattHodge/PoshHubot). The module will handle installation and basic administration Hubot. From there, we will integrate Hubot with PowerShell so we can perform some ChatOps in the Microsoft ecosystem.
 
 * TOC
 {:toc}
