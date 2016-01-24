@@ -3,11 +3,11 @@ layout: post
 title:  "ChatsOps on Windows with Hubot and PowerShell"
 date:   2016-01-25 13:37:00
 comments: true
-excerpt_separator: <!--more-->
+excerpt: ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chatroom . It involves having everyone in the teams in a single chatroom, and brining tools into the chatroom that can everyone automate, collaborate and work better as a team. In doing so, you unifying the communication about what work gets done and have a history of it happening.
 ---
 
 ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chatroom . It involves having everyone in the teams in a single chatroom, and brining tools into the chatroom that can everyone automate, collaborate and work better as a team. In doing so, you unifying the communication about what work gets done and have a history of it happening.
-<!--more-->
+
 ChatOps can be supplemented with the use of tools or scripts exposed using a chat bot. Users in the chatroom can talk to the bot and  have it take actions on their behalf, some examples of this may be:
 
 * Checking the status of a Windows Service
