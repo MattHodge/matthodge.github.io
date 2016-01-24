@@ -76,8 +76,6 @@ GEM
     jekyll-feed (0.3.1)
     jekyll-gist (1.4.0)
       octokit (~> 4.2)
-    jekyll-last-modified-at (0.3.4)
-      jekyll
     jekyll-mentions (0.2.1)
       html-pipeline (~> 1.9.0)
       jekyll (~> 2.0)
@@ -91,9 +89,6 @@ GEM
     jekyll-sitemap (0.9.0)
     jekyll-watch (1.3.0)
       listen (~> 3.0)
-    jekyll_github_sample (0.1.1)
-      activesupport (~> 4.0)
-      jekyll (~> 2.0)
     jemoji (0.5.0)
       gemoji (~> 2.0)
       html-pipeline (~> 1.9)
@@ -146,8 +141,6 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  jekyll-last-modified-at
-  jekyll_github_sample
   jemoji
 
 BUNDLED WITH
