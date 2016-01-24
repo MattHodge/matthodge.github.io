@@ -1,21 +1,23 @@
 ---
 layout: post
 title:  "ChatsOps on Windows with Hubot and PowerShell"
-date:   2016-01-17 13:37:00
-comments: false
+date:   2016-01-25 13:37:00
+comments: true
 ---
 
-ChatOps is a term used to describe conversation driver development or operations for an Ops or Development team. It involves having everyone in the teams in a single chatroom, and brining tools into the chatroom which can help the team to automate, collaborate and work better as a team. The tools or automations are usually exposed using a chat bot which users in the chatroom can talk to to have it take actions, some examples of this may be:
+ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chatroom . It involves having everyone in the teams in a single chatroom, and brining tools into the chatroom that can everyone automate, collaborate and work better as a team. In doing so, you unifying the communication about what work gets done and have a history of it happening.
 
-* Have the bot kick off a script
-* Check who is on call via the PagerDuty API
-* Query a server to see how much disk space is available
+ChatOps can be supplemented with the use of tools or scripts exposed using a chat bot. Users in the chatroom can talk to the bot and  have it take actions on their behalf, some examples of this may be:
 
-Bots can also be a great way to expose functionality to low-privledged users such as help desk staff, without having to create web UI's or forms.
+* Checking the status of a Windows Service
+* Finding out who is on call via the PagerDuty API
+* Querying a server to see how much disk space is available
 
-I won't go into any details on the concepts of ChatOps, but I recommend watching **[ChatOps, a Beginners Guide](https://www.youtube.com/watch?v=F8Vfoz7GeHw)** presented by [Jason Hand](https://twitter.com/jasonhand) if you are new to the term.
+Bots can also be a great way to expose functionality to low-privledged users such as help desk staff, without having to create web interfaces or forms.
 
-A popular combination of tools for ChatOps is [Slack](https://slack.com/) for the chat client, and [Hubot](https://hubot.github.com/) as the bot, which is what this post will be targeting. This post will also be using a PowerShell module I've written called [PoshHubot](https://github.com/MattHodge/PoshHubot). The module will handle installation and basic administration Hubot.
+If you want more details on the concept of ChatOps, I recommend watching **[ChatOps, a Beginners Guide](https://www.youtube.com/watch?v=F8Vfoz7GeHw)** presented by [Jason Hand](https://twitter.com/jasonhand).
+
+A popular toolset for ChatOps is [Slack](https://slack.com/) as the chat client, and [Hubot](https://hubot.github.com/) as the bot. In this post we will use Slack and Hubot together with a PowerShell module I've written called [PoshHubot](https://github.com/MattHodge/PoshHubot). The module will handle installation and basic administration Hubot. From there, we will integrate Hubot with PowerShell so we can perform some ChatOps in the Windows ecosystem.
 
 * TOC
 {:toc}
@@ -25,12 +27,12 @@ A popular combination of tools for ChatOps is [Slack](https://slack.com/) for th
 There are a few basic Hubot concepts I want to introduce to you before we continue.
 
 ### Node.js and CoffeeScript
-Hubot is built in CoffeeScript, which is a programming language that complies into JavaScript. Hubot is built on Node.js. This means the server running the bot will need to have Node.js and CoffeeScript installed. The `PoshHubot` module will handle this.
+Hubot is built in CoffeeScript, which is a programming language that complies into JavaScript. Hubot is built on Node.js. This means the server running the bot will need to have Node.js and CoffeeScript installed. The [PoshHubot](https://github.com/MattHodge/PoshHubot) module will handle this.
 
 When writing scripts for your bot, you will have to get your hands a little dirty with CoffeeScript. We will be calling PowerShell from inside CoffeeScript, so we only need to know a tiny bit to get by.
 
 ### Environment Variables
-Hubot and its addons / scripts makes heavy use of environment variables to set certain options for the bot.
+Hubot and its add-ons / scripts makes heavy use of environment variables to set certain options for the bot.
 
 One example of this is to allow the Hubot to access sites with invalid SSL certificates, you would set an environment variable of `NODE_TLS_REJECT_UNAUTHORIZED`.
 
@@ -53,7 +55,7 @@ There are 3 possible ways to do this:
 ### Bot Brain
 Hubot has a *brain* which is simply a place to store data you want to persist after Hubot reboots. For example, you could write a script to have Hubot store URL's for certain services, which you could append to via chat commands. You want these URL's to persist after Hubot reboots, so it needs to save them to its brain.
 
-There are many brain adapters for Hubot, for example MySQL, Redis and Azure Blob Storage. For this blog I will be using a file brain - which will just store the brain as a *.json* file on the disk.
+There are many brain adapters for Hubot, for example MySQL, Redis and Azure Blob Storage. For this blog we install a file brain - which will just store the brain as a *.json* file on the disk.
 
 ## Requirements
 You will need to a have a few things ready to get a Hubot setup with Slack:
@@ -63,7 +65,7 @@ You will need to a have a few things ready to get a Hubot setup with Slack:
 
 ## Create a Slack Integration for Hubot
 
-To have Hubot speaking to Slack, we need to configure an integration. From Slack:
+To have Hubot communicating with Slack, we need to configure an integration. From Slack:
 
 * Choose **Apps & Custom Integrations**
 
@@ -80,9 +82,12 @@ Additionally, you can customize your bots icon and add channels at this screen.
 ![Slack - Bot name & Icon](/images/posts/chatops_on_windows/slack_choose_icon.png "Slack - Bot name & Icon")
 
 ## Installing Hubot
-Install the `PoshHubot` module by downloading it from git and placing it into your PowerShell Module directory.
+Install the `PoshHubot` module in one of two ways:
 
-First we are going to create a configuration file that `PoshHubot` will use.
+* Install it using PowerShell get with `Install-Module -Name PoshHubot`
+* Manually download the [latest PoshHubot release](https://github.com/MattHodge/PoshHubot/releases) and extract the module your PowerShell Module directory.
+
+Once installed, we are going to create a configuration file that `PoshHubot` will use.
 
 {% highlight powershell %}
 # Import the module
@@ -146,7 +151,7 @@ Install-HuBotScript -Name 'jobot-brain-file' -ConfigPath 'C:\PoshHubot\config.js
 
 ## Starting Hubot
 
-Before we can start our bot and connect it to slack, we have to configure the environment variables required by the scripts we are using. A good way to find out what environment variables a script is using is to look it up on github. For example,
+Before we can start our bot and connect it to Slack, we have to configure the environment variables required by the scripts we are using. A good way to find out what environment variables a script is using is to look it up on github. For example,
 the [jubot-brain-file](https://github.com/8DTechnologies/jobot-brain-file) script requires `FILE_BRAIN_PATH` to be set.
 
 ![jubot-brain-file Script](/images/posts/chatops_on_windows/bot_brain_coffee.png "jubot-brain-file Script")
@@ -183,15 +188,15 @@ The completed `config.json` file should look something like this:
 }
 {% endhighlight %}
 
-With all the configuration in place, we can start Hubot!
+With all the configuration in place, we can start Hubot.
 
 {% highlight powershell %}
 Start-Hubot -ConfigPath 'C:\PoshHubot\config.json'
 {% endhighlight %}
 
-Open up Slack and check if your bot came online! Hubot comes with some built in commands, so you can directly message your bot with `help` and see if you get a response back.
+Open up Slack and see your bot online! If for some reason your bot doesn't connect, you can find the logs in the `LogPath` defined earlier in the `config.json` file.
 
-:warning: If for some reason your bot doesn't connect, you can find the logs in the `LogPath` defined earlier in the `config.json` file.
+Hubot comes with some built in commands, so you can directly message your bot with `help` and see if you get a response back.
 
 ![Speaking to Hubot for the first time](/images/posts/chatops_on_windows/speaking_to_hubot_in_slack.png "Speaking to Hubot for the first time")
 
@@ -207,16 +212,16 @@ The [Hubot documentation](https://hubot.github.com/docs/scripting/) covers scrip
 
 We are going to write a basic script to find the status of a Windows service on the machine hosting the Hubot. The plan is:
 
-* Send the bot a message saying `@bender: get service dhcp` - where `dhcp` could by any string.
-* The Hubot script will use a capture group to select out the name of the service (in this case `DCHP`)
+* Send the bot a message saying `@bender: get service dhcp` - where `dhcp` could be the name of any service.
+* The Hubot script will use a regex capture group to select out the name of the service (in this case `DCHP`)
 * The Hubot script will pass this captured service name into a PowerShell script to find the status of the service.
-  * If the service exists, it will return the status.
-  * If the service does not exist, it will say the service does not exist.
+  * If the service exists, it will return the service status.
+  * If the service does not exist, it will say.
 * The PowerShell script will return the results in a json format. This will make it far easier to work with in CoffeeScript
 
 ### Install Edge.js and Edge-PS
 
-[Edge.js](https://github.com/tjanczuk/edge) and [Edge-PS](https://github.com/dfinke/edge-ps) are Node.js script which allow calling .NET and PowerShell (among other things) from Node.js.
+[Edge.js](https://github.com/tjanczuk/edge) and [Edge-PS](https://github.com/dfinke/edge-ps) are Node.js packages which allow calling .NET and PowerShell (among other things) from Node.js.
 
 To use them inside Hubot, we need to add them to `package.json` file which is generated when we install Hubot for the first time. You can find `package.json` in the `BotPath` specified above, in our case it is `C:\myhubot\packages.json`. We will also add a version constraint. The latest version of each package can be found by searching the [npm package manager](https://www.npmjs.com).
 
@@ -252,15 +257,17 @@ After you have added them your `package.json` should look similar to this:
 }
 {% endhighlight %}
 
-### Create the PowerShell Script
+Usually after you update the `package.json` you would need to run an `npm install` to download the packages that have been added. This is handled behind the scenes for you by the `Start-Hubot` command.
 
-We need to design a script that can be called from CoffeeScript, the Hubot scripting language. I have some standard methods of creating PowerShell scripts that will be called from Hubot to make things easier.
+### Create the PowerShell script
 
-* **Create functions with paramaters** - All advanced scripts should be functions, but it just makes it nice and easy to call from CoffeeScript when they have well defined parameters
+We need to design a PowerShell script that can be called from CoffeeScript, the Hubot scripting language. I recommend using the following methods when creating PowerShell scripts that will be called from Hubot:.
+
+* **Create PowerShell functions with paramaters** - It makes it nice and easy to call PowerShell from CoffeeScript when they have well defined parameters
 * **Put error handling in your script** - Use try-catch blocks inside your PowerShell functions so you can return a message to the bot if the command has failed
-* **Always output in json** - This is a far easier way to pass data back to CoffeeScript and means you can use PowerShell objects to send data back and have CoffeeScript pick out the parts you want
+* **Output results in json** - This is a great way to pass data back to CoffeeScript. You can use PowerShell objects to send data back and have CoffeeScript pick out the parts you want
 
-With this methods in mind, here is the function I came up with to find the service status:
+Keeping these methods in mind, I created a `Get-ServiceHubot` function to find the service status:
 
 {% gist 66bf00bedb98d72c2506 %}
 
@@ -299,3 +306,48 @@ Get-ServiceHubot -Name MyFakeService
     "output":  "Service MyFakeService does not exist on this server."
 }
 {% endhighlight %}
+
+Save the PowerShell function into the `scripts` folder in the Hubot directory. In my case I will be saving it to `C:\myhubot\scripts\Get-ServiceHubot.ps1`
+
+### Create the Hubot script
+
+Now that our PowerShell function is completed, we need to wire it up to Hubot using CoffeeScript.
+
+The goal for the CoffeeScript portion is to take a users message to the bot, work out the service name, pass it into the PowerShell script and return the result to the user.
+
+This is the script I came up with to call the PowerShell function. Be sure to read the comments so you understand how it works.
+
+{% gist 8e3461622b7f3c1f9a53 %}
+
+Save the CoffeeScript into the Hubot scripts directory as well, in my case this will be `C:\myhubot\scripts\get-servicehubot.coffee`.
+
+### Testing the script
+
+To load the script into Hubot, you need to restart the bot:
+
+{% highlight powershell %}
+Restart-Hubot -ConfigPath 'C:\PoshHubot\config.json'
+{% endhighlight %}
+
+You will notice that `npm` installs the Edge.js dependencies we added in the `package.json`.
+
+![Automatic installation of npm dependencies](/images/posts/chatops_on_windows/start_hubot_install_npm_packages.png "Automatic installation of npm dependencies")
+
+Check the logs in `LogPath` defined earlier in the `config.json` file to make sure that Hubot started successfully and loaded your script. You should see a line in the log file like this:
+{% highlight text %}
+[Sun Jan 24 2016 10:25:59 GMT-0800 (Pacific Standard Time)] DEBUG Parsing help for C:\myhubot\scripts\get-servicehubot.coffee
+{% endhighlight %}
+
+When your bot joins the channel, ask it for help again. You will notice that the `get service` command has been added to the help. This is done automatically when you fill out  the header part of the CoffeeScript script.
+
+![Command added to Hubot Help](/images/posts/chatops_on_windows/hubot-help-from-comments.png "Command added to Hubot Help")
+
+Now you can try some `get service <service>` commands and see the results:
+
+![Get service is now completed!](/images/posts/chatops_on_windows/get-service-results.png "Get service is now completed!")
+
+## Wrapping Up
+
+Hubot with PowerShell is a fantastic way to bring automation to your environment. With a tiny amount of CoffeeScript you can take your pre-existing PowerShell functions and make them available in a chat channel for anyone in your team to access. This is especially useful for allowing people in your company to access information on-demand from places Operations teams may only have access to.
+
+I'd love to hear about the cool scripts you come up with when leveraging Hubot and PowerShell! Tweet me [@matthodge](https://twitter.com/matthodge).
