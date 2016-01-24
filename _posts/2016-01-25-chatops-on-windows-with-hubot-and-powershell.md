@@ -5,9 +5,9 @@ date:   2016-01-25 13:37:00
 comments: true
 ---
 
-ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chatroom . It involves having everyone in the team in a single chat room, then bringing tools into the chatroom so everyone automate, collaborate and see how automation is used to solve problems. In doing so, you unifying the communication about what work gets done and have a history of it happening.
+ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chat room . It involves having everyone in the team in a single chat room, then bringing tools into the chat room so everyone automate, collaborate and see how automation is used to solve problems. In doing so, you unifying the communication about what work gets done and have a history of it happening.
 
-ChatOps can be supplemented with the use of tools or scripts exposed using a chat bot. Users in the chatroom can talk to the bot and  have it take actions on their behalf, some examples of this may be:
+ChatOps can be supplemented with the use of tools or scripts exposed using a chat bot. Users in the chat room can talk to the bot and  have it take actions on their behalf, some examples of this may be:
 
 * Checking the status of a Windows Service
 * Finding out who is on call via the PagerDuty API
