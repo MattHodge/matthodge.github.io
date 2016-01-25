@@ -42,7 +42,8 @@ There are 3 possible ways to do this:
 * You can set these environment variables as a system wide setting in an Administrative PowerShell prompt using:
 {% highlight powershell %}
 # This will need to be done with an Administrative PowerShell Prompt
-[Environment]::SetEnvironmentVariable("NODE_TLS_REJECT_UNAUTHORIZED", "0", "Machine")
+$nodeTLSReject = "NODE_TLS_REJECT_UNAUTHORIZED"
+[Environment]::SetEnvironmentVariable($nodeTLSReject, "0", "Machine")
 {% endhighlight %}
 
 * You can set them in the current PowerShell instance before you start the bot  using:
