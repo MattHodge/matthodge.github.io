@@ -11,7 +11,6 @@
 
   <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
   {% if page.description %}<meta name="description" content="{{ page.description }}">{% else %}<meta name="description" content="{{ site.description }}">{% endif %}
-  <meta name="description" content="{{ site.description }}">
   <meta name="author" content="{{ site.author.name }}">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
@@ -20,12 +19,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{{ site.title }}">
-  <meta name="twitter:description" content="{{ site.description }}">
+  {% if page.title %}<meta property="twitter:title" content="{{ page.title }}">{% else %}<meta property="twitter:title" content="{{ site.title }}">{% endif %}
+  {% if page.description %}<meta name="twitter:description" content="{{ page.description }}">{% else %}<meta name="twitter:description" content="{{ site.description }}">{% endif %}
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="{{ site.title }}">
-  <meta property="og:description" content="{{ site.description }}">
+  {% if page.title %}<meta property="og:title" content="{{ page.title }}">{% else %}<meta property="og:title" content="{{ site.title }}">{% endif %}
+  {% if page.description %}<meta name="og:description" content="{{ page.description }}">{% else %}<meta name="og:description" content="{{ site.description }}">{% endif %}
 
   <link rel="apple-touch-icon" sizes="57x57" href="{{ "images/favicons/apple-touch-icon-57x57.png" | prepend: site.baseurl }}">
   <link rel="apple-touch-icon" sizes="60x60" href="{{ "images/favicons/apple-touch-icon-60x60.png" | prepend: site.baseurl }}">
