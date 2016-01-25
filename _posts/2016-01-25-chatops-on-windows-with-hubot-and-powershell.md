@@ -40,6 +40,7 @@ One example of this is to allow the Hubot to access sites with invalid SSL certi
 There are 3 possible ways to do this:
 
 * You can set these environment variables as a system wide setting in an Administrative PowerShell prompt using:
+
 {% gist 9fe3f9bee81c2d6f5327 %}
 
 * You can set them in the current PowerShell instance before you start the bot  using:
