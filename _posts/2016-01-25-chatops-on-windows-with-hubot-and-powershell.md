@@ -137,7 +137,7 @@ Remove-HubotScript -Name 'hubot-heroku-keepalive' -ConfigPath 'C:\PoshHubot\conf
 
 ### Installing Hubot Scripts
 
-There are many third party scripts available for Hubot to extend its functionality. You can search for them on the [Node.js package manager site](https://www.npmjs.com/search?q=hubot) or on [GitHub](https://github.com/hubot-scripts). We will use the `Install-HubotScript` function to install 3 useful scripts.
+There are many third party scripts available for Hubot to extend its functionality. You can search for them on the [Node.js package manager site](https://www.npmjs.com/search?q=hubot) or on [GitHub](https://github.com/hubot-scripts). We will use the `Install-HubotScript` function to install some useful scripts.
 
 {% highlight powershell %}
 # Authentication Script, allowing you to give permissions for users to run certain scripts
