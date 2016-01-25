@@ -33,7 +33,7 @@ Hubot is built in CoffeeScript, which is a programming language that complies in
 When writing scripts for your bot, you will have to get your hands a little dirty with CoffeeScript. We will be calling PowerShell from inside CoffeeScript, so we only need to know a tiny bit to get by.
 
 ### Environment Variables
-Hubot and its add-ons / scripts makes heavy use of environment variables to set certain options for the bot.
+Hubot scripts make heavy use of environment variables to set certain options for the bot.
 
 One example of this is to allow the Hubot to access sites with invalid SSL certificates, you would set an environment variable of `NODE_TLS_REJECT_UNAUTHORIZED`.
 
@@ -52,14 +52,14 @@ $env:NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 
 ### Bot Brain
-Hubot has a *brain* which is simply a place to store data you want to persist after Hubot reboots. For example, you could write a script to have Hubot store URL's for certain services, which you could append to via chat commands. You want these URL's to persist after Hubot reboots, so it needs to save them to its brain.
+Hubot has a *brain*, which is simply a place to store persist data. For example, you could write a script to have Hubot store URL's for certain services, which you could append to via chat commands. You want these URL's to persist after Hubot reboots, so it needs to save them to its brain.
 
 There are many brain adapters for Hubot, for example MySQL, Redis and Azure Blob Storage. For this blog we install a file brain - which will just store the brain as a *.json* file on the disk.
 
 ## Requirements
 You will need to a have a few things ready to get a Hubot setup with Slack:
 
-1. A Windows Machine with PowerShell 4.0+. For this tutorial I will be using a Windows 2012 R2 Standard machine with GUI. Once you get comfortable with Hubot you may decide to switch to using Server Core which is a great choose for running Hubot
+1. A Windows Machine with PowerShell 4.0+. For this tutorial I will be using a Windows 2012 R2 Standard machine with GUI. Once you get comfortable with Hubot you may decide to switch to using Server Core, which is a great choose for running Hubot
 1. Administrative access in your Slack group to create a Hubot integration
 
 ## Create a Slack Integration for Hubot
@@ -71,7 +71,7 @@ To have Hubot communicating with Slack, we need to configure an integration. Fro
 ![Slack - Apps & Custom Integrations](/images/posts/chatops_on_windows/slack_apps_customize.png "Slack - Apps & Custom Integrations")
 
 * Search for **Hubot** and choose **Install**
-* Provide a Hubot username - this will be the name of your bot. For this blog the bot will be called *bender*
+* Provide a Hubot username - this will be the name of your bot. For this blog the bot will be called bender
 * Click **Add Hubot Integration**
 
 After the integration has been added, you will be provided an API Token, something like `xoxb-XXXXX-XXXXXX`. We will need this later so note it down.
@@ -122,7 +122,7 @@ This will install the following:
 * Git
 * CoffeeScript
 * Hubot Generator
-* [Forever](https://github.com/foreverjs/forever) which will run Hubot as a background process.
+* [Forever](https://github.com/foreverjs/forever) which will run Hubot as a background process
 
 ### Removing Hubot Scripts
 
@@ -137,7 +137,7 @@ Remove-HubotScript -Name 'hubot-heroku-keepalive' -ConfigPath 'C:\PoshHubot\conf
 
 ### Installing Hubot Scripts
 
-We will now install some third party Hubot scripts using `Install-HubotScript`.
+We will now install some third party Hubot scripts using `Install-HubotScript`. !!!!!
 
 {% highlight powershell %}
 # Authentication Script, allowing you to give permissions for users to run certain scripts
@@ -150,7 +150,7 @@ Install-HuBotScript -Name 'jobot-brain-file' -ConfigPath 'C:\PoshHubot\config.js
 
 ## Starting Hubot
 
-Before we can start our bot and connect it to Slack, we have to configure the environment variables required by the scripts we are using. A good way to find out what environment variables a script is using is to look it up on github. For example,
+Before we can start our bot and connect it to Slack, we have to configure the environment variables required by the scripts we are using. A good way to find out what environment variables a script is using is to look it up on GitHub. For example,
 the [jubot-brain-file](https://github.com/8DTechnologies/jobot-brain-file) script requires `FILE_BRAIN_PATH` to be set.
 
 ![jubot-brain-file Script](/images/posts/chatops_on_windows/bot_brain_coffee.png "jubot-brain-file Script")
@@ -215,14 +215,14 @@ We are going to write a basic script to find the status of a Windows service on 
 * The Hubot script will use a regex capture group to select out the name of the service (in this case `DCHP`)
 * The Hubot script will pass this captured service name into a PowerShell script to find the status of the service.
   * If the service exists, it will return the service status.
-  * If the service does not exist, it will say.
+  * If the service does not exist, it will say so.
 * The PowerShell script will return the results in a json format. This will make it far easier to work with in CoffeeScript
 
 ### Install Edge.js and Edge-PS
 
 [Edge.js](https://github.com/tjanczuk/edge) and [Edge-PS](https://github.com/dfinke/edge-ps) are Node.js packages which allow calling .NET and PowerShell (among other things) from Node.js.
 
-To use them inside Hubot, we need to add them to `package.json` file which is generated when we install Hubot for the first time. You can find `package.json` in the `BotPath` specified above, in our case it is `C:\myhubot\packages.json`. We will also add a version constraint. The latest version of each package can be found by searching the [npm package manager](https://www.npmjs.com).
+To use them inside Hubot, we need to add them to the `package.json` file which is generated when we install Hubot for the first time. You can find `package.json` in the `BotPath` specified above, in our case it is `C:\myhubot\packages.json`. We will also add a version constraint. The latest version of each package can be found by searching the [npm package manager](https://www.npmjs.com).
 
 After you have added them your `package.json` should look similar to this:
 
@@ -256,14 +256,14 @@ After you have added them your `package.json` should look similar to this:
 }
 {% endhighlight %}
 
-Usually after you update the `package.json` you would need to run an `npm install` to download the packages that have been added. This is handled behind the scenes for you by the `Start-Hubot` command.
+Usually, after you update the `package.json`, you would need to run  `npm install` to download the packages that have been added. This is handled behind the scenes for you by the `Start-Hubot` command.
 
 ### Create the PowerShell script
 
 We need to design a PowerShell script that can be called from CoffeeScript, the Hubot scripting language. I recommend using the following methods when creating PowerShell scripts that will be called from Hubot:.
 
 * **Create PowerShell functions with paramaters** - It makes it nice and easy to call PowerShell from CoffeeScript when they have well defined parameters
-* **Put error handling in your script** - Use try-catch blocks inside your PowerShell functions so you can return a message to the bot if the command has failed
+* **Use error handling in your script** - Use try-catch blocks inside your PowerShell functions so you can return a message to the bot if the command has failed
 * **Output results in json** - This is a great way to pass data back to CoffeeScript. You can use PowerShell objects to send data back and have CoffeeScript pick out the parts you want
 
 Keeping these methods in mind, I created a `Get-ServiceHubot` function to find the service status:
@@ -284,25 +284,22 @@ Get-ServiceHubot -Name dhcp
 
 {% highlight json %}
 {
-    "success":  true,
-    "output":  "Service dhcp (*DHCP Client*) is currently `Running`"
+  "success":  true,
+  "output":  "Service dhcp (*DHCP Client*) is currently `Running`"
 }
 {% endhighlight %}
 
 Here is some example output from the PowerShell when the function is run against a service that doesn't exist on the machine:
 
 {% highlight powershell %}
-# Dot Source the function
-. .\Get-ServiceHubot.ps1
-
 # Get a service that exists on the system
 Get-ServiceHubot -Name MyFakeService
 {% endhighlight %}
 
 {% highlight json %}
 {
-    "success":  false,
-    "output":  "Service MyFakeService does not exist on this server."
+  "success":  false,
+  "output":  "Service MyFakeService does not exist on this server."
 }
 {% endhighlight %}
 
@@ -314,7 +311,7 @@ Now that our PowerShell function is completed, we need to wire it up to Hubot us
 
 The goal for the CoffeeScript portion is to take a users message to the bot, work out the service name, pass it into the PowerShell script and return the result to the user.
 
-This is the script I came up with to call the PowerShell function. Be sure to read the comments so you understand how it works.
+This is the script I designed to call the PowerShell function. Be sure to read the comments so you understand how it works.
 
 {% gist 8e3461622b7f3c1f9a53 %}
 
