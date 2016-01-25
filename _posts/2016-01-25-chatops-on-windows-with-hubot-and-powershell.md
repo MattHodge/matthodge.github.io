@@ -1,14 +1,14 @@
 ---
 layout: post
-title:  "ChatsOps on Windows with Hubot and PowerShell"
-date:   2016-01-25 13:37:00
+title: "ChatOps on Windows with Hubot and PowerShell"
+date: 2016-01-25 13:37:00
 comments: true
 description: Using Slack, Hubot and PowerShell to enable ChatOps in the Microsoft Ecosystem.
 ---
 
-ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chat room . It involves having everyone in the team in a single chat room, then bringing tools into the chat room so everyone automate, collaborate and see how automation is used to solve problems. In doing so, you unifying the communication about what work gets done and have a history of it happening.
+ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chat room. It involves having everyone in the team in a single chat room, then bringing tools into the room so everyone can automate, collaborate and see how automation is used to solve problems. In doing so, you are unifying the communication about what work gets done and have a history of it happening.
 
-ChatOps can be supplemented with the use of tools or scripts exposed using a chat bot. Users in the chat room can talk to the bot and  have it take actions on their behalf, some examples of this may be:
+ChatOps can be supplemented with the use of tools or scripts exposed using a chat bot. Users in the chat room can talk to the bot and have it take actions on their behalf, some examples of this may be:
 
 * Checking the status of a Windows Service
 * Finding out who is on call via the PagerDuty API
@@ -18,7 +18,7 @@ Bots can also be a great way to expose functionality to low-privledged users suc
 
 If you want more details on the concept of ChatOps, I recommend watching **[ChatOps, a Beginners Guide](https://www.youtube.com/watch?v=F8Vfoz7GeHw)** presented by [Jason Hand](https://twitter.com/jasonhand).
 
-A popular toolset for ChatOps is [Slack](https://slack.com/) as the chat client, and [Hubot](https://hubot.github.com/) as the bot. In this post we will use Slack and Hubot together with a PowerShell module I've written called [PoshHubot](https://github.com/MattHodge/PoshHubot). The module will handle installation and basic administration Hubot. From there, we will integrate Hubot with PowerShell so we can perform some ChatOps in the Microsoft ecosystem.
+A popular toolset for ChatOps is [Slack](https://slack.com/) as the chat client, and [Hubot](https://hubot.github.com/) as the bot. In this post we will use Slack and Hubot together with a PowerShell module I've written called [PoshHubot](https://github.com/MattHodge/PoshHubot). The module will handle installation and basic administration of Hubot. From there, we will integrate Hubot with PowerShell so we can perform some ChatOps in the Microsoft ecosystem.
 
 * TOC
 {:toc}
@@ -43,12 +43,12 @@ There are 3 possible ways to do this:
 
 {% gist 9fe3f9bee81c2d6f5327 %}
 
-* You can set them in the current PowerShell instance before you start the bot  using:
+* You can set them in the current PowerShell instance before you start the bot using:
 {% highlight powershell %}
-  $env:NODE_TLS_REJECT_UNAUTHORIZED = '0'
+$env:NODE_TLS_REJECT_UNAUTHORIZED = '0'
 {% endhighlight %}
 
-* You can store the environment variable in the `config.json` file that we generate during the Hubot installation, which the  `PoshHubot` module will load before starting the bot.
+* You can store the environment variable in the `config.json` file that we generate during the Hubot installation, which the `PoshHubot` module will load before starting the bot.
 
 
 ### Bot Brain
@@ -94,14 +94,14 @@ Import-Module -Name PoshHubot -Force
 
 # Create hash of configuration options
 $newBot = @{
-    Path = "C:\PoshHubot\config.json"
-    BotName = 'bender'
-    BotPath = 'C:\myhubot'
-    BotAdapter = 'slack'
-    BotOwner = 'Matt <matt@email.com>'
-    BotDescription = 'my awesome bot'
-    LogPath = 'C:\PoshHubot\Logs'
-    BotDebugLog = $true
+  Path = "C:\PoshHubot\config.json"
+  BotName = 'bender'
+  BotPath = 'C:\myhubot'
+  BotAdapter = 'slack'
+  BotOwner = 'Matt <matt@email.com>'
+  BotDescription = 'my awesome bot'
+  LogPath = 'C:\PoshHubot\Logs'
+  BotDebugLog = $true
 }
 
 # Splat the hash to the CmdLet
@@ -337,7 +337,7 @@ Check the logs in `LogPath` defined earlier in the `config.json` file to make su
 [Sun Jan 24 2016 10:25:59 GMT-0800 (Pacific Standard Time)] DEBUG Parsing help for C:\myhubot\scripts\get-servicehubot.coffee
 {% endhighlight %}
 
-When your bot joins the channel, ask it for help again. You will notice that the `get service` command has been added to the help. This is done automatically when you fill out  the header part of the CoffeeScript script.
+When your bot joins the channel, ask it for help again. You will notice that the `get service` command has been added to the help. This is done automatically when you fill out the header part of the CoffeeScript script.
 
 ![Command added to Hubot Help](/images/posts/chatops_on_windows/hubot-help-from-comments.png "Command added to Hubot Help")
 
