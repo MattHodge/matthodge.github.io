@@ -1255,7 +1255,7 @@ hr {
 	vertical-align: middle;
 	position: relative;
 	z-index: 800;
-	padding: 0 60px; }
+	padding: 0 4em; }
 
 .panel-main__content {
 	max-width: 620px;
