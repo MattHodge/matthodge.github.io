@@ -1,9 +1,9 @@
 # Site settings
 title: Matthew Hodgkins Blog
 description: 'System Engineer, PowerShell, Chef and Automation lover and Aussie. Living and working in Texas.'
-url: 'https://hodgkins.io/'
+url: 'https://hodgkins.io'
 enforce_ssl: hodgkins.io
-baseurl: 
+baseurl:
 google_analytics: 'UA-72498951-1'
 
 author:
@@ -16,7 +16,7 @@ author:
 # Build settings
 destination: _site
 paginate: 10
-permalink: /:title/
+permalink: /:title
 markdown: kramdown
 highlighter: pygments
 
