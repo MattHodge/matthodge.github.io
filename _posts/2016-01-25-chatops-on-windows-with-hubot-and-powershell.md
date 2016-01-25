@@ -3,6 +3,7 @@ layout: post
 title:  "ChatsOps on Windows with Hubot and PowerShell"
 date:   2016-01-25 13:37:00
 comments: true
+description: Using Slack, Hubot and PowerShell to enable ChatOps in the Microsoft Ecosystem. Explains how to setup a Hubot on Windows and create PowerShell integration by using CoffeeScript and Edge.js
 ---
 
 ChatOps is a term used to describe bringing development or operations work that is already happening in the background into a common chat room . It involves having everyone in the team in a single chat room, then bringing tools into the chat room so everyone automate, collaborate and see how automation is used to solve problems. In doing so, you unifying the communication about what work gets done and have a history of it happening.
