@@ -60,10 +60,7 @@ If one of your tools is not working or you cannot run it from the command line, 
 
 If you are using the functions from my [PowerShell profile](https://github.com/MattHodge/MattHodgePowerShell/blob/master/PowerShellProfile/Microsoft.PowerShell_profile.ps1) from above, it is very easy to add Path environment variables:
 
-{% highlight powershell %}
-# Requires the Add-PathVariable function from my PowerShell Profile
-Add-PathVariable -Path 'C:/opscode/chefdk/embedded/bin'
-{% endhighlight%}
+{% gist 4988ffcb68c8f4da44a4 %}
 
 ## Move PowerShell Profile to a Synced Drive (Optional)
 
@@ -73,13 +70,7 @@ If you move around to different machines, it is a good idea to move your your Po
 * Open an Administrative PowerShell Prompt
 * Run the following commands:
 
-{% highlight powershell %}
-# Create a symlink to the profile in your shared drive
-cmd /c mklink $PROFILE D:\DataHodge\Dropbox\PSProfile\Microsoft.PowerShell_profile.ps1
-
-# Load the profile into the current session
-. $PROFILE
-{% endhighlight%}
+{% gist d8ac66620dbe98717ea2 %}
 
 ![Symlink to PowerShell Profile](/images/posts/win10_for_chef_and_dsc/mklink_powershell_profile.png "Symlink to PowerShell Profile")
 
@@ -112,24 +103,7 @@ I like to use 2 boxes for my Windows 2012 R2 and Ubuntu testing with Chef/DSC. T
 
 We will install some plugins and pre-load the Vagrant boxes:
 
-{% highlight powershell %}
-# Install vagrant plugins
-vagrant plugin install 'vagrant-berkshelf'
-vagrant plugin install 'vagrant-dsc'
-vagrant plugin install 'vagrant-omnibus'
-vagrant plugin install 'vagrant-reload'
-vagrant plugin install 'vagrant-vbguest'
-vagrant plugin install 'vagrant-vbox-snapshot'
-vagrant plugin install 'vagrant-winrm'
-vagrant plugin install 'winrm-fs'
-
-# Install vagrant boxes
-vagrant box add ubuntu/trusty64
-vagrant box add kensykora/windows_2012_r2_standard
-
-# Install the test-kitchen plugins
-gem install kitchen-pester
-{% endhighlight%}
+{% gist dd9f4e708c77314bcc7b %}
 
 ## Configure Chef and Berkshelf
 
