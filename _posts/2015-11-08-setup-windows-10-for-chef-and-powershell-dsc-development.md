@@ -3,6 +3,7 @@ layout: post
 title:  "Setup Windows 10 For Chef and PowerShell DSC Development"
 date:   2015-11-08 13:37:00
 comments: false
+modified: 2016-02-01
 ---
 
 I am in the process of writing up some blog posts about working with PowerShell Desired State Configuration (DSC) and OpsCode Chef from a Windows Workstation / Windows Server perspective.
@@ -36,33 +37,7 @@ The first step is to install the tools and applications we need. The easiest way
 
 * Open an Administrative PowerShell Prompt and do the following:
 
-{% highlight powershell %}
-# Configure PowerShell Execution Policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
-
-# Install Chocolatey
-iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
-
-# Install the required apps
-choco install git.install -y
-choco install virtualbox -y
-choco install vagrant -y
-choco install chefdk -y
-choco install atom -y
-choco install poshgit -y
-
-# Optional - install tabbed Explorer
-choco install clover -y
-
-# Optional - free git GUI
-choco install sourcetree -y
-
-# Update Pester - https://github.com/pester/Pester
-Install-Module -Name Pester -Confirm:$true
-
-# Install the PSScriptAnalyzer - https://github.com/PowerShell/PSScriptAnalyzer
-Install-Module -Name PSScriptAnalyzer -Confirm:$true
-{% endhighlight%}
+{% gist ff7d189b67a7b64c2ddf %}
 
 ## Customize Your PowerShell Profile
 
@@ -83,7 +58,7 @@ With many of the tools used for developing with Chef on Windows, they will requi
 
 If one of your tools is not working or you cannot run it from the command line, there is a good chance something is wrong with your Path variable. For example, to use Ruby from the command line after you install the ChefDK, you need to [add ruby to the path variable](https://docs.chef.io/install_dk.html#add-ruby-to-path).
 
-If you are using the functions from my [PowerShell profile](https://github.com/MattHodge/MattHodgePowerShell/blob/master/PowerShellProfile/Microsoft.PowerShell_profile.ps1)from above, it is very easy to add Path environment variables:
+If you are using the functions from my [PowerShell profile](https://github.com/MattHodge/MattHodgePowerShell/blob/master/PowerShellProfile/Microsoft.PowerShell_profile.ps1) from above, it is very easy to add Path environment variables:
 
 {% highlight powershell %}
 # Requires the Add-PathVariable function from my PowerShell Profile
@@ -117,39 +92,17 @@ We can make it more powerful with some additional packages.
 * Open PowerShell
 * Run the following commands to install some handy Atom packages
 
-{% highlight powershell %}
-# Linter to validate the code as you are typing
-apm install linter
-
-# Install rubocop gem
-gem install rubocop
-
-# Linter for ruby
-apm install linter-rubocop
-
-# Rubocop auto corrector
-apm install rubocop-auto-correct
-
-# Create a rubocop.yml configuration file to ignore warnings for line endings. Details here https://github.com/bbatsov/rubocop/blob/master/README.md
-Set-Content -Path ~/.rubocop.yml -Value 'Metrics/LineLength:','  Enabled: false'
-
-# Useful for removing Windows line endings
-apm install line-ending-converter
-
-# Gives a view of your entire document when it is open in atom
-apm install minimap
-
-# monokai theme for atom
-apm install monokai
-{% endhighlight%}
+{% gist 35c585bfd3f59b4c6610 %}
 
 ## Setup Git SSH Keys
 
 You should be using source control for your Chef recipes and PowerShell scripts. Warren Frame has an excellent blog on the topic specific to PowerShell [here](https://ramblingcookiemonster.github.io/GitHub-For-PowerShell-Projects/).
 
-To work with git repositories, it is best to use ssh keys. On Windows, the ssh keys live under your user directory in a `.ssh` folder, for example `C:\Users\YourName\.ssh`
+The best way to authenticate with git repositories is via ssh keys. On Windows, the ssh keys live under your user directory in a `.ssh` folder, for example `C:\Users\YourName\.ssh`
 
-Setting up ssh keys on Windows for GitHub and BitBucket can be a bit of a pain, but the below will guide you through the process
+Setting up ssh keys on Windows for GitHub and BitBucket can be a bit of a pain, but the below will guide you through the process.
+
+{% gist b2eed7c9202af5c166d2 %}
 
 ## Download Vagrant Boxes
 
@@ -182,22 +135,23 @@ gem install kitchen-pester
 
 Next step is to get your chef `user.pem` file sorted out. Chef has a how-to guide for this [here](https://docs.chef.io/install_dk.html#manually-w-o-webui).
 
-Once you have your `.pem` file, we will setup the `knife.rb` and the berkshelf `config.json`
+Once you have your `.pem` file, we will setup the `knife.rb` and the berkshelf `config.json`.
+
+{% gist b8862934d2fe9b22cc8f %}
 
 * Here is an [example knife.rb](https://github.com/MattHodge/MattHodgePowerShell/blob/master/Chef/knife_example.rb) that I use.
-
 * Here is an example [berkshef .config](https://github.com/MattHodge/MattHodgePowerShell/blob/master/Chef/berkshelf_config_example.json) file that I use.
 
 ## Customize the PowerShell ISE Theme (Optional)
 
 The default theme for the PowerShell ISE is boring, lets spice it up with a theme. There is a great repository with PowerShell ISE themes located [on GitHub](https://github.com/marzme/PowerShell_ISE_Themes).
 
-To import the themes into the PowerShell ISE, go to **Tools | Options | Manage Themes | Import**.
+To import the themes into the PowerShell ISE, go to **Tools > Options > Manage Themes > Import**.
 
-<a href="http://www.hodgkins.net.au/wp-content/uploads/2015/11/image.png" rel="lightbox[753]"><img style="background-image: none; float: none; padding-top: 0px; padding-left: 0px; margin: 0px auto; display: block; padding-right: 0px; border: 0px;" title="image" src="http://www.hodgkins.net.au/wp-content/uploads/2015/11/image_thumb.png" alt="image" width="945" height="591" border="0" /></a>
+![PowerShell ISE Themes](/images/posts/win10_for_chef_and_dsc/powershell_ise_themes.png "PowerShell ISE Themes")
 
 Again, I would drop the theme into a synced folder so you can use it on all your machines.
 
 ## Conclusion
 
-With that, you should have your Windows machine setup PowerShell DSC and Chef development. Did I miss anything? Send me a tweet <a href="https://twitter.com/matthodge" target="_blank">@matthodge</a> and let me know!
+With that, you should have your Windows machine setup PowerShell DSC and Chef development. Did I miss anything? Send me a tweet [@matthodge](https://twitter.com/matthodge) and let me know!
