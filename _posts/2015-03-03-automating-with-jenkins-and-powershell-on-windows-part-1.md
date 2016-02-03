@@ -2,7 +2,7 @@
 layout: post
 title:  "Automating with Jenkins and PowerShell on Windows - Part 1"
 date:   2015-03-03 13:37:00
-comments: false
+comments: true
 modified: 2016-02-02
 ---
 
