@@ -2,7 +2,7 @@
 layout: post
 title:  "Setup Windows 10 For Chef and PowerShell DSC Development"
 date:   2015-11-08 13:37:00
-comments: false
+comments: true
 modified: 2016-02-01
 ---
 
