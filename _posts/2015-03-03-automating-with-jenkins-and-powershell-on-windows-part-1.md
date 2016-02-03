@@ -33,7 +33,7 @@ Anything you can think of that you can do with PowerShell, you can integrate wit
 
 These articles will be broken up into two parts:
 
-* [Part 1 – Installing Jenkins and creating the first PowerShell job]({% 2015-03-03-automating-with-jenkins-and-powershell-on-windows-part-1 %})
+* [Part 1 – Installing Jenkins and creating the first PowerShell job]({% post_url 2015-03-03-automating-with-jenkins-and-powershell-on-windows-part-1 %})
 * [Part 2 – Using Jenkins with PowerShell Remoting to perform jobs on remote machines]({% post_url 2015-05-30-automating-with-jenkins-and-powershell-on-windows-part-2 %})
 
 ## Installing Jenkins
