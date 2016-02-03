@@ -6,7 +6,7 @@ comments: false
 modified: 2016-02-03
 ---
 
-After reading Automating with Jenkins and PowerShell on Windows Part – 1, you should have a grasp on the basics of Jenkins and be excited to start doing more automation!
+After reading [Automating with Jenkins and PowerShell on Windows Part – 1]({% post_url 2015-03-03-automating-with-jenkins-and-powershell-on-windows-part-1 %}), you should have a grasp on the basics of Jenkins and be excited to start doing more automation!
 
 Let’s start reaching out into our network with Jenkins and take actions on remote machines.
 

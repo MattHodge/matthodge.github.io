@@ -33,8 +33,8 @@ Anything you can think of that you can do with PowerShell, you can integrate wit
 
 These articles will be broken up into two parts:
 
-* Part 1 – Installing Jenkins and creating the first PowerShell job
-* Part 2 – Using Jenkins with PowerShell Remoting to perform jobs on remote machines
+* [Part 1 – Installing Jenkins and creating the first PowerShell job]({% 2015-03-03-automating-with-jenkins-and-powershell-on-windows-part-1 %})
+* [Part 2 – Using Jenkins with PowerShell Remoting to perform jobs on remote machines]({% post_url 2015-05-30-automating-with-jenkins-and-powershell-on-windows-part-2 %})
 
 ## Installing Jenkins
 
@@ -136,4 +136,6 @@ Success! Looks like our job was successful, lets have a look on the Jenkins serv
 
 As you can see, we can leverage Jenkins to give our PowerShell scripts a web interface, that could be run by anyone, from anywhere!
 
-Stay tuned for the next article where we will start using Jenkins to target other machines on the network using PowerShell remoting, and get more advanced with our jobs. You can follow me on twitter [@matthodge](https://twitter.com/matthodge) where I will tweet our new blog posts.
+## Part 2
+
+Part 2 of this article has been posted. You can check it out [here]({% post_url 2015-05-30-automating-with-jenkins-and-powershell-on-windows-part-2 %}).
