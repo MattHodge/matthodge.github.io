@@ -29,5 +29,6 @@ kramdown:
 gems:
   - jemoji
   - jekyll-sitemap
+  - jekyll-gist
 
 exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
