@@ -2,7 +2,7 @@
 layout: post
 title:  "Replacing a Failed Disk in Windows Server 2012 R2 Storage Spaces with PowerShell"
 date:   2014-01-06 13:37:00
-comments: false
+comments: true
 modified: 2016-02-05
 ---
 

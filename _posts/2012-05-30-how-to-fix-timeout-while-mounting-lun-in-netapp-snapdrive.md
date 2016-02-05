@@ -2,7 +2,7 @@
 layout: post
 title:  "How to fix a Timeout Erorr while mounting a LUN in NetApp SnapDrive"
 date:   2012-05-30 13:37:00
-comments: false
+comments: true
 modified: 2016-02-05
 ---
 

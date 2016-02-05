@@ -2,7 +2,7 @@
 layout: post
 title:  "Using PowerShell To Send Metrics To Graphite"
 date:   2014-02-03 13:37:00
-comments: false
+comments: true
 modified: 2016-02-05
 ---
 
