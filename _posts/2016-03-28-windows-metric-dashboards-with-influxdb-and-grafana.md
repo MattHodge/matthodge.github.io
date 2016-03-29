@@ -32,6 +32,9 @@ Monitoring performance counters on Windows in any centralized manager way has al
 
 Thankfully, things are getting easier. Let's take a look at using [InfluxDB](https://influxdata.com/) to store our metrics, [Telegraf](https://influxdata.com/time-series-platform/telegraf/) to tramsit the metrics and [Grafana](http://grafana.org/) do display them.
 
+By the end of the article, you should be able to make a dashboard that looks something like this:
+
+![Full Hyper-V Dashboard](/images/posts/influxdb_grafana_windows/fulldashboard.png "Full Hyper-V Dashboard")
 
 * TOC
 {:toc}
@@ -126,6 +129,7 @@ Inside you will see 2 files:
 
 ## Configure Telegraf
 
+### Basic Configuration
 Open the `telegraf.conf` file in a text editor - I would recommend one which supports [TOML](https://github.com/toml-lang/toml) syntax highlighting such as [Atom](https://atom.io/).
 
 The Windows version of telegraf has a configuration file setup to collect some common Windows performance counters by default, so we do not need to change very much for it to work.
@@ -142,6 +146,69 @@ Next, under the `[[outputs.influxdb]]` section, we need to update the `urls` opt
 {% highlight toml %}
 [[outputs.influxdb]]
   urls = ["http://Your-Linux-Server-IP:8086"]
+{% endhighlight %}
+
+### Deciding What To Capture
+
+As this is a Hyper-V server, I wanted to collect some Hyper-V specific metrics. I two articles, a post by [Ben Armstrong](https://twitter.com/virtualpcguy) about [Dynamic Memory Performance Counters with Hyper-V](https://blogs.msdn.microsoft.com/virtual_pc_guy/2010/09/01/looking-at-dynamic-memory-performance-counters/) and [Measuring Performance on Hyper-V](https://msdn.microsoft.com/en-us/library/cc768535.aspx) on MSDN.
+
+These were the parts that stuck out from the articles:
+
+>Use the following rule of thumb when measuring disk latency on the Hyper-V host operating system using the "\Logical Disk(*)\Avg. Disk sec/Read "or "\Logical Disk(*)\Avg. Disk sec/Write" performance monitor counters:
+
+>1ms to 15ms = Healthy
+
+>15ms to 25ms = Warning or Monitor
+
+>26ms or greater = Critical, performance will be adversely affected
+
+and
+
+> My favorite performance counter is the "Average Pressure" counter under the "Hyper-V Dynamic Memory Balancer" category.  This gives you a very simple view of the overall memory allocation of your system
+
+> As long as this number is under 100, you know that there is enough memory is your system to service your virtual machines.  Ideally this value should be at 80 or lower.  The closer this gets to 100, the closer you are to running out of memory.  Once this number goes over 100 then you can pretty much guarantee that you have virtual machines that are paging in the guest operating system.
+
+Depending on the type of server you are trying to monitor, you will want to do the same and do some research about a few important performance counters you should be keeping an eye on.
+
+### Adding Additional Counters
+
+We have worked out exactly what needs to be monitored, lets add them to the configuration file.
+
+First we will add `\Logical Disk(*)\Avg. sec/Read` and `\Logical Disk(*)\Avg. sec/Write`.
+
+The configuration file already includes `LogicalDisk` monitoring, so we just need to add `Avg. sec/Write` and `Avg. sec/Read` into the `Counters` array for `LogicalDisk` in the section in the file.
+
+After doing this, the configuration for the `LogicalDisk` counters looks like this:
+
+{% highlight toml %}
+[[inputs.win_perf_counters.object]]
+  # Disk times and queues
+  ObjectName = "LogicalDisk"
+  Instances = ["*"]
+  # Added "Avg. sec/Write" and "Avg. sec/Write" to the Counters array.
+  Counters = ["% Idle Time", "% Disk Time","% Disk Read Time", "% Disk Write Time", "% User Time", "Current Disk Queue Length", "Avg. Disk sec/Read", "Avg. Disk sec/Write"]
+  Measurement = "win_disk"
+  #IncludeTotal=false #Set to true to include _Total instance when querying for all (*).
+{% endhighlight %}
+
+Next, we want to add the `Hyper-V Dynamic Memory Balancer` counter. I wasn't sure if its full path, so I used PowerShell to find it:
+
+{%highlight powershell %}
+# I used ConvertTo-Json as it makes the output much easier to read.
+Get-Counter -List "Hyper-V Dynamic Memory Balancer" | Select-Object Paths,PathsWithInstances | ConvertTo-Json
+{% endhighlight %}
+
+![Find Performance Counter Path](/images/posts/influxdb_grafana_windows/powershell-getcounters.png "Find Performance Counter Path")
+
+From here I found the full counter path was `\Hyper-V Dynamic Memory Balancer(System Balancer)\Average Pressure` (JSON adds the double slashes). This was added to the configuration file:
+
+{% highlight toml %}
+[[inputs.win_perf_counters.object]]
+  # Disk times and queues
+  ObjectName = "Hyper-V Dynamic Memory Balancer"
+  Instances = ["System Balancer"]
+  Counters = ["Average Pressure"]
+  Measurement = "hyper_v"
 {% endhighlight %}
 
 Save the `telegraf.conf` file.
@@ -201,13 +268,57 @@ In the data selection section, choose From `win_cpu` and match the rest of the f
 
 You can read more about querying data from InfluxDB in Grafana in the [Grafana docs](http://docs.grafana.org/datasources/influxdb/).
 
+Next, click on the `General` tab and enter a name for the graph.
+
+![Configure Grafana Graph Name](/images/posts/influxdb_grafana_windows/grafana_general_tab.png "Configure Grafana Data Source")
+
+Head over to the `Axes & Grid` tab. There are a ton of options here. As this is a graph to show CPU usage of one or more Hyper-V servers, I choose to structure  and enter a name for the graph.
+
+* As we are looking at the `% Processor Time` performance counter, set the `Left Y Unit` to be `percent (0-100)`.
+* Set some `threshold` levels - these just give a nice visual representation of when you should be worried about a the graph entering the [danger zone](https://i.imgur.com/oq2qkUN.gifv).
+* You can also display additional values under the graph next to your metrics, in this example I enabled `Min`, `Max` and `Avg`.
+
+![Configure Grafana Axes and Grid](/images/posts/influxdb_grafana_windows/grafana_axes_grid.png "Configure Grafana Data Source")
+
+Click `Back to dashboard` and then up the top of the page, choose the **Cog** icon > `Settings`.
+
+Give the dashboard a name and save it - I choose `Hyper-V Dashboard` and entered the `hyper-v` tag.
+
+![Save Hyper-V Dashboard](/images/posts/influxdb_grafana_windows/grafana_save_dashboard.png "Save Hyper-V Dashboard")
+
+I added a `Table` panel to track disk latency on the Hyper-V server:
+
+![Hyper-V Disk Latency](/images/posts/influxdb_grafana_windows/grafana-hyper-v-disk-latency.png "Hyper-V Disk Latency")
+
+The query that I used for this was as follows:
+
+![Hyper-V Disk Latency Query](/images/posts/influxdb_grafana_windows/grafana-hyper-v-disk-latency-query.png "Hyper-V Disk Latency Query")
+
+You will notice I used a math function and multiplied the performance counter by `1000`. As this performance counter records in seconds with millisecond precision, I had to multiply by `1000` to get a millisecond value for the counter.
+
+From there I went to the `Options` tab and set the `Unit` value to `milliseconds (ms)` and set the thresholds that were recommended by Microsoft.
+
+![Hyper-V Disk Latency Options](/images/posts/influxdb_grafana_windows/grafana-hyper-v-disk-options.png "Hyper-V Disk Latency Options")
+
+Finally I added a `Single Value` panel to track Hyper-V memory pressure.
+
+![Hyper-V Memory Pressure](/images/posts/influxdb_grafana_windows/grafana-hyper-v-memory-pressure.png "Hyper-V Memory Pressure")
+
+The query that I used for this was as follows:
+
+![Hyper-V Memory Pressure Query](/images/posts/influxdb_grafana_windows/grafana-hyper-v-memory-pressure-query.png "Hyper-V Memory Pressure Query")
+
+I then went to the `Options` tab and set the `Postfix` of the metric to be `avg pressure`. I also enabled `Background` coloring and set the `Thresholds` as recommended by Ben's blog post.
+
+![Hyper-V Memory Pressure Options](/images/posts/influxdb_grafana_windows/grafana-hyper-v-memory-pressure-options.png "Hyper-V Memory Pressure Options")
+
 # Wrapping Up
 
-InfluxDB and telegraf provide an excellent and simple way to ship Windows performance counters off the server, and Grafana lets us display these metrics in beautiful dashboards.
+InfluxDB and Telegraf provide an excellent and simple way to ship Windows performance counters off the server, and Grafana lets us display these metrics in beautiful dashboards.
 
 Hopefully this starts you on your journey to graphing performance data for your systems.
 
-Keep an eye out for another post shortly which will discuss some more advanced usage including using annotations on the graphs so you can correlate events in your infrastructure to system performance
+Keep an eye out for another post shortly which will discuss some more advanced usage including using annotations on the graphs so you can correlate events in your infrastructure to system performance, as well as running Telegraf as a Windows service.
 
 <!-- Place this tag right after the last button or just before your close body tag. -->
 <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
