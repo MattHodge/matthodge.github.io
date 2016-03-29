@@ -252,9 +252,13 @@ The default database for the telegraf agent is `telegraf`. The Grafana form will
 
 ![Configure Grafana Data Source](/images/posts/influxdb_grafana_windows/grafana_datasource.png "Configure Grafana Data Source")
 
+## Create a Dashboard
+
 To display our data, we will need to create a dashboard. Select `Home` from the top menu and click `New`.
 
 ![Configure Grafana Data Source](/images/posts/influxdb_grafana_windows/grafana_create_dashboard.png "Configure Grafana Data Source")
+
+## Add a Graph
 
 In the new dashboard page you will see a little green rectangle over on the left, click it and choose `Add Panel` > `Graph`.
 
@@ -280,11 +284,15 @@ Head over to the `Axes & Grid` tab. There are a ton of options here. As this is 
 
 ![Configure Grafana Axes and Grid](/images/posts/influxdb_grafana_windows/grafana_axes_grid.png "Configure Grafana Data Source")
 
+## Save the Dashboard
+
 Click `Back to dashboard` and then up the top of the page, choose the **Cog** icon > `Settings`.
 
 Give the dashboard a name and save it - I choose `Hyper-V Dashboard` and entered the `hyper-v` tag.
 
 ![Save Hyper-V Dashboard](/images/posts/influxdb_grafana_windows/grafana_save_dashboard.png "Save Hyper-V Dashboard")
+
+## Create a Table
 
 I added a `Table` panel to track disk latency on the Hyper-V server:
 
@@ -299,6 +307,8 @@ You will notice I used a math function and multiplied the performance counter by
 From there I went to the `Options` tab and set the `Unit` value to `milliseconds (ms)` and set the thresholds that were recommended by Microsoft.
 
 ![Hyper-V Disk Latency Options](/images/posts/influxdb_grafana_windows/grafana-hyper-v-disk-options.png "Hyper-V Disk Latency Options")
+
+## Create a Single Value Display
 
 Finally I added a `Single Value` panel to track Hyper-V memory pressure.
 
