@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Windows Metric Dashboards with InfluxDB and Grafana"
-date: 2016-03-28 13:37:00
-comments: false
-description: Using InfluxDB and Grafana to display Windows performance counters on beautiful dashboards.
+date: 2016-03-29 13:37:00
+comments: true
+description: Using InfluxDB, Telegraf and Grafana to display Windows performance counters on beautiful dashboards.
 ---
 
 Understanding performance of your infrastructure is extremely important, especially when running production systems. There is nothing worse than a customer calling and saying they are experiencing slowness with one of their applications and you having no idea where to start looking.
