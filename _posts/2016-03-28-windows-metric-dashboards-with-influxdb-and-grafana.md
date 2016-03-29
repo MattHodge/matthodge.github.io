@@ -150,7 +150,7 @@ Next, under the `[[outputs.influxdb]]` section, we need to update the `urls` opt
 
 ### Deciding What To Capture
 
-As this is a Hyper-V server, I wanted to collect some Hyper-V specific metrics. I two articles, a post by [Ben Armstrong](https://twitter.com/virtualpcguy) about [Dynamic Memory Performance Counters with Hyper-V](https://blogs.msdn.microsoft.com/virtual_pc_guy/2010/09/01/looking-at-dynamic-memory-performance-counters/) and [Measuring Performance on Hyper-V](https://msdn.microsoft.com/en-us/library/cc768535.aspx) on MSDN.
+As this is a Hyper-V server, I wanted to collect some Hyper-V specific metrics. I found two articles, a post by [Ben Armstrong](https://twitter.com/virtualpcguy) about [Dynamic Memory Performance Counters with Hyper-V](https://blogs.msdn.microsoft.com/virtual_pc_guy/2010/09/01/looking-at-dynamic-memory-performance-counters/) and [Measuring Performance on Hyper-V](https://msdn.microsoft.com/en-us/library/cc768535.aspx) on MSDN.
 
 These were the parts that stuck out from the articles:
 
@@ -168,7 +168,7 @@ and
 
 > As long as this number is under 100, you know that there is enough memory is your system to service your virtual machines.  Ideally this value should be at 80 or lower.  The closer this gets to 100, the closer you are to running out of memory.  Once this number goes over 100 then you can pretty much guarantee that you have virtual machines that are paging in the guest operating system.
 
-Depending on the type of server you are trying to monitor, you will want to do the same and do some research about a few important performance counters you should be keeping an eye on.
+Depending on the type of server you are trying to monitor, you will want to do the same and research a few important performance counters you should be keeping an eye on.
 
 ### Adding Additional Counters
 
@@ -272,7 +272,7 @@ Next, click on the `General` tab and enter a name for the graph.
 
 ![Configure Grafana Graph Name](/images/posts/influxdb_grafana_windows/grafana_general_tab.png "Configure Grafana Data Source")
 
-Head over to the `Axes & Grid` tab. There are a ton of options here. As this is a graph to show CPU usage of one or more Hyper-V servers, I choose to structure  and enter a name for the graph.
+Head over to the `Axes & Grid` tab. There are a ton of options here. As this is a graph to show CPU usage of one or more Hyper-V servers, I chose to structure  and enter a name for the graph.
 
 * As we are looking at the `% Processor Time` performance counter, set the `Left Y Unit` to be `percent (0-100)`.
 * Set some `threshold` levels - these just give a nice visual representation of when you should be worried about a the graph entering the [danger zone](https://i.imgur.com/oq2qkUN.gifv).
