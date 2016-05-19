@@ -231,7 +231,7 @@ If you get an error saying `2016/03/28 19:48:01 toml: line 1: parse error` this 
 
 ## Installing Telegraf as a service
 
-If you are happy with how Telegraf is functioning, you can install it a service so it starts itself when the system reboots. Follow the instructions [here](https://github.com/influxdata/telegraf/blob/master/docs/WINDOWS_SERVICE.md)
+If you are happy with how Telegraf is functioning, you can install it a service so it starts itself when the system reboots. Follow the instructions [here](https://github.com/influxdata/telegraf/blob/master/docs/WINDOWS_SERVICE.md).
 
 # Viewing the Data in Grafana
 
