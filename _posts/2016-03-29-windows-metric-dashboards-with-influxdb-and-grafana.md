@@ -223,9 +223,15 @@ If all went well you should see telegraf starting to collect your metrics and se
 
 ![Starting Telegraf](/images/posts/influxdb_grafana_windows/startingtelegraf.png "Starting Telegraf")
 
+
+
 ## Troubleshooting
 
 If you get an error saying `2016/03/28 19:48:01 toml: line 1: parse error` this is because you used standard old notepad and its line-endings broke things. Use a real text editor!
+
+## Installing Telegraf as a service
+
+If you are happy with how Telegraf is functioning, you can install it a service so it starts itself when the system reboots. Follow the instructions [here](https://github.com/influxdata/telegraf/blob/master/docs/WINDOWS_SERVICE.md)
 
 # Viewing the Data in Grafana
 
@@ -328,7 +334,7 @@ InfluxDB and Telegraf provide an excellent and simple way to ship Windows perfor
 
 Hopefully this starts you on your journey to graphing performance data for your systems.
 
-Keep an eye out for another post shortly which will discuss some more advanced usage including using annotations on the graphs so you can correlate events in your infrastructure to system performance, as well as running Telegraf as a Windows service.
+Keep an eye out for another post shortly which will discuss some more advanced usage including using annotations on the graphs so you can correlate events in your infrastructure to system performance.
 
 <!-- Place this tag right after the last button or just before your close body tag. -->
 <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
