@@ -133,7 +133,7 @@ Take a look at [Chris Hunt's](https://twitter.com/logicaldiagram) blog post [Tes
 
 Unfortunatley, with the current version of PowerShell, when you load a class using the `using module` method, it is cached into the session. Even if you make changes to your class and re-run `using module`, the old class will be used. Take a look at this example:
 
-![PowerShell class caching](https://i.imgur.com/Q10DMf6.gifv)
+![PowerShell class caching](https://i.imgur.com/Q10DMf6.gifv "PowerShell Class Caching")
 
 To get around this, we can use a function to make Pester invoke the tests inside its own runspace, meaning that the class is loaded fresh each time.
 
