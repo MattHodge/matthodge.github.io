@@ -7,8 +7,6 @@ description: Five useful tips when writing DSC Resources using PowerShell v5. Co
 psversion: 5.0.10586.122
 ---
 
-*TODO add PS Version to header thingy somehow*
-
 I have recently been writing some class based DSC resources and have been enjoying the experience much more than (trying to) write DSC resources in PowerShell v4. Using classes really simplifies the development process of the DSC resources, and I believe class based resources will be the norm going forward.
 
 As PowerShell v5 RTM has only been recently released back in February 2016, the large majority of DSC resources available on GitHub still use the `Get-TargetResource`, `Test-TargetResource` and `Set-TargetResource` functions, so I found it a little hard to get started as there was a lack of examples.
