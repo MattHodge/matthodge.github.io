@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "5 Tips for Writing DSC Resources in PowerShell v5"
+title: "5 Tips for Writing DSC Resources in PowerShell 5"
 date: 2016-06-08 13:37:00
 comments: false
-description: Five useful tips when writing DSC Resources using PowerShell v5. Covers folder structure, IntelliSense, verifying exposed resources and testing using Pester.
+description: Five useful tips when writing DSC Resources in PowerShell 5. Covers folder structure, IntelliSense, verifying resources, testing using Pester and more.
 psversion: 5.0.10586.122
 ---
 
@@ -21,9 +21,9 @@ Hopefully the following tips will save you some time and pain when going down th
 
 When working on anything PowerShell related, you should be using source control. If you aren't, you had better take a [crash course in version control](https://www.youtube.com/watch?v=wmPfDbsPeZY) with  Warren Frame  ([@pscookiemonster](https://twitter.com/psCookieMonster)).
 
-I personally have a `C:\ProjectsGit` directory that I create all my repos inside it.
+I personally have a `C:\ProjectsGit` directory that I create all my repos inside.
 
-This is how I structure my DSC resources, for an example resource called `MyDSCResource` would be structured like this:
+This is how I structure my DSC resources, for example, a resource called `MyDSCResource` would be structured like this:
 
 ```
 C:\ProjectsGit
@@ -57,7 +57,7 @@ C:\ProjectsGit
     └── readme.md
 ```
 
-:white_check_mark: **Mini Tip:** You cannot write composite resources as a class-based resource, but you can include composite resources WITH class based resources, take this example:
+:white_check_mark: **Mini Tip:** You cannot write composite resources as a class-based resource, but you can include composite resources WITH class based resources. Take this example:
 
 ![Class based DSC Resource with composite resource](/images/posts/five_dsc_tips/composite_resource_class_based.png)
 
@@ -105,7 +105,7 @@ If for some reason your resource is not being exposed, verify if you added it to
 DscResourcesToExport = @('HubotInstall','HubotInstallService')
 {% endhighlight %}
 
-If you are trying to create a composite resource, part of the process is to create a module manifest file for the composite. If for some reason your composite resource is not appearing in the list when you perform a `Get-DSCResource`, try manually loading the manifest for the composite resource.
+When creating a composite resource, part of the process is to create a module manifest file for the composite. If for some reason your composite resource is not appearing in the list when you perform a `Get-DSCResource`, try manually loading the manifest for the composite resource.
 
 As an example, say I have my DSC Resource and composite structured like this:
 
@@ -162,7 +162,7 @@ $x.Test()
 
 Take a look at [Chris Hunt's](https://twitter.com/logicaldiagram) blog post [Testing PowerShell Classes](https://www.automatedops.com/blog/2016/01/28/testing-powershell-classes/) for more details on `using module`.
 
-Unfortunately, with the current version of PowerShell, when you load a class using the `using module` method, it is cached into the PowerShell session. Even if you make changes to your class and re-run `using module`, the old class will be used. Take a look at this example:
+Unfortunately, with the current version of PowerShell, when you load a class with the `using module` method, it is cached into the PowerShell session. Even if you make changes to your class and re-run `using module`, the old class will be used. Take a look at this example:
 
 ![PowerShell class caching](https://i.imgur.com/Q10DMf6.gif "PowerShell Class Caching")
 
