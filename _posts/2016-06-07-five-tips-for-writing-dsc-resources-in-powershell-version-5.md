@@ -2,7 +2,7 @@
 layout: post
 title: "5 Tips for Writing DSC Resources in PowerShell 5"
 date: 2016-06-08 13:37:00
-comments: false
+comments: true
 description: Five useful tips when writing DSC Resources in PowerShell 5. Covers folder structure, IntelliSense, verifying resources, testing using Pester and more.
 psversion: 5.0.10586.122
 ---
