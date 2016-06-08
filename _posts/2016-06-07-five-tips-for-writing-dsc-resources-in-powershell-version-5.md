@@ -85,9 +85,9 @@ New-Item -ItemType SymbolicLink -Path $pathInModuleDir -Target $originalPath
 
 :white_check_mark: **Mini Tip:** The ISE will sometimes not automatically realize your resource has appeared in the modules directory. To fix this, just delete and replace the `Import-DSCResource -ModuleName MyDSCResource1` line in the ISE and it will discover your module correctly and give you IntelliSense.
 
-## Tip 3 - Press Control + Space For IntelliSense on the DSC Resource
+## Tip 3 - Press Control + Space For IntelliSense on the DSC Resource in the PS ISE
 
-When writing DSC configurations, you can use IntelliSense against DSC resource's (including your custom ones) by pressing `Control + Space` inside the DSC configuration block for the resource.
+When writing DSC configurations in the PowerShell ISE, you can use IntelliSense against DSC resource's (including your custom ones) by pressing `Control + Space` inside the DSC configuration block for the resource.
 
 ![Use Control + Space in ISE](/images/posts/five_dsc_tips/press_control_space.png)
 
@@ -171,6 +171,18 @@ To get around this, we can use a function to make Pester invoke the tests inside
 {% gist 221b2478069f56f1bf95fe98e50a095c %}
 
 Running your tests using `Invoke-PesterJob` provides a workaround for the caching issue.
+
+Additionally, if you want to bring the Pester test results into your current session, you can use [Steven Murawski](https://twitter.com/stevenmurawski)'s `ConvertFrom-PesterOutputObject` function.
+
+{% gist def7fbc1a2c22b7c25ef %}
+
+For example:
+
+{% highlight powershell %}
+Invoke-PesterJob -PassThru | ConvertFrom-PesterOutputObject
+{% endhighlight %}
+
+It is a good idea to put these functions into your `$PSPROFILE`, or [just use mine](https://github.com/MattHodge/MattHodgePowerShell/blob/master/PowerShellProfile/Microsoft.PowerShell_profile.ps1).
 
 ## Wrapping up and further reading
 
