@@ -9,31 +9,54 @@ description: Five useful tips when writing class based DSC Resources using Power
 *TODO add PS Version to header thingy somehow*
 *TODO Standardize on term - DSC Resource Module / DSC Resource*
 
-I have recently been writing some class based DSC resosurces and have been enjoying the experiance over the DSC resources of PowerShell v4. Using classes really simplifies the development process of the DSC resources, and I belive class based resources will be the norm going forward.
+I have recently been writing some class based DSC resources and have been enjoying the experience much more than (trying to) write DSC resources in PowerShell v4. Using classes really simplifies the development process of the DSC resources, and I belive class based resources will be the norm going forward.
 
-As PowerShell v5 has been recently released <find date>, the large majority of DSC resources avaliable on GitHub still use the `Get-TargetResource`, `Test-TargetResource` and `Set-TargetResource` functions, so I found it a little hard to get started.
+As PowerShell v5 RTM has only been recently released back in February 2016, the large majority of DSC resources available on GitHub still use the `Get-TargetResource`, `Test-TargetResource` and `Set-TargetResource` functions, so I found it a little hard to get started as there was a lack of examples.
 
 Hopefully the following tips will save you some time and pain when going down the path of writing your own class based resources!
+
 
 * TOC
 {:toc}
 
 ## Tip 1 - Structure your DSC Resource in a standard manner
 
-When working on anything PowerShell related, you should be using source control (if you aren't you had better start *PUT LINK HERE*).
+When working on anything PowerShell related, you should be using source control. If you aren't you had better take a [crash course in version control](https://www.youtube.com/watch?v=wmPfDbsPeZY) with  Warren Frame  ([@pscookiemonster](https://twitter.com/psCookieMonster)).
 
-I personally have a `C:\ProjectsGit` directory, and create the repositories under this directory, like this:
+I personally have a `C:\ProjectsGit` directory that I create all my repos inside it.
 
+This is how I structure my DSC resources, for an example resource called `MyDSCResource` would be structured like this:
 
-*TODO find out how to lay out folder structure nicely*
 ```
 C:\ProjectsGit
---> MyDSCResource1
-----> MyDSCResource1
-------> MyDSCResource1.psd1
-------> MyDSCResource1.psm1
-----> readme.md
-----> appveyor.yml
+└── MyDSCResource\                       # Repo Directory
+    ├── MyDSCResource\                   # DSC Resource Directory
+    |   ├── MyDSCResource.psd1           # Manifest File
+    |   └── MyDSCResource.psm1           # Class Based Resource
+    ├── Examples\                        # Resource usage examples
+    |   └── Example1.ps1
+    ├── Tests\                           # Pester Tests
+    ├── appveyor.yml OR .build.ps1       # Build file
+    └── readme.md
+```
+
+If you need a composite resource to go with your DSC Resource, the structure would be as follows:
+
+```
+C:\ProjectsGit
+└── MyDSCResource2\
+    ├── MyDSCResource2\
+    |   ├── DSCResources\                  # Mandatory folder name for composite resources
+    |   |   └── CompResourceName\          # Name of composite resource
+    |   |       ├── CompResourceName.psd1  # Manifest File for composite resource
+    |   |       └── CompResourceName.psm1  # Composite Resource      
+    |   ├── MyDSCResource2.psd1
+    |   └── MyDSCResource2.psm1
+    ├── Examples\
+    |   └── Example1.ps1
+    ├── Tests\
+    ├── appveyor.yml OR .build.ps1
+    └── readme.md
 ```
 
 ## Tip 2 - Create a symlink between the DSC resource in your local repo and your PowerShell module path
