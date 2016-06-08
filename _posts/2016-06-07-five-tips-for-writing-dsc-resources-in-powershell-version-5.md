@@ -11,7 +11,7 @@ I have recently been writing some class based DSC resources and have been enjoyi
 
 As PowerShell v5 RTM has only been recently released back in February 2016, the large majority of DSC resources available on GitHub still use the `Get-TargetResource`, `Test-TargetResource` and `Set-TargetResource` functions, so I found it a little hard to get started as there was a lack of examples.
 
-Hopefully the following tips will save you some time and pain when going down the path of writing your own class based resources!
+Hopefully the following 5 tips will save you some time and pain when going down the path of writing your own class based resources!
 
 
 * TOC
