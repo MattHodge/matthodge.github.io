@@ -1,15 +1,14 @@
 ---
 layout: post
-title: "5 Tips for Writing Class Based DSC Resources"
-date: 2016-06-07 13:37:00
+title: "5 Tips for Writing DSC Resources in PowerShell v5"
+date: 2016-06-08 13:37:00
 comments: false
-description: Five useful tips when writing class based DSC Resources using PowerShell v5.
+description: Five useful tips when writing DSC Resources using PowerShell v5. Covers folder structure, IntelliSense, verifying exposed resources and testing using Pester.
 ---
 
 *TODO add PS Version to header thingy somehow*
-*TODO Standardize on term - DSC Resource Module / DSC Resource*
 
-I have recently been writing some class based DSC resources and have been enjoying the experience much more than (trying to) write DSC resources in PowerShell v4. Using classes really simplifies the development process of the DSC resources, and I belive class based resources will be the norm going forward.
+I have recently been writing some class based DSC resources and have been enjoying the experience much more than (trying to) write DSC resources in PowerShell v4. Using classes really simplifies the development process of the DSC resources, and I believe class based resources will be the norm going forward.
 
 As PowerShell v5 RTM has only been recently released back in February 2016, the large majority of DSC resources available on GitHub still use the `Get-TargetResource`, `Test-TargetResource` and `Set-TargetResource` functions, so I found it a little hard to get started as there was a lack of examples.
 
@@ -59,14 +58,19 @@ C:\ProjectsGit
     └── readme.md
 ```
 
-## Tip 2 - Create a symlink between the DSC resource in your local repo and your PowerShell module path
+:white_check_mark: **Mini Tip:** You cannot write composite resources as a class-based resource, but you can include composite resources WITH class based resources, take this example:
 
-When working in the ISE on your writing DSC configurations agsint your custom resource, it makes it much easier to have autocomplete and IntelliSense working against your resources. The way this is usually achived is copying the custom resource into one of the `$env:PSModulePath` folder; for example the `C:\Program Files\WindowsPowerShell\Modules` folder.
+![Class based DSC Resource with composite resource](/images/posts/five_dsc_tips/composite_resource_class_based.png)
 
+## Tip 2 - Create a symbolic link between the DSC resource in your local repo and your PowerShell module path
+
+When working in the ISE on your writing DSC configurations against your custom resource, it makes it much easier to have IntelliSense working against your resources. The way this is usually achieved is by copying your custom resource into one of the `$env:PSModulePath` folder; for example the `C:\Program Files\WindowsPowerShell\Modules` folder.
+
+If you don't have your custom resource in your module folder, you get this:
 
 ![Resource not in Module Path](/images/posts/five_dsc_tips/resource_not_in_module_path.png)
 
-Since we want to have our resource in source control all the time, it can become painful to remember to copy your resource into the Modules path every time every time you make a change.
+Since we want to have our resource in source control all the time, it can become painful to remember to copy your resource into the modules path every time every time you make a change.
 
 A simple solution to this is to make a symbolic link between your resource repository and the desired path in the `Modules` folder:
 
@@ -80,44 +84,47 @@ $pathInModuleDir = 'C:\Program Files\WindowsPowerShell\Modules\MyDSCResource1'
 New-Item -ItemType SymbolicLink -Path $pathInModuleDir -Target $originalPath
 {% endhighlight %}
 
-:white_check_mark: **Note:** The ISE will sometimes not automatically realize the resource has appeared in the Modules directory. To fix this, just delete and replace the `Import-DSCResource -ModuleName MyDSCResource1` line and it will discover your module properly and give you IntelliSense.
+:white_check_mark: **Mini Tip:** The ISE will sometimes not automatically realize your resource has appeared in the modules directory. To fix this, just delete and replace the `Import-DSCResource -ModuleName MyDSCResource1` line in the ISE and it will discover your module correctly and give you IntelliSense.
 
 ## Tip 3 - Press Control + Space For IntelliSense on the DSC Resource
 
-When writing DSC configurations, you can IntelliSense against the DSC resource (including your custom ones) by pressing `Control + Space` inside the DSC configuration block for the resource.
+When writing DSC configurations, you can use IntelliSense against DSC resource's (including your custom ones) by pressing `Control + Space` inside the DSC configuration block for the resource.
 
 ![Use Control + Space in ISE](/images/posts/five_dsc_tips/press_control_space.png)
 
-## Tip 4 - Verifying and troubleshooting the resources your DSC Module is exposing
+## Tip 4 - Verifying the resources your DSC Module is exposing
 
-An easy way to verify the DSC resources your DSC Module is exposing is to use the  `Get-DSCResource` CmdLet:
+An easy way to verify the DSC resources your custom DSC module is exposing is to use the  `Get-DSCResource` CmdLet:
 
 ![Do a Get-DSCResource](/images/posts/five_dsc_tips/use_get_dscresource.png)
 
-If for some reason your resource is not being exposed, verify if you added it to the `DscResourcesToExport` array inside the DSC Module's `.psd1` file:
+If for some reason your resource is not being exposed, verify if you added it to the `DscResourcesToExport` array inside the DSC module manifest file (`.psd1`):
 
 {% highlight powershell %}
 DscResourcesToExport = @('HubotInstall','HubotInstallService')
 {% endhighlight %}
 
-If you are trying to create a compostie resource, part of the process is to create a module manifest file for the composite. If for some reason your compsite resource is not appearing in the list when you perform a `Get-DSCResource`, try manually loading the manifest for the composite resource.
+If you are trying to create a composite resource, part of the process is to create a module manifest file for the composite. If for some reason your composite resource is not appearing in the list when you perform a `Get-DSCResource`, try manually loading the manifest for the composite resource.
 
 As an example, say I have my DSC Resource structured like this:
 
 ```
-Hubot
-- Hubot.psm1
-- Hubot.psd1
--- DSCResources
---- HubotPrerequisites
----- HubotPrerequisites.psd1
----- HubotPrerequisites.scehma.psm1
+C:\ProjectsGit
+└── Hubot-DSC-Resource\
+    ├── Hubot\
+    |   ├── DSCResources\
+    |   |   └── HubotPrerequisites\
+    |   |       ├── HubotPrerequisites.psd1
+    |   |       └── HubotPrerequisites.psm1
+    |   ├── Hubot.psd1
+    |   └── Hubot.psm1
+    └── readme.md
 ```
 
-I could try to import the `HubotPrerequisites.psd1`:
+I would use `Import-Module` to try and import the resource `CompResourceName.psd1`:
 
 {% highlight powershell %}
- Import-Module .\Hubot\DSCResources\HubotPrerequisites\HubotPrerequisites.psd1
+ Import-Module C:\ProjectsGit\Hubot\Hubot\DSCResources\HubotPrerequisites\HubotPrerequisites.psd1
 {% endhighlight %}
 
 This will allow me to confirm if the module is loading correctly, or show the reason the DSC Module may not be exposing the composite resource:
@@ -144,7 +151,7 @@ using module ..\Hubot\Hubot.psm1
 # load my DSC Resource class into a variable
 $x = [HubotInstall]::new()
 
-# set the paramaters required by the class
+# set the parameters required by the class
 $x.BotPath = 'C:\mybot'
 $x.Ensure = 'Present'
 
@@ -154,12 +161,18 @@ $x.Test()
 
 Take a look at [Chris Hunt's](https://twitter.com/logicaldiagram) blog post [Testing PowerShell Classes](https://www.automatedops.com/blog/2016/01/28/testing-powershell-classes/) for more details on `using module`.
 
-Unfortunatley, with the current version of PowerShell, when you load a class using the `using module` method, it is cached into the session. Even if you make changes to your class and re-run `using module`, the old class will be used. Take a look at this example:
+Unfortunately, with the current version of PowerShell, when you load a class using the `using module` method, it is cached into the session. Even if you make changes to your class and re-run `using module`, the old class will be used. Take a look at this example:
 
 ![PowerShell class caching](https://i.imgur.com/Q10DMf6.gifv "PowerShell Class Caching")
 
-To get around this, we can use a function to make Pester invoke the tests inside its own runspace, meaning that the class is loaded fresh each time.
+To get around this, we can use a function to make Pester invoke the tests inside its own run space, meaning that the class is loaded fresh each time. (Thanks to [Dave Wyatt](https://twitter.com/msh_dave) for this tip.)
 
 {% gist 221b2478069f56f1bf95fe98e50a095c %}
 
 Running your tests using `Invoke-PesterJob` provides a workaround for the caching bug.
+
+## Wrapping up and further reading
+
+Remember the 5 tips above when on your DSC resource writing journey, they could save you some time and pain when troubleshooting!
+
+If you want to dive deeper into writing classed based resources, or learn about how to debug DSC Resources at run time in PowerShell v5, I recommend you check out [What's New in PowerShell v5](https://mva.microsoft.com/en-US/training-courses/whats-new-in-powershell-v5-16434) on the Microsoft Virtual Academy site.
