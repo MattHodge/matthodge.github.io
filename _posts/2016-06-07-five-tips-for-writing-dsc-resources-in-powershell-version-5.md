@@ -27,35 +27,57 @@ This is how I structure my DSC resources, for example, a resource called `MyDSCR
 
 ```
 C:\ProjectsGit
-└── MyDSCResource\                       # Repo Directory
-    ├── MyDSCResource\                   # DSC Resource Directory
-    |   ├── MyDSCResource.psd1           # Manifest File
-    |   └── MyDSCResource.psm1           # Class Based Resource
-    ├── Examples\                        # Resource usage examples
+└── MyDSCResource\                              # Repo Directory
+    ├── MyDSCResource.psd1                      # Manifest File
+    ├── MyDSCResource.psm1                      # Class Based Resource
+    ├── Examples\                               # Resource usage examples
     |   └── Example1.ps1
-    ├── Tests\                           # Pester Tests
-    ├── appveyor.yml OR .build.ps1       # Build file
+    ├── Tests\                                  # Pester Tests
+    |   ├── Integration\
+    |   |   └── default\
+    |   |       └── pester\
+    |   |           └── default.tests.ps1       # Integration tests for Test-Kitchen
+    |   └── Unit\
+    |       ├── MyDSCResource.ClassA.tests.ps1  # Pester unit tests, one for each class inside your resource
+    |       └── MyDSCResource.ClassB.tests.ps1
+    ├── appveyor.yml                            # If using appveyor
+    ├── build.ps1                               # Build file
     └── readme.md
 ```
+
+I am splitting my tests up into 2 folders:
+
+* Integration Tests - these are run using Test-Kitchen to validate that the DSC resources did on the machine what they were meant to do
+* Unit Tests - these are run as part of the build process to validate logic in the resources. Each class should have its own unit test
 
 If you need a composite resource to go with your DSC Resource, the structure would be as follows:
 
 ```
 C:\ProjectsGit
-└── MyDSCResource2\
-    ├── MyDSCResource2\
-    |   ├── DSCResources\                  # Mandatory folder name for composite resources
-    |   |   └── CompResourceName\          # Name of composite resource
-    |   |       ├── CompResourceName.psd1  # Manifest File for composite resource
-    |   |       └── CompResourceName.psm1  # Composite Resource      
-    |   ├── MyDSCResource2.psd1
-    |   └── MyDSCResource2.psm1
-    ├── Examples\
+└── MyDSCResource\                              # Repo Directory
+    ├── DSCResources\                           # Mandatory folder name for composite resources
+    |   └── CompResourceName\                   # Name of composite resource
+    |       ├── CompResourceName.psd1           # Manifest File for composite resource
+    |       └── CompResourceName.psm1           # Composite Resource
+    ├── MyDSCResource.psd1                      # Manifest File
+    ├── MyDSCResource.psm1                      # Class Based Resource
+    ├── Examples\                               # Resource usage examples
     |   └── Example1.ps1
-    ├── Tests\
-    ├── appveyor.yml OR .build.ps1
+    ├── Tests\                                  # Pester Tests
+    |   ├── Integration\
+    |   |   └── default\
+    |   |       └── pester\
+    |   |           └── default.tests.ps1       # Integration tests for Test-Kitchen
+    |   └── Unit\
+    |       ├── CompResourceName.tests.ps1      # Pester unit tests for composite if required
+    |       ├── MyDSCResource.ClassA.tests.ps1
+    |       └── MyDSCResource.ClassB.tests.ps1  
+    ├── appveyor.yml                            # If using appveyor
+    ├── build.ps1                               # Build file
     └── readme.md
 ```
+
+Thanks to [Steven Murawski](https://twitter.com/stevenmurawski) for his advice on how to structure DSC repos!
 
 :white_check_mark: **Mini Tip:** You cannot write composite resources as a class-based resource, but you can include composite resources WITH class based resources. Take this example:
 
