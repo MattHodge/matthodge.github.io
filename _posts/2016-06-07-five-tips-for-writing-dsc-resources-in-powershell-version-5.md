@@ -47,8 +47,8 @@ C:\ProjectsGit
 
 I am splitting my tests up into 2 folders:
 
-* Integration Tests - these are run using Test-Kitchen to validate that the DSC resources did on the machine what they were meant to do
-* Unit Tests - these are run as part of the build process to validate logic in the resources. Each class should have its own unit test
+* `Integration Tests` - these are run using Test-Kitchen to validate that the DSC resources did on the machine what they were meant to do
+* `Unit Tests` - these are run as part of the build process to validate logic in the resources. Each class should have its own unit test
 
 If you need a composite resource to go with your DSC Resource, the structure would be as follows:
 
