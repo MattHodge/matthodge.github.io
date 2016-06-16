@@ -4,6 +4,7 @@ title: "5 Tips for Writing DSC Resources in PowerShell 5"
 date: 2016-06-08 13:37:00
 comments: true
 description: Five useful tips when writing DSC Resources in PowerShell 5. Covers folder structure, IntelliSense, verifying resources, testing using Pester and more.
+modified: 2016-06-16
 psversion: 5.0.10586.122
 ---
 
@@ -106,6 +107,12 @@ New-Item -ItemType SymbolicLink -Path $pathInModuleDir -Target $originalPath
 {% endhighlight %}
 
 :white_check_mark: **Mini Tip:** The ISE will sometimes not automatically realize your resource has appeared in the modules directory. To fix this, just delete and replace the `Import-DSCResource -ModuleName MyDSCResource1` line in the ISE and it will discover your module correctly and give you IntelliSense.
+
+If you want to remove your symbolic link, you can do the following:
+{% highlight powershell %}
+# The recurse might make this seem scary but this just removes the symlink and not your module!
+Remove-Item -Path 'C:\Program Files\WindowsPowerShell\Modules\MyDSCResource1' -Force -Recurse
+{% endhighlight %}
 
 ## Tip 3 - Press Control + Space For IntelliSense on the DSC Resource in the PS ISE
 
