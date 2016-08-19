@@ -27,6 +27,8 @@ kramdown:
   hard_wrap: false
 
 gems:
+  - jekyll-github-metadata
+  - jekyll-paginate
   - jemoji
   - jekyll-sitemap
   - jekyll-gist
