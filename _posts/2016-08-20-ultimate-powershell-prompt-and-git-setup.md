@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Ultimate Git on Windows Setup"
+title: "Ultimate PowerShell Prompt and Git Setup"
 date: 2016-08-20 13:37:00
 comments: false
 description: A guide for setting up Git in Windows 10 including PowerShell customization, multiple Git accounts and more.
