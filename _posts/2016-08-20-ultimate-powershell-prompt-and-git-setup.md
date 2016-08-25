@@ -18,6 +18,8 @@ to this:
 
 ![sexy powershell prompt](/images/posts/windows_git/sexy_powershell_prompt.png)
 
+By the end of the article you will have a good looking prompt, a nice Git setup using ssh keys and even be able to squash commits on Windows.
+
 * TOC
 {:toc}
 
