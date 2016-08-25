@@ -243,4 +243,4 @@ git config --global core.autocrlf true
 
 With that, we have a pretty awesome looking PowerShell prompt and can work nicely with git repositories. Enjoy Quake Mode!
 
-![quake mode](https://i.imgur.com/D7wS0TT.gif)
+![quake mode](http://i.imgur.com/D7wS0TT.gif)
