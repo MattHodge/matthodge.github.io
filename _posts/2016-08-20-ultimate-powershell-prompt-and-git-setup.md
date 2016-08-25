@@ -1,22 +1,22 @@
 ---
 layout: post
-title: "Ultimate PowerShell Prompt and Git Setup"
+title: "Ultimate PowerShell Prompt Customization and Git Setup Guide"
 date: 2016-08-20 13:37:00
 comments: false
-description: A guide for setting up Git in Windows 10 including PowerShell customization, multiple Git accounts and more.
+description: A guide for making your PowerShell prompt pop with ConEmu, Quake mode, a customized and colored prompt and a nice Git setup.
 modified: 2016-06-22
 psversion: 5.1.14393.0
 ---
 
-Source control and Git keeps getting more and more important for both Developers and Operations guys. Getting up and running with Git on MacOS or Linux is very easy as everything is built in.
+Source control and Git keeps getting more and more important for both Developers and Operations guys. Getting up and running with Git on MacOS or Linux is very easy as most things are built in, and there are cool like [oh-my-zsh](http://ohmyz.sh/).
 
-On Windows, it's a bit of a different story. Let's spend a little time installing Git and customizing it to take our prompt from something that looks like this:
+On Windows, it's a bit of a different story. Let's spend a little time installing ConEmu and Git and customizing it to take our prompt from something that looks like this:
 
-< pic of standard PS prompt >
+![sexy powershell prompt](/images/posts/windows_git/boring_powershell_prompt.png)
 
 to this:
 
-< epic PS prompt >
+![sexy powershell prompt](/images/posts/windows_git/sexy_powershell_prompt.png)
 
 * TOC
 {:toc}
@@ -63,7 +63,7 @@ Open up the settings menu and configure the below settings.
 
 ![ConEmu Settings](/images/posts/windows_git/conemu_settings.png)
 
-## Enable single instance Mode
+## Enable single instance mode
 
 Prevent multiple copies of ConEmu starting. Use the tabs instead!
 
@@ -81,7 +81,7 @@ Who uses `cmd` anymore? Set the default shell to PowerShell.
 
 ![ConEmu PowerShell as default](/images/posts/windows_git/conemu_settings_3.png)
 
-## Verify Quake mode hot-key
+## Verify Quake mode hotkey
 
 Get the most out of Quake Mode by setting a hotkey.
 
@@ -108,16 +108,18 @@ if (!(Test-Path -Path $PROFILE)){ New-Item -Path $PROFILE -ItemType File } ; ise
 
 This will launch the PowerShell ISE so you can edit the profile.
 
-## Import the posh-git Module
-The first thing to do inside your PowerShell Profile is to import the `posh-git` module.
+## posh-git and Ssh-Agent
+The first thing to do inside your PowerShell Profile is to import the `posh-git` module. Next, you should add the `Start-SshAgent` command. `ssh-agent` will manage our keys for us.
 
 Add the following to your `$PROFILE`
 
 {% highlight powershell %}
 Import-Module -Name posh-git
+
+Start-SshAgent
 {% endhighlight %}
 
-This will customize our prompt when we are inside git repos.
+This will give us some functionality when working with Git repos.
 
 ## Customize the prompt
 
@@ -185,4 +187,44 @@ This process is similar for BitBucket.
 
 When we try and push to our git repository, our machine will need to authenticate us using our SSH Key. A tool called `ssh-agent` keeps track of the keys we have and authenticating against GitHub for us.
 
-# More Advanced Git Usage
+With `Start-SshAgent` added to our profile, when you open up a new PowerShell prompt (or tab in ConEmu), `ssh-agent` will notice the `id_rsa.pub` in our `$env:USERPROFILE\.ssh` directory and attempt to load it:
+
+![ssh-agent start](/images/posts/windows_git/ssh_add_prompt.png)
+
+If you don't see this prompt you, `ssh-agent` had probably started before the ssh key existed, try stopping and starting it:
+{% highlight powershell %}
+Stop-SshAgent
+Start-SshAgent
+{% endhighlight %}
+
+You can also manually add a key to `ssh-agent`:
+{% highlight powershell %}
+Add-SshKey $env:USERPROFILE\.ssh\id_rsa
+{% endhighlight %}
+
+To view the keys that `ssh-agent` knows about, you can list them:
+{% highlight powershell %}
+# List ssh keys
+ssh-add -l
+{% endhighlight %}
+
+If you wanted to remove your keys from `ssh-agent` for some reason:
+{% highlight powershell %}
+# Remove all ssh keys
+ssh-add -D
+{% endhighlight %}
+
+## Test authentication to GitHub
+
+To test that your ssh key is working, you can run the following command:
+
+{% highlight powershell %}
+# Test ssh connection to GitHub
+ssh -T git@github.com
+{% endhighlight %}
+
+![testing github auth](/images/posts/windows_git/github_testing_auth.png)
+
+Enjoy Quake Mode!
+
+![quake mode](https://i.imgur.com/D7wS0TT.gifv)
