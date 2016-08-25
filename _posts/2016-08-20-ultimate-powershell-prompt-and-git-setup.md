@@ -225,6 +225,22 @@ ssh -T git@github.com
 
 ![testing github auth](/images/posts/windows_git/github_testing_auth.png)
 
-Enjoy Quake Mode!
+## Configure global Git Settings
+
+Finally, we can configure some global Git settings:
+
+{% highlight powershell %}
+git config --global user.email "your@email.com"
+git config --global user.name "Your Name"
+git config --global push.default simple
+git config --global core.ignorecase false
+
+# Configure line endings for windows
+git config --global core.autocrlf true
+{% endhighlight %}
+
+# Conclusion
+
+With that, we have a pretty awesome looking PowerShell prompt and can work nicely with git repositories. Enjoy Quake Mode!
 
 ![quake mode](https://i.imgur.com/D7wS0TT.gifv)
