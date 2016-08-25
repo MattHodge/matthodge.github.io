@@ -225,7 +225,7 @@ ssh -T git@github.com
 
 ![testing github auth](/images/posts/windows_git/github_testing_auth.png)
 
-## Configure global Git Settings
+## Configure global Git settings
 
 Finally, we can configure some global Git settings:
 
@@ -239,8 +239,63 @@ git config --global core.ignorecase false
 git config --global core.autocrlf true
 {% endhighlight %}
 
+
+## Squash commits
+
+Do you commit a little too often? Me too. It's all good and well until we go and make a pull request on someone else's repository and they are a little anal about keeping the Git history clean. Maybe you just feel embarrassed at the amount of commits you do and want to cover your tracks.
+
+To fix this, we can "squash" our commits down so they just appear as one.
+
+Here is what a pull request looks like with several commits:
+
+![too many git commits](/images/posts/windows_git/too_many_git_commits.png)
+
+The easiest way to squash commits on Windows is to use the `gitk` tool.
+
+Back over on our repository:
+{% highlight powershell %}
+# run the gitk tool
+gitk
+{% endhighlight %}
+
+These are the commits I want to squash:
+
+![too many git commits](/images/posts/windows_git/commits_to_be_squashed.png)
+
+I select the commit before I made the big mess, and choose `Reset <branch> to here`.
+
+![reset to the commit before the mess](/images/posts/windows_git/reset_to_commit.png)
+
+Choose `Mixed: leave working tree untouched, reset index`
+
+![choose the mixed reset method](/images/posts/windows_git/git_reset_mixed.png)
+
+What this has done is reset your branch / repo to before the commits, but has left your changes untouched. We can now re-add the changes.
+
+{% highlight powershell %}
+# see the state of the repo
+git status
+
+# add your changes back
+git add .
+
+# commit your changes
+git commit -m "only one commit now!"
+
+# git push with the --force switch
+git push --force
+{% endhighlight %}
+
+Your commits will be squashed nicely now, and even if you had a pull request open, it will have been updated:
+
+![clean pull request](/images/posts/windows_git/clean_squashed_commit.png)
+
+Thanks to Matt Wrock ([@mwrock](https://github.com/mwrock)) for this tip!
+
 # Conclusion
 
-With that, we have a pretty awesome looking PowerShell prompt and can work nicely with git repositories. Enjoy Quake Mode!
+With that, we have a pretty awesome looking PowerShell prompt and can work nicely with git repositories. We can even squash commits on Windows!
 
 ![quake mode](http://i.imgur.com/D7wS0TT.gif)
+
+Enjoy Quake mode :)
