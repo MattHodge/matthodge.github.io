@@ -2,7 +2,7 @@
 layout: post
 title: "Ultimate PowerShell Prompt Customization and Git Setup Guide"
 date: 2016-08-20 13:37:00
-comments: false
+comments: true
 description: A guide for making your PowerShell prompt pop with ConEmu, Quake mode, a customized and colored prompt and a nice Git setup.
 modified: 2016-06-22
 psversion: 5.1.14393.0
