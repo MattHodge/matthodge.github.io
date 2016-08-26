@@ -28,7 +28,6 @@ If you are starting from scratch with Jekyll, use the following steps to prepare
 * Git Init
 * Clone Jekyll Repo?
 
-
 ## Using an Existing Jekyll Repo
 
 As I already have a Jekyll blog, I will simply do a storage mapping on the Jekyll container into the Jekyll git repo on my local machine.
