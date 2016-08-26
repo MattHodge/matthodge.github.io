@@ -8,9 +8,9 @@ modified: 2016-06-22
 psversion: 5.1.14393.0
 ---
 
-Source control and Git keeps getting more and more important for both Developers and Operations guys. Getting up and running with Git on MacOS or Linux is very easy as most things are built in, and there are cool like [oh-my-zsh](http://ohmyz.sh/).
+Source control and Git keeps getting more and more important for both Developers and Operations guys. Getting up and running with Git on MacOS or Linux is very easy as most things are built in. There are also cool tools like [oh-my-zsh](http://ohmyz.sh/) to customize your prompt.
 
-On Windows, it's a bit of a different story. Let's spend a little time installing ConEmu and Git and customizing it to take our prompt from something that looks like this:
+On Windows, it's a bit of a different story. Let's spend a little time installing ConEmu and Git, then customizing it to take our prompt from something that looks like this:
 
 ![sexy powershell prompt](/images/posts/windows_git/boring_powershell_prompt.png)
 
@@ -18,7 +18,7 @@ to this:
 
 ![sexy powershell prompt](/images/posts/windows_git/sexy_powershell_prompt.png)
 
-By the end of the article you will have a good looking prompt, a nice Git setup using ssh keys and even be able to squash commits on Windows.
+By the end of the article you will have a great looking prompt, a nice Git setup using ssh keys and even be able to squash commits on Windows.
 
 * TOC
 {:toc}
