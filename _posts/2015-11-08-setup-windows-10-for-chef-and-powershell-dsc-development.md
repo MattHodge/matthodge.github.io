@@ -89,11 +89,7 @@ We can make it more powerful with some additional packages.
 
 You should be using source control for your Chef recipes and PowerShell scripts. Warren Frame has an excellent blog on the topic specific to PowerShell [here](https://ramblingcookiemonster.github.io/GitHub-For-PowerShell-Projects/).
 
-The best way to authenticate with git repositories is via ssh keys. On Windows, the ssh keys live under your user directory in a `.ssh` folder, for example `C:\Users\YourName\.ssh`
-
-Setting up ssh keys on Windows for GitHub and BitBucket can be a bit of a pain, but the below will guide you through the process.
-
-{% gist b2eed7c9202af5c166d2 %}
+**Update 26/08/2016** - I created a more detailed guide on setting up Git SSH Keys on Windows. Check it out here: [Ultimate PowerShell Prompt Customization and Git Setup Guide](https://hodgkins.io/ultimate-powershell-prompt-and-git-setup)
 
 ## Download Vagrant Boxes
 
