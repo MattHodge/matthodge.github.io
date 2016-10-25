@@ -217,7 +217,7 @@ Here is an example Packer template:
       "elevated_user": "vagrant",
       "elevated_password": "vagrant",
       "environment_vars": [
-        "install_vbox_tools={{user `install_vbox_tools`}}"
+        "install_vbox_tools={{user ``install_vbox_tools``}}"
       ]
     }
   ],
