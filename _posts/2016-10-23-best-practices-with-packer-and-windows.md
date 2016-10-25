@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Best Practices with Packer and Windows
-date: 2016-10-23T13:37:00.000Z
-comments: false
+date: 2016-10-25T13:37:00.000Z
+comments: true
 description: Some best practices around building Windows based Packer images.
 ---
 
