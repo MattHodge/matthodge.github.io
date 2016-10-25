@@ -15,7 +15,7 @@ Already know why Packer is useful? Jump directly to the [best practices](#best-p
 
 When you develop automation, for example, PowerShell Desired State configuration resources, where do you test them?
 
-If the answer is locally on your machine, or a remote Virtual Machine platform, you are missing out on some opportunities of speed and reduction in your development and test cycle time.
+If the answer is locally on your machine or a remote Virtual Machine platform, you are missing out on some opportunities of speed and reduction in your development and test cycle time.
 
 Have a look at [Gael Colas's](https://twitter.com/gaelcolas) awesome introduction to [Test-Kitchen and Kitchen-DSC](https://gaelcolas.com/2016/07/11/introduction-to-kitchen-dsc/), which will show you how to develop and test your DSC resources easily on your local machine inside Virtual Machines.
 
@@ -34,11 +34,11 @@ As part of this workflow, you will need to use a base virtual machine where you 
 
 That is 10 different variations of Windows you need to maintain templates for! Do you manually go through each of them every month to apply their Windows updates too? What about if you need to share these base images with colleges? Do you copy 50GB of images over the internet or make your colleges build their own images? What if one of your colleges uses a Mac and has to use VirtualBox images instead of Hyper-V?
 
-You started using Test-Kitchen because it was meant to simplify your work flow and now you have an image management problem!
+You started using Test-Kitchen because it was meant to simplify your workflow and now you have an image management problem!
 
 ![Packer Logo](/images/posts/packer_best_practices/packer_logo.png)
 
-This is where [Packer](https://www.packer.io/) by [HashiCorp](https://www.hashicorp.com/) can help. Packer is a tool for creating machine images from a single configuration source. You store the entire image creation process as code, so images are always build the same way, this way, instead of having to ship entire VM templates over the internet, you can just keep your Packer configuration in source control and anyone in your team can build their own templates.
+This is where [Packer](https://www.packer.io/) by [HashiCorp](https://www.hashicorp.com/) can help. Packer is a tool for creating machine images from a single configuration source. You store the entire image creation process as code, so images are always built the same way, this way, instead of having to ship entire VM templates over the internet, you can just keep your Packer configuration in source control and anyone in your team can build their own templates.
 
 # Getting Started with Packer
 
@@ -59,7 +59,7 @@ When I first started creating my Packer templates for Windows, I would include e
 * Convert to a Vagrant Box
 * Upload to Atlas
 
-The problem with this, is if at any point there is a failure, you need to start the whole build process again, as Packer will automatically stop and delete a Virtual Machine on failure.
+The problem with this is if at any point there is a failure, you need to start the whole build process again, as Packer will automatically stop and delete a Virtual Machine on failure.
 
 This is particularly annoying when you have just waited 4+ hours for Windows Updates to occur. There were more than a few times I felt like this having things fail after Windows updates completed:
 
@@ -227,7 +227,7 @@ If you are running `sysprep` on your Windows images, when they first boot they w
 
 The trick to this is having WinRM disabled until the very last moment, after the initial sysprep reboot.
 
-:white_check_mark: **Keep WinRM disabled or blocked by firewall until the system has had its final boot after sysprep.**
+:white_check_mark: **Keep WinRM disabled or blocked by the firewall until the system has had its final boot after sysprep.**
 
 To do this as part of your Packer build:
 
