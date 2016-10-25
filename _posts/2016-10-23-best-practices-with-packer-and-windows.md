@@ -203,29 +203,7 @@ This one helps you to keep your templates very generic. Say for example I wanted
 
 Here is an example Packer template:
 
-{% highlight json %}
-{
-  "builders": [
-    {
-      "type": "virtualbox-iso"
-    }
-  ],
-  "provisioners": [
-    {
-      "type": "powershell",
-      "script": "scripts/install_oracle_guest_additions.ps1",
-      "elevated_user": "vagrant",
-      "elevated_password": "vagrant",
-      "environment_vars": [
-        "install_vbox_tools={{user ``install_vbox_tools``}}"
-      ]
-    }
-  ],
-  "variables": {
-    "install_vbox_tools": ""
-  }
-}
-{% endhighlight %}
+{% gist 61f3ecb0a755afdc5ff4bc18c5af990a %}
 
 This is an example of the `install_oracle_guest_additions.ps1` PowerShell script:
 
