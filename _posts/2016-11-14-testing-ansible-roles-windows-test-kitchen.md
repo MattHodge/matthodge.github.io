@@ -53,14 +53,14 @@ The workflow works from both Mac and Windows development machines
 
 Once the requirements are installed, we will need to install some additional Ruby gems which. The ChefDK comes with its own ruby environment, so we will install the gems there.
 
-```bash
+{% highlight bash %}
 chef gem install 'kitchen-ansible'
 chef gem install 'kitchen-vagrant'
 chef gem install 'winrm'
 chef gem install 'winrm-fs'
 chef gem install 'kitchen-pester'
 chef gem install 'vagrant-winrm'
-```
+{% endhighlight %}
 
 With that, we are ready to look at the test-kitchen workflow.
 
@@ -82,7 +82,7 @@ When working with Ansible, a best practice is to use roles. They give you a litt
 
 To generate the scaffolding for a new Ansible role, you can use the `ansible-galaxy init acme --force` command, which will give you the following folder structure:
 
-```
+{% highlight bash %}
 acme/
   .travis.yml
   README.md
@@ -94,13 +94,13 @@ acme/
   templates/
   tests/
   vars/
-```
+{% endhighlight %}
 
 Inside the `acme/` folder, create a directory called `kitchen`. This is where we will put all the required things for test-kitchen to work.
 
 Here is a look at what the directory structure means.
 
-```
+{% highlight bash %}
 acme/
     .travis.yml
     ...
@@ -118,7 +118,7 @@ acme/
       default.yml               # the playbook to run
     ...       
     vars/
-```
+{% endhighlight %}
 
 This means to use the `.kitchen.yml` for the Ansible role, you need to do it from the `kitchen\` directory.
 
@@ -140,12 +140,12 @@ There 4 major commands you will be using with test-kitchen as part of your workf
 
 Running `kitchen list` reads the `.kitchen.yml` and shows you the current state of the environment.
 
-```bash
+{% highlight bash %}
 # inside your ansible role directory
 cd kitchen
 
 kitchen list
-```
+{% endhighlight %}
 
 ![kitchen list](/images/posts/kitchen-ansible-windows/kitchen-list.png)
 
