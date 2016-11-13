@@ -35,6 +35,8 @@ It handles the following processes for you:
 
 # Test-kitchen with Ansible and Windows
 
+![ansible + windows](/images/posts/kitchen-ansible-windows/ansible-windows.png)
+
 Ansible provides some additional challenges when trying to use test-kitchen. The way Ansible applies automation against nodes is by using SSH for Linux and WinRM for Windows.
 
 As Ansible was designed to be run on Linux, it is very easy for a Linux node to have Ansible installed locally and do a local apply of the Ansible configuration to itself. Unfortunately, as Ansible does not run on Windows, you are not able to do a self-apply.
