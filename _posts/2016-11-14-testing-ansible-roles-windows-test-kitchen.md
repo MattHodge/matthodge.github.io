@@ -6,11 +6,6 @@ comments: false
 description: Using Test-Kitchen with Ansible to apply playbooks to Windows machines and test them with Pester.
 ---
 
-* TOC
-{:toc}
-
-# Infrastructure automation development workflow
-
 During the development of automation for your infrastructure, you will find yourself doing the same types of processes over and over:
 
 * Creating virtual machines to run your code against
@@ -19,6 +14,13 @@ During the development of automation for your infrastructure, you will find your
 * Performing tests against your instance 
 
 These "overhead" process can take a considerable amount of time that you could be spending writing code.
+
+How do we fix this?
+
+* TOC
+{:toc}
+
+# Improving our automation development workflow
 
 Using [test-kitchen](http://kitchen.ci/) will help to reduce the amount of time you spend on the overhead and allow you to concentrate directly on writing your automation. 
 
