@@ -85,7 +85,7 @@ Now we have our repository structure, let's zoom into a specific application, fo
 
 The `terraform.tfvars` is the standard file name for Terraform variables. We will want to use these variables all over the rest of our configuration
 
-{% highlight %}
+{% highlight plaintext %}
 # mssql/terraform.tf
 
 application_name  = "Microsoft SQL Server"      # The application name
@@ -97,7 +97,7 @@ notify            = ["@pagerduty-mssql"]        # Array of destinations for aler
 
 The `vars.tf` is the standard file name for Terraform input variable deceleration. This is where we define what variables are allowed to be passed into our `main.tf` which creates the resources.
 
-{% highlight %}
+{% highlight plaintext %}
 # mssql/vars.tf
 
 variable application_name {}
@@ -126,7 +126,7 @@ You can find the DataDog Terraform Provider documentation [here](https://www.ter
 
 Here is the full file:
 
-{% highlight %}
+{% highlight plaintext %}
 # mssql/main.tf
 
 ##################
