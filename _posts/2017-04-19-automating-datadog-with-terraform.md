@@ -85,7 +85,7 @@ Now we have our repository structure, let's zoom into a specific application, fo
 
 The `terraform.tfvars` is the standard file name for Terraform variables. We will want to use these variables all over the rest of our configuration
 
-{% highlight ini %}
+{% highlight %}
 # mssql/terraform.tf
 
 application_name  = "Microsoft SQL Server"      # The application name
@@ -97,7 +97,7 @@ notify            = ["@pagerduty-mssql"]        # Array of destinations for aler
 
 The `vars.tf` is the standard file name for Terraform input variable deceleration. This is where we define what variables are allowed to be passed into our `main.tf` which creates the resources.
 
-{% highlight yaml %}
+{% highlight %}
 # mssql/vars.tf
 
 variable application_name {}
@@ -126,7 +126,7 @@ You can find the DataDog Terraform Provider documentation [here](https://www.ter
 
 Here is the full file:
 
-{% highlight yaml %}
+{% highlight %}
 # mssql/main.tf
 
 ##################
@@ -222,11 +222,18 @@ Creating monitors for all of them via Terraform requires knowing the query behin
 
 Here are a few examples:
 
-Type | Query | Screenshot
---- | --- | ---
-`metric alert` | `avg(last_1h):system.disk.in_use{role:mssql-common} by {device,host} > 0.75` | [Screenshot](http://i.imgur.com/bM744mZ.png)
-`service check` | `'process.up'.over('role:sensu_server','process:redis-server').by('host','process').last(2).count_by_status()` | [Screenshot](http://i.imgur.com/cnjSHul.png)
-`query alert` | `avg(last_2h):anomalies(sum:order.count{environment:production}.as_rate(),'adaptive', 2, direction='below') >= 0.5` | [Screenshot](http://i.imgur.com/UL0tQgb.png)
+* Type: `metric alert`
+  * Query: `avg(last_1h):system.disk.in_use{role:mssql-common} by {device,host} > 0.75`
+  * [Screenshot](http://i.imgur.com/bM744mZ.png)
+
+
+* Type: `service check`
+  * Query: `'process.up'.over('role:sensu_server','process:redis-server').by('host','process').last(2).count_by_status()`
+  * [Screenshot](http://i.imgur.com/cnjSHul.png)
+
+* Type: `query alert`
+  * Query: `avg(last_2h):anomalies(sum:order.count{environment:production}.as_rate(),'adaptive', 2, direction='below') >= 0.5`
+  * [Screenshot](http://i.imgur.com/UL0tQgb.png)
 
 # Wrapping Up
 
