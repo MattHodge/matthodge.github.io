@@ -53,7 +53,7 @@ This will cover the basics to give you an introduction to Terraform. Once you ha
 
 With the workflow in mind, I setup the following repository structure:
 
-```
+{% highlight bash %}
 ├── mssql                   # directory for the application
 │   ├── main.tf             # contains the DataDog monitors for the application
 │   ├── terraform.tfvars    # variables to pass into the configuration (these are passed to the inputs)
@@ -62,16 +62,16 @@ With the workflow in mind, I setup the following repository structure:
 │   ├── main.tf
 │   ├── terraform.tfvarsœ
 │   └── vars.tf
-```
+{% endhighlight %}
 
 With this structure, you would run the `terraform` commands from inside the applications directory:
 
-```bash
+{% highlight bash %}
 cd mssql
 terraform get
 terraform plan
 terraform apply
-```
+{% endhighlight %}
 
 The `terraform.tfstate` file will get stored in the applications directory - which means each application will have its own state file.
 
@@ -85,19 +85,19 @@ Now we have our repository structure, let's zoom into a specific application, fo
 
 The `terraform.tfvars` is the standard file name for Terraform variables. We will want to use these variables all over the rest of our configuration
 
-```ini
+{% highlight ini %}
 # mssql/terraform.tf
 
 application_name  = "Microsoft SQL Server"      # The application name
 application_owner = "Database Administrators"   # Team that owns the application
 notify            = ["@pagerduty-mssql"]        # Array of destinations for alerts go to
-```
+{% endhighlight %}
 
 ## vars.tf
 
 The `vars.tf` is the standard file name for Terraform input variable deceleration. This is where we define what variables are allowed to be passed into our `main.tf` which creates the resources.
 
-```yaml
+{% highlight yaml %}
 # mssql/vars.tf
 
 variable application_name {}
@@ -108,7 +108,7 @@ variable datadog_app_key {}
 variable notify {
   type = "list"
 }
-```
+{% endhighlight %}
 
 When you run Terraform, it will automatically find the `terraform.tfvars` file and use all the variables it knows about.
 
@@ -126,7 +126,7 @@ You can find the DataDog Terraform Provider documentation [here](https://www.ter
 
 Here is the full file:
 
-```yaml
+{% highlight yaml %}
 # mssql/main.tf
 
 ##################
@@ -161,7 +161,7 @@ resource "datadog_monitor" "datawarehouse_free_disk" {
 
   include_tags   = true
 }
-```
+{% endhighlight %}
 
 The few main concepts for the `main.tf` file:
 
@@ -177,18 +177,18 @@ The few main concepts for the `main.tf` file:
 
 Now we have our files setup, we can run Terraform.
 
-```bash
+{% highlight bash %}
 cd mssql
 terraform plan -var datadog_api_key="xxxxx" -var datadog_app_key="xxxxx"
-```
+{% endhighlight %}
 
 Terraform will now tell you what actions will be taken against DataDog.
 
 If you are happy with what it is going to do:
 
-```bash
+{% highlight bash %}
 terraform apply -var datadog_api_key="xxxxx" -var datadog_app_key="xxxxx"
-```
+{% endhighlight %}
 
 With that, you should now have your monitors created in DataDog.
 
@@ -196,13 +196,13 @@ With that, you should now have your monitors created in DataDog.
 
 If you don't want to have to pass in the `datadog` variables in each time, you can set the following environment variables:
 
-```bash
+{% highlight bash %}
 # Linux
 export TF_VAR_datadog_api_key=xxxxxx
 export TF_VAR_datadog_app_key=xxxxxx
-```
+{% endhighlight %}
 
-```powershell
+{% highlight powershell %}
 # Windows - Current Session
 $env:TF_VAR_datadog_api_key = "xxxxxx"
 $env:TF_VAR_datadog_app_key = "xxxxxx"
@@ -210,7 +210,7 @@ $env:TF_VAR_datadog_app_key = "xxxxxx"
 # Windows - Permanently
 [Environment]::SetEnvironmentVariable("TF_VAR_datadog_api_key", "xxxxxx", "User")
 [Environment]::SetEnvironmentVariable("TF_VAR_datadog_app_key", "xxxxxx", "User")
-```
+{% endhighlight %}
 
 # Types of DataDog Monitors
 
