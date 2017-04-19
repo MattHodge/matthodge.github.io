@@ -8,7 +8,7 @@ description: Using Terraform to automate DataDog provisioning
 
 DataDog is an awesome SaaS monitoring platform. We have 100+ developers at work leveraging the platform to collect their metrics, create dashboards and send alerts.
 
-![DataDog](http://i.imgur.com/bLhUuNf.png)
+![DataDog](https://i.imgur.com/bLhUuNf.png)
 
 As with anything, if you don't maintain and clean your tools, after a while things can become a little messy. Dashboards start to get named wildly different things with no standards, alerts aren't deleted for decommissioned services or team names change and alerts are suddenly pointing to a team Slack channel that doesn't exist anymore.
 
@@ -41,7 +41,7 @@ I ended up deciding to go with Terraform mainly due to two main reasons:
 1. Also being able to create timeboards using the same DSL / process.
 1. Terraform is also far more widely supported so from a "googling of problems" perspective (Ansible too)
 
-![Terraform](http://i.imgur.com/qq3Vgxj.png)
+![Terraform](https://i.imgur.com/qq3Vgxj.png)
 
 # Terraform with DataDog Basics
 
@@ -184,13 +184,19 @@ terraform plan -var datadog_api_key="xxxxx" -var datadog_app_key="xxxxx"
 
 Terraform will now tell you what actions will be taken against DataDog.
 
+![Terraform Plan](https://i.imgur.com/Sq5VDKV.png)
+
 If you are happy with what it is going to do:
 
 {% highlight bash %}
 terraform apply -var datadog_api_key="xxxxx" -var datadog_app_key="xxxxx"
 {% endhighlight %}
 
+![Terraform Apply](https://i.imgur.com/eBoHbOG.png)
+
 With that, you should now have your monitors created in DataDog.
+
+![DataDog Monitor](https://i.imgur.com/QRGHnib.png)
 
 # Setting Environment Variables for Terraform
 
@@ -224,16 +230,16 @@ Here are a few examples:
 
 * Type: `metric alert`
   * Query: `avg(last_1h):system.disk.in_use{role:mssql-common} by {device,host} > 0.75`
-  * [Screenshot](http://i.imgur.com/bM744mZ.png)
+  * [Screenshot](https://i.imgur.com/bM744mZ.png)
 
 
 * Type: `service check`
   * Query: `'process.up'.over('role:sensu_server','process:redis-server').by('host','process').last(2).count_by_status()`
-  * [Screenshot](http://i.imgur.com/cnjSHul.png)
+  * [Screenshot](https://i.imgur.com/cnjSHul.png)
 
 * Type: `query alert`
   * Query: `avg(last_2h):anomalies(sum:order.count{environment:production}.as_rate(),'adaptive', 2, direction='below') >= 0.5`
-  * [Screenshot](http://i.imgur.com/UL0tQgb.png)
+  * [Screenshot](https://i.imgur.com/UL0tQgb.png)
 
 # Wrapping Up
 
