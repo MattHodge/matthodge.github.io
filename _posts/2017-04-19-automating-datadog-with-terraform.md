@@ -6,22 +6,22 @@ comments: false
 description: Using Terraform to automate DataDog provisioning
 ---
 
-DataDog is an awesome SaaS monitoring platform. We have 100+ developers at work leveraging the platform to collect their metrics, create dashboards and send alerts.
+DataDog is an awesome SaaS monitoring platform. We have 100+ developers leveraging the platform to collect their metrics, create dashboards and send alerts.
 
 ![DataDog](https://i.imgur.com/bLhUuNf.png)
 
-As with anything, if you don't maintain and clean your tools, after a while things can become a little messy. Dashboards start to get named wildly different things with no standards, alerts aren't deleted for decommissioned services or team names change and alerts are suddenly pointing to a team Slack channel that doesn't exist anymore.
+As with anything, if you don't maintain and clean your tools, after a while things can become a little messy. Dashboards start to get named wildly different things with no standards. Alerts aren't deleted for decommissioned services. Team names change and alerts are suddenly pointing to a the wrong Slack channel.
 
-Something had to be done to improve the situation, like setting up some standards or rules around DataDog usage, but this is a fine line you need to walk between freedom and standardization. Be too strict or harsh on people and they no longer find the tool nice to use, and instead think of it as pain in the ass.
+Something has to be done to improve the situation. Setting up some standards or rules around DataDog usage can help, but this is a fine line you need to walk between freedom and standardization. Be too strict or harsh on people and they no longer find the tool nice to use, instead thinking of it as pain in the ass.
 
-Take too much freedom away, and you get "shadow IT" situations with people using their own tools.
+Take too much freedom away, and you get "shadow IT" situations with people using their own tools or going their own way.
 
 With this in mind, I decided on a few goals:
 
-* Have monitors be created from code
+* DataDog monitors to be created from code
 * Make it easy for an application to be changed to another team
 * Make it easy for a team name or alert destination to be changed
-* Many applications are very similar - allow all the monitors for one application to be copied and used for another application
+* Allow all the monitors for one application to be copied and used for another application (many applications have similar metrics that need the same monitors)
 
 * TOC
 {:toc}
@@ -36,9 +36,9 @@ There were a few options around for managing DataDog from code:
 * [Ansible DataDog Montior Module](https://docs.ansible.com/ansible/datadog_monitor_module.html) - Manages monitors within Datadog via Ansible
 * [Terraform DataDog Provider](https://www.terraform.io/docs/providers/datadog/index.html) - Supports creating monitors, users, timeboards and downtimes
 
-I ended up deciding to go with Terraform mainly due to two main reasons:
+I ended up deciding to go with Terraform mainly due to these two reasons:
 
-1. Also being able to create timeboards using the same DSL / process.
+1. Being able to create timeboards using the same Terraform DSL / process.
 1. Terraform is also far more widely supported so from a "googling of problems" perspective (Ansible too)
 
 ![Terraform](https://i.imgur.com/qq3Vgxj.png)
@@ -95,7 +95,7 @@ notify            = ["@pagerduty-mssql"]        # Array of destinations for aler
 
 ## vars.tf
 
-The `vars.tf` is the standard file name for Terraform input variable deceleration. This is where we define what variables are allowed to be passed into our `main.tf` which creates the resources.
+The `vars.tf` is the standard file name for Terraform input variable deceleration. This is where we define what variables are allowed to be passed into our `main.tf`, creating the resources.
 
 {% highlight plaintext %}
 # mssql/vars.tf
@@ -169,7 +169,7 @@ The few main concepts for the `main.tf` file:
 
 * The application owner and application name are being pulled from the variables provided in `terraform.tfvars`. This means if the team that owns the application changes, we can simply update it once inside `terraform.tfvars` and it updates across all of our checks.
 
-* As we decided `notify` would be a list (an array), we are using one of the Terraform built in interpolation functions to `join` each item in the list with a space and put it inside the message so DataDog can notify multiple destinations.
+* As we decided `notify` would be a list (an array), we are using one of the Terraform built in interpolation functions to `join`. This joins each item in the list with a space and puts it inside the message so DataDog can notify multiple destinations.
 
 * We give each `datadog_monitor` resource a unique name (eg. `common_free_disk` and `datawarehouse_free_disk`). This is how Terraform can keep track of the resource and allow us to change the DataDog monitor `name` etc.
 
@@ -245,7 +245,7 @@ Here are a few examples:
 
 Terraform is an awesome way to automate your infrastructure and services out of code. Using Terraform to provision DataDog makes it easy to standardize, re-use and update your monitors quickly and easily.
 
-The most important part of using Terraform is the upfront planning on how you split resources into logical groups so the blast radius is small if something explodes.
+The most important part of using Terraform is the upfront planning. This entails splitting resources into logical groups so the blast radius is small if something does explode.
 
 I created a [datadog-terraform-example](https://github.com/MattHodge/datadog-terraform-example) repository with the code from this blog to get you started.
 
