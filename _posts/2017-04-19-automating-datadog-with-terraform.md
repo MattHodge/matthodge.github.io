@@ -2,8 +2,8 @@
 layout: post
 title: Automating DataDog with Terraform
 date: 2017-04-19T13:37:00.000Z
-comments: false
-description: Using Terraform to automate DataDog provisioning
+comments: true
+description: Using Terraform to automate creation of and standardize DataDog monitors
 ---
 
 DataDog is an awesome SaaS monitoring platform. We have 100+ developers leveraging the platform to collect their metrics, create dashboards and send alerts.

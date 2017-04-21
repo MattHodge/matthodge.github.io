@@ -2,7 +2,7 @@
 layout: post
 title: Testing Ansible Roles Against Windows with Test-Kitchen
 date: 2016-11-13T13:37:00.000Z
-comments: false
+comments: true
 description: Using Test-Kitchen with Ansible to apply playbooks to Windows machines and test them with Pester.
 ---
 
@@ -10,8 +10,8 @@ During the development of automation for your infrastructure, you will find your
 
 * Creating virtual machines to run your code against
 * Copy the automation code to the instance
-* Running the automation code against your instance  
-* Performing tests against your instance 
+* Running the automation code against your instance
+* Performing tests against your instance
 
 These "overhead" process can take a considerable amount of time that you could be spending writing code.
 
@@ -22,7 +22,7 @@ How do we fix this?
 
 # Improving our automation development workflow
 
-Using [test-kitchen](http://kitchen.ci/) will help to reduce the amount of time you spend on the overhead and allow you to concentrate directly on writing your automation. 
+Using [test-kitchen](http://kitchen.ci/) will help to reduce the amount of time you spend on the overhead and allow you to concentrate directly on writing your automation.
 
 It handles the following processes for you:
 
@@ -113,14 +113,14 @@ acme/
         windows-servers.yml     # vars for the inventory
       inventory/                # lists your test vm(s)
         hosts                   # inventory for ansible to use for tests
-      tests/                    
+      tests/
         integration/            # where integration tests live
           default/              # the name of the kitchen 'suite'
             pester/             # pester tests go here
               default.tests.ps1 # pester test for the default suite
       .kitchen.yml              # kitchen config
       default.yml               # the playbook to run
-    ...       
+    ...
     vars/
 {% endhighlight %}
 
@@ -165,7 +165,7 @@ Running `kitchen converge` does multiple things:
 
 1. Installs Ansible on the Linux VM
 2. Uploads the role and the `default.yml` playbook to the Ansible VM over SSH
-3. Executes the playbook against the Windows VM detailed in the `inventory/hosts` file. The connection information for the Windows VM is stored in `group_vars/windows-servers.yml`. 
+3. Executes the playbook against the Windows VM detailed in the `inventory/hosts` file. The connection information for the Windows VM is stored in `group_vars/windows-servers.yml`.
 4. The Windows VM has the changes applied from the Ansible playbook
 
 ![kitchen converge diagram](/images/posts/kitchen-ansible-windows/kitchen-converge-diagram.png)
