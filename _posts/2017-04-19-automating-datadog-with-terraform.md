@@ -241,6 +241,15 @@ Here are a few examples:
   * Query: `avg(last_2h):anomalies(sum:order.count{environment:production}.as_rate(),'adaptive', 2, direction='below') >= 0.5`
   * [Screenshot](https://i.imgur.com/UL0tQgb.png)
 
+* Type: `service check`
+  * Query: `'http.can_connect'.over('environment:production','url:http://www.google.com').last(4).count_by_status()`
+  * Thresholds:
+    ```
+      thresholds {
+        critical = 3
+      }
+    ```
+
 # Wrapping Up
 
 Terraform is an awesome way to automate your infrastructure and services out of code. Using Terraform to provision DataDog makes it easy to standardize, re-use and update your monitors quickly and easily.
