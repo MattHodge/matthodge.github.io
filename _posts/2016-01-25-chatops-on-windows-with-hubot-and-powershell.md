@@ -7,6 +7,7 @@ description: Using Slack, Hubot and PowerShell to enable ChatOps in the Microsof
 modified: 2016-07-08
 ---
 
+* **UPDATED** 20th May, 2017: If you are more comfortable with Python, you can [this post]({% post_url 2017-05-29-chatops-with-powershell-and-errbot %}) on Errbot and PowerShell.
 * **UPDATED** 8th July, 2016: Created a installation video for Hubot using PowerShell DSC [here](https://www.youtube.com/watch?v=Gh-vYprIo7c).
 * **UPDATED** 1st July, 2016: Created a PowerShell DSC Resource to install Hubot which makes the process much easier. Can be found on GitHub [here](https://github.com/MattHodge/Hubot-DSC-Resource) or found in the PowerShell Gallery [here](https://www.powershellgallery.com/packages/Hubot).
 
