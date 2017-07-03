@@ -2,7 +2,7 @@
 layout: post
 title: Splunk Spotlight - The Lookup Command
 date: 2017-07-02T13:37:00.000Z
-comments: false
+comments: true
 description: We take a close look at the Splunk lookup command, including examples of where you might use it for enriching your logs and using CIDR matching.
 ---
 
