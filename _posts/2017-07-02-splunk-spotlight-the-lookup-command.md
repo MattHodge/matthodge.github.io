@@ -8,7 +8,7 @@ description: We take a close look at the Splunk lookup command, including exampl
 
 Splunk is an amazing logging aggregation and searching tool. Even though I've been using it a few months now, I feel like I am just scratching the surface of what it can do.
 
-My company the switch over from the ELK stack (ElasticSearch, LogStash and Kibana) as we were moving to the cloud, with a focus on using managed services. The ELK stack is awesome, but it can be a pain to administer and extend. We were finding we spent more time administering our log collection pipeline as opposed to getting value from the logs it was storing.
+My company recently switch over from the ELK stack (ElasticSearch, LogStash and Kibana) as we were moving to the cloud, with a focus on using managed services. The ELK stack is awesome, but it can be a pain to administer and extend. We were finding we spent more time administering our log collection pipeline as opposed to getting value from the logs it was storing.
 
 I thought I would start a series of posts called "Splunk Spotlight" where I focus on a single feature or command inside Splunk and show some examples of how it can be used.
 
