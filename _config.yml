@@ -1,6 +1,6 @@
 # Site settings
 title: Matthew Hodgkins Blog
-description: 'System Engineer, PowerShell, Chef and Automation lover and Aussie. Living and working in the Netherlands.'
+description: 'System Engineer. PowerShell, Splunk, Monitoring, Metrics, Automation lover. Aussie living and working in the Netherlands.'
 url: 'https://hodgkins.io'
 enforce_ssl: hodgkins.io
 baseurl: /
