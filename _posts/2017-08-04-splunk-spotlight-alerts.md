@@ -128,13 +128,13 @@ You should have an alert that looks something like this:
 
 * Click **Save**
 
-In summary, we have created an alert that runs its search every 60 seconds, over the last 60 seconds of logs, and then sends a webhook every time it sees a log message containing `Random number generator finishing.`.
+In summary, we have created an alert that runs its search every 60 seconds, over the last 60 seconds of logs, and then send a payload to the webhook every time it sees a log message containing `Random number generator finishing.`.
 
 Switch back over to the [https://webhook.site](https://webhook.site/) site, and you should see some requests coming in.
 
 ![Alert coming in as Webhook](/images/posts/splunk-alerts/alert_coming_in_as_webhook.png)
 
-If you inspect the json object that is sent with the webhook, you will see something like this:
+If you inspect the JSON object that is sent with the webhook, you will see something like this:
 
 {% highlight json %}
 {
