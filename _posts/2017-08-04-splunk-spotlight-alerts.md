@@ -245,7 +245,7 @@ You should now see messages coming in like this from the alert, containing `rand
 
 ![Slack alert with log values](/images/posts/splunk-alerts/slack_alert_with_log_values.png)
 
-Now, let's make it a little prettier. Slack gives you a few methods of formating your text when sending via a webhook which you can read [here](https://api.slack.com/incoming-webhooks).
+Now, let's make it a little prettier. Slack gives you a few methods of formatting your text when sending via a webhook which you can read [here](https://api.slack.com/incoming-webhooks).
 
 You can see some of the options you have available in this message:
 
@@ -268,7 +268,7 @@ Search for `random_number` on *DuckDuckGo*: <https://duckduckgo.com/?q=$result.r
 
 Outside of the software industry, a dead man’s switch is a switch that is automatically triggered if a human operator becomes incapacitated. In Splunk, we can use the same logic to trigger an alert if we don't see data for a period of time. This can be very useful for things like detecting if a cron job or scheduled action is meant to be taken, but isn't for some reason.
 
-For example, you may have a MySQL backup script that is sending a log to Splunk every time it starts and completes backing up a database. You could create an alert which says "If I don't see a log for database backup competition in the last 24 hours, send me an alert".
+For example, you may have a MySQL backup script that is sending a log to Splunk every time it starts and completes backing up a database. You could create an alert which says "If I don't see a log for database backup completion in the last 24 hours, send me an alert".
 
 ## Scenario
 
