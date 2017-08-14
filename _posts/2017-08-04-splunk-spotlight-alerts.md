@@ -8,7 +8,7 @@ description: We take a close look at alerting in Splunk, including sending nice 
 
 Once you have your data in Splunk, you often come across situations when you would like to be notified when something happens (or doesn't).
 
-This is were Splunk alerts come in, where we can get alerts based on search results.
+This is where Splunk alerts come in, where we can get alerts based on search results.
 
 * TOC
 {:toc}
