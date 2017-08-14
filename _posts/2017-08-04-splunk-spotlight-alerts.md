@@ -309,7 +309,7 @@ Stop the `random_number_generator` script and wait! (If you don't want to wait, 
 
 # General tips
 
-* I have found when using the **Real-time** that occasionally an alert may not be triggered if Splunk is very busy with other searches. To reduce the load on Splunk, prefer using cron or the build in time-based schedules
+* I have found when using the **Real-time** that occasionally an alert may not be triggered if Splunk is very busy with other searches. To reduce the load on Splunk, prefer using cron or the built in time-based schedules
 * Remember to scope your search query as tightly as possible on the alerts just to focus in on what you need for the alert
 * Match an alerts schedule and a search time range. For example, if you have an alert checking every 5 minutes, you only need to look back at the last 5 minutes of data
 
