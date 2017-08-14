@@ -183,7 +183,7 @@ Now we have seen that our alerts are working, let's setup alerting to a Slack ch
 
 * Click on **Browse More Apps** > Search for `Slack Notification Alert` > Click **Install** (you will need a Splunk.com account to install apps)
 
-We now need to grab our Slack Webhook so Splunk can send alerts to it. You can do this in Slack by adding a **Custom Integration**
+We now need to grab our Slack Webhook URL so Splunk can send alerts to it. You can do this in Slack by adding a **Custom Integration**
 
 ![Slack Custom Webhook Integration](/images/posts/splunk-alerts/slack_custom_integration.png)
 
