@@ -103,14 +103,14 @@ We can validate this on [crontab.guru](https://crontab.guru/):
 
 # Example 1 - Sending a webhook
 
-As our first basic example, let's send a webhook every time our random number generator finishes. You might use a webhook alert when custom application that you wish to notify of an alarm.
+As our first basic example, let's send a webhook every time our random number generator finishes. You could use a webhook to notify a custom application of alert occurring.
 
 The reason we are starting with a webhook is that it provides is a nice way to confirm our alarms are working as expected. We can use [https://webhook.site](https://webhook.site/) to view the webhook being called, and see the type of data Splunk is sending.
 
 * Do a search for `Random number generator finishing.`
 * Click **Save As** > **Alert**
 * Provide the name `Webhook`
-* Choose **Run on Cron Schedule**. As our random number generate runs every 60 seconds, we will also run an alert every 60 seconds. In cron frormat, this is `* * * * *`, so enter this as the **Cron Expression**.
+* Choose **Run on Cron Schedule**. As our random number generate runs every 60 seconds, we will also run an alert every 60 seconds. In cron format, this is `* * * * *`, so enter this as the **Cron Expression**.
 * For **Time Range**, we only want to search back for logs in the last 60 seconds, so choose a relative schedule for `1 minute ago`
 * Choose **Number of results** and **is greater than** `0`
 * We will also choose to **Trigger for each result**
@@ -128,7 +128,7 @@ You should have an alert that looks something like this:
 
 * Click **Save**
 
-In summary, we have created an alert that runs its search every 60 seconds, in the last 60 seconds of logs, and then sends a webhook every time it sees a log message containing `Random number generator finishing.`.
+In summary, we have created an alert that runs its search every 60 seconds, over the last 60 seconds of logs, and then sends a webhook every time it sees a log message containing `Random number generator finishing.`.
 
 Switch back over to the [https://webhook.site](https://webhook.site/) site, and you should see some requests coming in.
 
