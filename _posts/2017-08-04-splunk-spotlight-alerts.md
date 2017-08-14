@@ -171,7 +171,7 @@ If you inspect the JSON object that is sent with the webhook, you will see somet
 }
 {% endhighlight %}
 
-You will get the alert pushed via the webhook every time Splunk see's a log for our search.
+You will get the alert pushed to the webhook every time the Splunk alert is triggered.
 
 # Example 2 - Alerting to Slack
 
