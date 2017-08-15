@@ -5,3 +5,5 @@ _site
 *.sublime-workspace
 .DS_Store
 Gemfile.lock
+_vendor
+.bundle
