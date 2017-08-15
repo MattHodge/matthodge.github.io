@@ -3,7 +3,7 @@ title: Matthew Hodgkins Blog
 description: 'System Engineer. PowerShell, Splunk, Monitoring, Metrics, Automation lover. Aussie living and working in the Netherlands.'
 url: 'https://hodgkins.io'
 enforce_ssl: hodgkins.io
-baseurl: /
+baseurl: ""
 google_analytics: 'UA-72498951-1'
 
 author:
@@ -33,4 +33,9 @@ gems:
   - jekyll-sitemap
   - jekyll-gist
 
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'screenshot.png']
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - screenshot.png
+  - _vendor
