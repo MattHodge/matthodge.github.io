@@ -2,7 +2,7 @@
 layout: post
 title: Splunk Spotlight - Alerts
 date: 2017-08-04T13:37:00.000Z
-comments: false
+comments: true
 description: We take a close look at alerting in Splunk, including sending nice Slack notifications.
 ---
 
