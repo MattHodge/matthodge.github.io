@@ -1,40 +1,26 @@
-# jekyll-uno
+# Making changes to the website
+Altering the website is fairly easy. All content can be found in the `_pages` folder. This folders holds all Markdown files.
 
-Jekyll-Uno - a minimal, responsive theme for Jekyll based on the [Uno](https://github.com/daleanthony/Uno) theme for Ghost.
+The website is build via the [Jekyll](https://jekyllrb.com/) static content generator. We've chosen to write our content in Markdown. If you create a new page make sure you add the [FrontMatter](https://jekyllrb.com/docs/frontmatter/) header to the file.
 
-> :warning:
-  This theme requires ruby and rubygems installed
+# Generating the website locally
 
-### Features
+Running the website locally is fairly easy. Please see the steps below for your operating system.
 
-* Clean layout
-* Resposive layout
-* Pagination
-* Syntax highlight
-* Social links
+## On a Mac
 
----
+Make sure you have Ruby and [Bundler](http://bundler.io/) installed.
 
-### Start in 4 steps
+Checkout this repository and from the root execute the following commands to install Jekyll and its dependencies.
 
-1. Download or clone repo `git clone git@github.com:joshgerdes/jekyll-uno.git`
-2. Enter the folder: `cd jekyll-uno/`
-3. Install Ruby gems: `bundle install`
-4. Start Jekyll server: `jekyll serve`
+```bash
+bundle install --path _vendor/bundle
+```
 
-Access via: [http://localhost:4000/jekyll-uno](http://localhost:4000/jekyll-uno)
+In the root of the folder execute the following command:
 
----
+```bash
+bundle exec jekyll serve --watch
+```
 
-### Demo and Download
-
-[Demo](http://joshgerdes.com/jekyll-uno/)
-[Download](https://github.com/joshgerdes/jekyll-uno/archive/master.zip)
-
-![jekyll-uno - free Jekyll theme](/screenshot.png)
-
----
-
-### Copyright and license
-
-It is under [the MIT license](/LICENSE).
+The `--watch` will watch the files in the folder and rebuild the website after any change of the files.

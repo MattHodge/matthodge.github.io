@@ -3,7 +3,7 @@ title: Matthew Hodgkins Blog
 description: 'System Engineer. PowerShell, Splunk, Monitoring, Metrics, Automation lover. Aussie living and working in the Netherlands.'
 url: 'https://hodgkins.io'
 enforce_ssl: hodgkins.io
-baseurl: 
+baseurl: ''
 google_analytics: 'UA-72498951-1'
 
 author:
@@ -15,10 +15,10 @@ author:
 
 # Build settings
 destination: _site
-paginate: 10
 permalink: /:title
 markdown: kramdown
 highlighter: rouge
+paginate: 5
 
 kramdown:
   # use Github Flavored Markdown
@@ -26,7 +26,7 @@ kramdown:
   # do not replace newlines by <br>s
   hard_wrap: false
 
-gems:
+plugins:
   - jekyll-github-metadata
   - jekyll-paginate
   - jemoji
