@@ -23,9 +23,7 @@ us to preemptively detect and mitigate problems.
 
 If you want some more information about performant DevOps teams and the methods they used to test teams, I recommend the talk [What We Learned from Three Years of Sciencing the Crap Out of DevOps](https://www.youtube.com/embed/cJVUtbSmXaM).
 
-Monitoring performance counters on Windows in any centralized manager way has always been tricky. In 2014 I wrote a PowerShell Module to send performance counters to Graphite which turned out to be pretty popular:
-
-[Graphite-PowerShell-Functions](https://hodgkins.io/using-powershell-to-send-metrics-graphite)  <iframe src="https://ghbtns.com/github-btn.html?user=MattHodge&repo=Graphite-PowerShell-Functions&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+Monitoring performance counters on Windows in any centralized manager way has always been tricky. In 2014 I wrote a PowerShell Module to send performance counters to Graphite which turned out to be pretty popular called [Graphite-PowerShell-Functions](https://hodgkins.io/using-powershell-to-send-metrics-graphite).
 
 Thankfully, things are getting easier. Let's take a look at using [InfluxDB](https://influxdata.com/) to store our metrics, [Telegraf](https://influxdata.com/time-series-platform/telegraf/) to tramsit the metrics and [Grafana](http://grafana.org/) do display them.
 
