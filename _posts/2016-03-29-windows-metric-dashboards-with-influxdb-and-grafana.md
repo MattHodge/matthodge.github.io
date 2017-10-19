@@ -28,7 +28,7 @@ If you want some more information about performant DevOps teams and the methods 
 
 Monitoring performance counters on Windows in any centralized manager way has always been tricky. In 2014 I wrote a PowerShell Module to send performance counters to Graphite which turned out to be pretty popular:
 
-[Graphite-PowerShell-Functions](https://hodgkins.io/using-powershell-to-send-metrics-graphite) <a class="github-button" href="https://github.com/MattHodge/Graphite-PowerShell-Functions" data-icon="octicon-star" data-size="large" data-count-href="/MattHodge/Graphite-PowerShell-Functions/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star MattHodge/Graphite-PowerShell-Functions on GitHub">Star</a>
+[Graphite-PowerShell-Functions](https://hodgkins.io/using-powershell-to-send-metrics-graphite)  <iframe src="https://ghbtns.com/github-btn.html?user=MattHodge&repo=Graphite-PowerShell-Functions&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 
 Thankfully, things are getting easier. Let's take a look at using [InfluxDB](https://influxdata.com/) to store our metrics, [Telegraf](https://influxdata.com/time-series-platform/telegraf/) to tramsit the metrics and [Grafana](http://grafana.org/) do display them.
 
