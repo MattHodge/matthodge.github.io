@@ -18,7 +18,7 @@ At [Coolblue](https://careersatcoolblue.nl), we work in two-week sprints. At the
 
 The demos are done in front of a small group of colleges that you know and work with closely, so this was a low barrier to entry for me to get started speaking to a group.
 
-Tip: Use small events where you are only a *little* uncomfortable to start with. Push yourself to start working on the fear somewhere, such a small events with colleges. It's enough to make you feel slightly uncomfortable, but you just need to start taking little steps.
+:white_check_mark: Tip: Use small events where you are only a *little* uncomfortable to start with. Push yourself to start working on the fear somewhere, such a small events with colleges. It's enough to make you feel slightly uncomfortable, but you just need to start taking little steps.
 
 # Speak often
 
@@ -26,7 +26,7 @@ As I was getting more comfortable speaking in front of colleges, I started rampi
 
 After I created a set of "standard" presentations I would give to a team, I ran through these over and over again with different teams, often several times a week. Repetition makes speaking in-front of people feel more normal and reduces the nerves about it.
 
-Tip: Once you start feeling comfortable speaking in front of small groups, make sure you keep it up and do it as often as possible so it starts to feel a regular part of what you do.
+:white_check_mark: Tip: Once you start feeling comfortable speaking in front of small groups, make sure you keep it up and do it as often as possible so it starts to feel a regular part of what you do.
 
 # Realize you have a story to tell
 
@@ -36,7 +36,7 @@ Additionally, in my role, I focus on only a few topics which I am constantly tal
 
 The major things I learn about and want to talk about go my blog posts which I can then easily convert later into presentations. It also reduces the stress when you have to create a talk and have already fleshed out most of what you want to say in blog form.
 
-Tip: Write down your stories, what you have learnt and work achievements (and failures). It gives you a lot of easy material to refer back to and convert into presentations later.
+:white_check_mark: Tip: Write down your stories, what you have learnt and work achievements (and failures). It gives you a lot of easy material to refer back to and convert into presentations later.
 
 # Do a joint presentation
 
@@ -48,7 +48,7 @@ One of my team members was Flynn Bundy, who is a comfortable public speaker. We 
 
 This provided me with a "safety net". If for some reason I was too nervous or shaky to do something, Flynn could simply take over the session and the crowd would be none the wiser.
 
-Tip: If possible, do some talks with a friend or college. It makes the stress and build up to the presentation more manageable, and if you get too nervous it allows them to take over.
+:white_check_mark: Tip: If possible, do some talks with a friend or college. It makes the stress and build up to the presentation more manageable, and if you get too nervous it allows them to take over.
 
 # Be inspired by others
 
@@ -58,7 +58,7 @@ I learnt a lot from these guys, not only presentation skills but how they prepar
 
 Not only did they give me help, but they also applied a little pressure. They knew I wanted to start doing conference talks and improve my presentation skills, so would bug me with links to call for papers for upcoming conferences, and keep asking me when I would speak at their user group. Eventually, you run out of excuses and just have to say yes.
 
-Tip: Surround yourself with people that are already doing what you want to achieve, ask them questions and listen to their advice.
+:white_check_mark: Tip: Surround yourself with people that are already doing what you want to achieve, ask them questions and listen to their advice.
 
 # Actively take steps to get better
 
@@ -66,7 +66,7 @@ You are never going to stop being nervous about public speaking if you don't do 
 
 This includes all aspects of public speaking, preparation, how to tell a good story, how to deal with your nerves. All aspects need to be worked on so you can feel more and more comfortable getting on stage in front of people.
 
-Tips:
+:white_check_mark: Tips:
 * Make a goal to do a certain number of presentations a year, and get your manager involved so they can push and support you
 * Watch TedX and other conference talks and focus on how the presenter is presenting
 * Watch YouTube videos on presentation skills, for example, [How to Do a Presentation - 5 Steps to a Killer Opener](https://www.youtube.com/watch?v=dEDcc0aCjaA)
@@ -86,7 +86,7 @@ You want to get to a level with your practising that you have a slide with the d
 
 With all my practices, you will start to notice certain parts of the presentation you would get stuck on or constantly screw up. Make little notes during either cut these out or refactor that part of what you want to say to make sure you are hitting your points accurately each time.
 
-Tip: Practice! Practice! Practice!
+:white_check_mark: Tip: Practice! Practice! Practice!
 
 # Gather honest feedback
 
@@ -100,7 +100,7 @@ This refinement process helped makes sure your presentation is well tested on ma
 
 All this practising and refactoring after the feedback takes time, so make sure you are prepared and do this a few weeks out before the talk. You want to lock the contents of the talk completely about two weeks out so you can just practice the same content up until the big day.
 
-Tip: Go through your presentation on small groups of people well before the big day. Make sure you ask for honest and direct feedback, and go and refactor your presentation with it. This allows you to refine and polish your story and feel comfortable knowing it has passed the scrutiny and suggestions of many of your peers.
+:white_check_mark: Tip: Go through your presentation on small groups of people well before the big day. Make sure you ask for honest and direct feedback, and go and refactor your presentation with it. This allows you to refine and polish your story and feel comfortable knowing it has passed the scrutiny and suggestions of many of your peers.
 
 # Bringing some supporters
 
