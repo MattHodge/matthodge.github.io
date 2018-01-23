@@ -12,6 +12,8 @@ I still have my fear, and I stress a lot on the build-up to my talks, but lookin
 
 In this post, I want to take you through what I think are the key things that have made a difference in me feeling more comfortable with public speaking over the last 18 months.
 
+![SplunkLive! Opening Slide](/images/posts/public_speaking/opening_slide.jpeg)
+
 # Start small
 
 At [Coolblue](https://careersatcoolblue.nl), we work in two-week sprints. At the end of each sprint, teams will demo what they have been doing over course of the sprint, and what they have coming up.
@@ -72,6 +74,8 @@ This includes all aspects of public speaking, preparation, how to tell a good st
 * Watch YouTube videos on presentation skills, for example, [How to Do a Presentation - 5 Steps to a Killer Opener](https://www.youtube.com/watch?v=dEDcc0aCjaA)
 * Read posts and articles on public speaking. [/r/PublicSpeaking](https://www.reddit.com/r/PublicSpeaking/) is a good source
 
+![SplunkLive! Audience](/images/posts/public_speaking/audience.jpeg)
+
 # Practice
 
 I think practice is the most important thing you can do before a presentation. Knowing a presentation of by heart really makes a difference when the nerves kick in. Being able to sort of "switch your brain off" and just let the words flow out of you like some sort of presentation robot (without the monotone voice) is the level of practice you want to get to.
@@ -102,6 +106,8 @@ All this practising and refactoring after the feedback takes time, so make sure 
 
 :white_check_mark: Tip: Go through your presentation on small groups of people well before the big day. Make sure you ask for honest and direct feedback, and go and refactor your presentation with it. This allows you to refine and polish your story and feel comfortable knowing it has passed the scrutiny and suggestions of many of your peers.
 
+![SplunkLive! All Log Management](/images/posts/public_speaking/simpsons.jpeg)
+
 # Bringing some supporters
 
 When the big day arrives, make sure you have a college or friend with you. Perhaps bring one of your colleges that you have bored to death with your multiple practices so they can see the big moment you have been working towards.
@@ -121,3 +127,5 @@ I am pretty proud of what I have achieved tackling my fear of public speaking ov
 Hopefully these tips can give you the boost you need to go tackle your fear and get presenting.
 
 Hit me up on Twitter [@MattHodge](https://twitter.com/matthodge) if you want to share your experiences or chat about public speaking.
+
+![SplunkLive! Thank You](/images/posts/public_speaking/thank_you.jpeg)
