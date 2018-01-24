@@ -107,7 +107,7 @@ All this practising and refactoring after the feedback takes time, so make sure 
 
 ![SplunkLive! All Log Management](/images/posts/public_speaking/simpsons.jpeg)
 
-# Bringing some supporters
+# Bring some supporters
 
 When the big day arrives, invite a colleague or friend with you. Perhaps bring one of your colleagues that you have bored to death with your multiple practices so they can see the big moment you have been working towards.
 
