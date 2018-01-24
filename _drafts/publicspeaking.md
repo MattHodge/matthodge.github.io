@@ -4,10 +4,10 @@ I don't know why I feel like this about public speaking, but I'm not alone. You 
 
 For the last 18 months, I've been working on my fear. I am closing out 2017 having spoken at these major events in the last 18 months:
 
-* Coolblue Behind the Scenes (July 2016) - Rotterdam, The Netherlands - Joint talk with Flynn Bundy with 90 attendees
-* Dutch PowerShell User Group (Sept 2016) - Amsterdam, The Netherlands - 25 attendees
-* PSConfEU (May 2017) - Hannover, Germany - 40 attendees
-* SplunkLive! Utrecht (Nov 2017) - Utrecht, The Netherlands - Opening customer presenter speaking to all 400 attendees
+* **Coolblue Behind the Scenes (July 2016)** - Rotterdam, The Netherlands - Joint talk with Flynn Bundy with 90 attendees
+* **Dutch PowerShell User Group (Sept 2016)** - Amsterdam, The Netherlands - 25 attendees
+* **PSConfEU (May 2017)** - Hannover, Germany - 40 attendees
+* **SplunkLive! Utrecht (Nov 2017)** - Utrecht, The Netherlands - Opening customer presenter speaking to all 400 attendees
 
 I still have my fear, and I stress a lot on the build-up to my talks, but looking back two years ago I would never have thought I would ever speak at a conference.
 
