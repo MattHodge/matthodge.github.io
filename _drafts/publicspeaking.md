@@ -87,7 +87,7 @@ I would also recommend trying not to use speaking notes. You may need them at th
 
 You want to get to a level with your practising that you have a slide with the dot points, and that triggers you to say what you need to say.
 
-With all my practices, you will start to notice certain parts of the presentation you would get stuck on or constantly screw up. Make little notes during practice and either cut these out or refactor that part of what you want to say to make sure you are hitting your points accurately each time.
+During all your practices, you will start to notice certain parts of the presentation you get stuck on or constantly screw up. Make little notes during practice and either cut these out or refactor that part of what you want to say to make sure you are hitting your points accurately each time.
 
 :white_check_mark: Tip: Practice! Practice! Practice! Practice in the mirror, practice on colleges, practice on your family (even if they do not fully understand the subject). Just practice, practice, practice.
 
