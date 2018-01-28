@@ -72,8 +72,8 @@ This includes all aspects of public speaking, preparation, how to tell a good st
 :white_check_mark: Tips:
 * Make a goal to do a certain number of presentations a year, and get your manager involved so they can push and support you. They will be able to help you seek opportunities to practice and build this skill.
 * Watch TedX and other conference talks and focus on how the presenter is presenting. For example, watch how the better presenters will have very little text on their slides, just enough to prompt their story.
-* Watch YouTube videos on presentation skills. I found this one particularly helpful in relation to how to capture the audience in the opening: [How to Do a Presentation - 5 Steps to a Killer Opener](https://www.youtube.com/watch?v=dEDcc0aCjaA)
-* Read other posts and articles on public speaking. [/r/PublicSpeaking](https://www.reddit.com/r/PublicSpeaking/) is a good source
+* Watch YouTube videos on presentation skills. I found this one particularly helpful in relation to how to capture the audience in the opening: [How to Do a Presentation - 5 Steps to a Killer Opener](https://www.youtube.com/watch?v=dEDcc0aCjaA).
+* Read other posts and articles on public speaking. [/r/PublicSpeaking](https://www.reddit.com/r/PublicSpeaking/) is a good source.
 
 ![SplunkLive! Audience](/images/posts/public_speaking/audience.jpeg)
 
