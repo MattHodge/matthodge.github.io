@@ -45,7 +45,7 @@ At Coolblue, there is an event called [Behind the Scenes](https://www.coolblue.n
 
 Our team was chosen to do the presentation for the event, which of course filled me with dread as I would have to speak in front of a lot of people.
 
-One of my team members Flynn Bundy, is a comfortable public speaker so we teamed up. We did a 45-minute joint presentation to 90 attendees - something I was not comfortable doing alone just yet.
+One of my team members [Flynn Bundy](https://twitter.com/bundyfx), is a comfortable public speaker so we teamed up. We did a 45-minute joint presentation to 90 attendees - something I was not comfortable doing alone just yet.
 
 This provided me with a "safety net". If for some reason I was too nervous or shaky to do something, Flynn could simply take over the session and the crowd would be none the wiser.
 
