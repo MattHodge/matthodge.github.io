@@ -21,7 +21,7 @@ At [Coolblue](https://careersatcoolblue.nl), we work in two-week sprints. At the
 
 The demos are done in front of a small group of colleagues that you know and work with closely, so this was a low barrier to entry for me to get started speaking to a group.
 
-:white_check_mark: Tip: Use small events where you are only a *little* uncomfortable to begin with. It's a good way to start pushing, but to not feel feel huge amounts of pressure as they are people you speak to regularly.
+:white_check_mark: Tip: Use small events where you are only a *little* uncomfortable to begin with. It's a good way to start pushing yourself, but to not feel feel huge amounts of pressure as they are people you speak to regularly.
 
 # Speak often
 
