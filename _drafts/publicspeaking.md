@@ -49,7 +49,7 @@ One of my team members Flynn Bundy, is a comfortable public speaker so we teamed
 
 This provided me with a "safety net". If for some reason I was too nervous or shaky to do something, Flynn could simply take over the session and the crowd would be none the wiser.
 
-:white_check_mark: Tip:If possible, rope in a confident friend or colleague to present with you. It makes the stress and build up to the presentation more manageable, and if you get too nervous it allows them to take over.
+:white_check_mark: Tip: If possible, rope in a confident friend or colleague to present with you. It makes the stress and build up to the presentation more manageable, and if you get too nervous it allows them to take over.
 
 # Be inspired by others
 
