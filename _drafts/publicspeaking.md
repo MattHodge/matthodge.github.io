@@ -41,7 +41,7 @@ The major things I learn about and want to talk about go my blog posts which I c
 
 # Do a joint presentation
 
-At Coolblue, there is an event called [Behind the Scenes](https://www.coolblue.nl/behindthescenes), where a few times a year, different teams from the Coolblue Tech Department give presentations to an external audience to give attendees a taste of what sort of thing we are doing internally.
+At Coolblue, there is an event called [Behind the Scenes](https://www.coolblue.nl/behindthescenes), where a few times a year, different teams from the Coolblue Tech Department give presentations to an external audience to give attendees a taste of what we are doing internally.
 
 Our team was chosen to do the presentation for the event, which of course filled me with dread as I would have to speak in front of a lot of people.
 
