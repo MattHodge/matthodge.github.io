@@ -99,7 +99,7 @@ Lean on your work colleges for your practices, and ask for feedback. This is one
 
 Try and practice your presentation a few times on different groups of 2-3 people. Write down all of the feedback you received and go back and refactor your presentation. Practice it on a different group a few days later.
 
-This refinement process helped makes sure your presentation is well tested on many groups so you can be sure it makes sense and is a coherent story. It also gets you comfortable telling the story in front of an audience (even if it is a small one).
+This refinement process helps makes sure your presentation is well tested on many groups so you can be sure it makes sense and is a coherent story. It also gets you comfortable telling the story in front of an audience (even if it is a small one).
 
 All this practising and refactoring after the feedback takes time, so make sure you are prepared and do this a few weeks out before the talk. You want to lock in the contents of the talk completely about two weeks out so you can just practice the same content up until the big day.
 
@@ -119,6 +119,7 @@ Make sure you have your supporter take some pictures of you up on stage. It's ni
 
 It also gives you something to refer back to later before your next talk so you can tell yourself "See, I’ve done this before, I can do this again!".
 
+:white_check_mark: Tip: Bring a long a supporter and make sure they take some pictures for you.
 # Conclusion
 
 I am pretty proud of what I have achieved tackling my fear of public speaking over the last 18 months. I am definitely not over it yet, and still get stressed before big presentations (just ask my wife!). With more and more practice, and making sure I stick to my goal of presenting at two conferences a year, I hope public speaking will eventually just become a "normal" thing that I do and no longer be a big deal that I stress over.
