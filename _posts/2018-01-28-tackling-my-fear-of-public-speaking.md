@@ -32,7 +32,7 @@ At [Coolblue](https://careersatcoolblue.nl), we work in two-week sprints. At the
 
 The demos are done in front of a small group of colleagues that you know and work with closely, so this was a low barrier to entry for me to get started speaking to a group.
 
-:white_check_mark: Tip: Use small events where you are only a *little* uncomfortable to begin with. It's a good way to start pushing yourself, but to not feel feel huge amounts of pressure as they are people you speak to regularly.
+:white_check_mark: **Tip:** Use small events where you are only a *little* uncomfortable to begin with. It's a good way to start pushing yourself, but to not feel feel huge amounts of pressure as they are people you speak to regularly.
 
 # Speak often
 
@@ -40,7 +40,7 @@ As I was getting more comfortable speaking in front of colleagues, I started ram
 
 I created a set of "standard" presentations I would give to a team, and I ran through these over and over again with different teams, often sharing the same presentation several times a week. Repetition makes speaking in-front of people feel more normal and reduces the nerves about it. The content of the presentations also becomes very familiar with repetition, allowing you to relax more.
 
-:white_check_mark: Tip: Once you start feeling comfortable speaking in front of small groups, make sure you keep it up and do it as often as possible so it starts to feel a regular part of what you do.
+:white_check_mark: **Tip:** Once you start feeling comfortable speaking in front of small groups, make sure you keep it up and do it as often as possible so it starts to feel a regular part of what you do.
 
 # Realize you have a story to tell
 
@@ -48,7 +48,7 @@ After a few years of work, you start to collect some stories about what you have
 
 The major things I learn about and want to talk about go my blog posts which I can then easily convert later into presentations. It also reduces the stress when you have to create a talk and have already fleshed out most of what you want to say in blog form.
 
-:white_check_mark: Tip: Write down your stories, what you have learnt and work achievements (and failures). It gives you a lot of easy material to refer back to and convert into presentations later. People can learn valuable lessons from your experiences, even if you perceive them to be failures.
+:white_check_mark: **Tip:** Write down your stories, what you have learnt and work achievements (and failures). It gives you a lot of easy material to refer back to and convert into presentations later. People can learn valuable lessons from your experiences, even if you perceive them to be failures.
 
 # Do a joint presentation
 
@@ -60,7 +60,7 @@ One of my team members [Flynn Bundy](https://twitter.com/bundyfx), is a comforta
 
 This provided me with a "safety net". If for some reason I was too nervous or shaky to do something, Flynn could simply take over the session and the crowd would be none the wiser.
 
-:white_check_mark: Tip: If possible, rope in a confident friend or colleague to present with you. It makes the stress and build up to the presentation more manageable, and if you get too nervous it allows them to take over.
+:white_check_mark: **Tip:** If possible, rope in a confident friend or colleague to present with you. It makes the stress and build up to the presentation more manageable, and if you get too nervous it allows them to take over.
 
 # Be inspired by others
 
@@ -72,7 +72,7 @@ I learnt a lot from these guys, not only in relation to presentation skills, but
 
 Not only did they give me help, but they also applied a little pressure. They knew I wanted to start doing conference talks and improve my presentation skills, so would bug me with links to call for papers for upcoming conferences, and keep asking me when I would speak at their user group. Eventually, you run out of excuses and just have to say yes.
 
-:white_check_mark: Tip: Surround yourself with people that are already doing what you want to achieve, ask them questions and listen to their advice. Look for mentors and do not be afraid to ask them if you can practice presenting to them. They may be able to help you polish your delivery.
+:white_check_mark: **Tip:** Surround yourself with people that are already doing what you want to achieve, ask them questions and listen to their advice. Look for mentors and do not be afraid to ask them if you can practice presenting to them. They may be able to help you polish your delivery.
 
 # Actively take steps to get better
 
@@ -100,7 +100,7 @@ You want to get to a level with your practising that you have a slide with the d
 
 During all your practices, you will start to notice certain parts of the presentation you get stuck on or constantly screw up. Make little notes during practice and either cut these out or refactor that part of what you want to say to make sure you are hitting your points accurately each time.
 
-:white_check_mark: Tip: Practice! Practice! Practice! Practice in the mirror, practice on colleges, practice on your family (even if they do not fully understand the subject). Just practice, practice, practice.
+:white_check_mark: **Tip:** Practice! Practice! Practice! Practice in the mirror, practice on colleges, practice on your family (even if they do not fully understand the subject). Just practice, practice, practice.
 
 # Gather honest feedback
 
@@ -114,7 +114,7 @@ This refinement process helps makes sure your presentation is well tested on man
 
 All this practising and refactoring after the feedback takes time, so make sure you are prepared and do this a few weeks out before the talk. You want to lock in the contents of the talk completely about two weeks out so you can just practice the same content up until the big day.
 
-:white_check_mark: Tip: Go through your presentation on small groups of people well before the big day. Make sure you ask for honest and direct feedback, then use this feedback to refactor, refine and polish your story. Then you can feel comfortable knowing it has passed the scrutiny and suggestions of many of your peers.
+:white_check_mark: **Tip:** Go through your presentation on small groups of people well before the big day. Make sure you ask for honest and direct feedback, then use this feedback to refactor, refine and polish your story. Then you can feel comfortable knowing it has passed the scrutiny and suggestions of many of your peers.
 
 ![SplunkLive! All Log Management](/images/posts/public_speaking/simpsons.jpeg)
 
@@ -130,7 +130,7 @@ Make sure you have your supporter take some pictures of you up on stage. It's ni
 
 It also gives you something to refer back to later before your next talk so you can tell yourself "See, I’ve done this before, I can do this again!".
 
-:white_check_mark: Tip: Bring a long a supporter and make sure they take some pictures for you.
+:white_check_mark: **Tip:** Bring a long a supporter and make sure they take some pictures for you.
 # Conclusion
 
 I am pretty proud of what I have achieved tackling my fear of public speaking over the last 18 months. I am definitely not over it yet, and still get stressed before big presentations (just ask my wife!). With more and more practice, and making sure I stick to my goal of presenting at two conferences a year, I hope public speaking will eventually just become a "normal" thing that I do and no longer be a big deal that I stress over.
