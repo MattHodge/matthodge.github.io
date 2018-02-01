@@ -66,7 +66,7 @@ This provided me with a "safety net". If for some reason I was too nervous or sh
 
 I am fortunate to find myself surrounded by people who are more confident in presenting at conferences than I am. Flynn is just one of the many colleagues I am able to learn from.
 
-[Pat Hermans](https://twitter.com/phermens) and [Paul De Raaij](https://twitter.com/pderaaij) are fellow Coolbluers who have given several presentations. I also have the occasional beer or 7 with [Jaap Brasser](https://twitter.com/Jaap_Brasser) who travels around the world talking at various PowerShell events.
+[Pat Hermens](https://twitter.com/phermens) and [Paul De Raaij](https://twitter.com/pderaaij) are fellow Coolbluers who have given several presentations. I also have the occasional beer or 7 with [Jaap Brasser](https://twitter.com/Jaap_Brasser) who travels around the world talking at various PowerShell events.
 
 I learnt a lot from these guys, not only in relation to presentation skills, but also how they prepare, what their thought process is, and how they deal with nerves before their talks. I probe them with questions, especially when I have an upcoming presentation.
 
@@ -82,7 +82,7 @@ This includes all aspects of public speaking, preparation, how to tell a good st
 
 :white_check_mark: Tips:
 * Make a goal to do a certain number of presentations a year, and get your manager involved so they can push and support you. They will be able to help you seek opportunities to practice and build this skill.
-* Watch TedX and other conference talks and focus on how the presenter is presenting. For example, watch how the better presenters will have very little text on their slides, just enough to prompt their story.
+* Watch TEDx and other conference talks and focus on how the presenter is presenting. For example, watch how the better presenters will have very little text on their slides, just enough to prompt their story.
 * Watch YouTube videos on presentation skills. I found this one particularly helpful in relation to how to capture the audience in the opening: [How to Do a Presentation - 5 Steps to a Killer Opener](https://www.youtube.com/watch?v=dEDcc0aCjaA).
 * Read other posts and articles on public speaking. [/r/PublicSpeaking](https://www.reddit.com/r/PublicSpeaking/) is a good source.
 
@@ -90,7 +90,7 @@ This includes all aspects of public speaking, preparation, how to tell a good st
 
 # Practice
 
-I think practice is the most important thing you can do before a presentation. Knowing a presentation of by heart really makes a difference when the nerves kick in. Being able to sort of "switch your brain off" and just let the words flow out of you like some sort of presentation robot (without the monotone voice) is the level of practice you want to get to.
+I think practice is the most important thing you can do before a presentation. Knowing a presentation off by heart really makes a difference when the nerves kick in. Being able to sort of "switch your brain off" and just let the words flow out of you like some sort of presentation robot (without the monotone voice) is the level of practice you want to get to.
 
 I find I am most nervous at the very start of a talk, but trying to get in the zone and falling back onto my practice and repetitions really helps me get through.
 
