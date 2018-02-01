@@ -64,6 +64,7 @@ chef gem install 'winrm'
 chef gem install 'winrm-fs'
 chef gem install 'kitchen-pester'
 chef gem install 'vagrant-winrm'
+vagrant plugin install vagrant-winrm
 {% endhighlight %}
 
 With that, we are ready to look at the test-kitchen workflow.
