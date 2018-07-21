@@ -103,32 +103,7 @@ Inside your CloudFormation repositories, create a `.vscode` folder in the root. 
 
 > :warning: The below will only work on Mac, you will probably need to call Start-Process as a PowerShell Task on Windows.
 
-```json
-{
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "CF Type Search",
-            "type": "shell",
-            "command": "open -a \"Google Chrome\" \"https://docs.aws.amazon.com/search/doc-search.html?searchPath=documentation-guide&searchQuery=%22${selectedText}%22&x=0&y=0&this_doc_product=AWS+CloudFormation&this_doc_guide=User+Guide&doc_locale=en_us#facet_doc_product=AWS%20CloudFormation&facet_doc_guide=User%20Guide\"",
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "never"
-            }
-        },
-        {
-            "label": "CF Resource List",
-            "type": "shell",
-            "command": "open -a \"Google Chrome\" \"https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html\"",
-            "problemMatcher": [],
-            "presentation": {
-                "reveal": "never"
-            }
-        }
-    ]
-}
-
-```
+{% gist be12f2437bd77c9730c43454b4fdcdd1 %}
 
 From the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), choose `> Tasks: Run Task`, and select `CF Resource List`. This quick launches the [AWS Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) page.
 
