@@ -1,6 +1,6 @@
 # Site settings
 title: Matthew Hodgkins Blog
-description: '❤️er of Automation, AWS, DevOps, CI/CD, Python, Golang and Observability. Aussie living in the Netherlands. Principal Engineer at [Coolblue](https://coolblue.nl).'
+description: '❤️er of Automation, AWS, DevOps, CI/CD, Python, Golang and Observability. Aussie living in the Netherlands. Principal Engineer at Coolblue.'
 url: 'https://hodgkins.io'
 enforce_ssl: hodgkins.io
 baseurl: ''
