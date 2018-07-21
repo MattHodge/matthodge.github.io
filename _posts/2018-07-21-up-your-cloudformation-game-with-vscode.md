@@ -8,7 +8,7 @@ description: How to improve efficiency when working with AWS CloudFormation in V
 
 AWS CloudFormation is an amazing tool for infrastructure as code.
 
-What used to take weeks to do on premises is now possible in a few minutes with some JSON, or better yet, YAML.
+What used to take weeks to do on-premises, is now possible in a few minutes with some JSON, or better yet, YAML.
 
 This doesn't mean we can't do better and improve our efficiency even more.
 
@@ -24,9 +24,9 @@ This article assumes you are familiar with Visual Studio Code and are using YAML
 
 ## YAML indentation
 
-One that always catches out people with editing YAML is indentation. This is especially true for large CloudFormation files.
+One thing that always catches out people with editing YAML, is indentation. This is especially true for large CloudFormation files.
 
-Take a look at this snippet, can you see the error at a quick glance :eyes: ?
+Take a look at this snippet. Can you see the error at a quick glance :eyes: ?
 
 ![AWS CloudFormation with Indent Error](/images/posts/up-your-aws-cloudformation-game/cloudformation-with-error.png)
 
@@ -36,7 +36,7 @@ What about now?
 
 Thanks to the colorization and highlighting of the indent column, it is much easier to see that the `Resource` property is incorrectly indented at a quick glance.
 
-To enable this, install the following extensions:
+To enable this feature, install the following extensions:
 
 * [Indenticator](https://marketplace.visualstudio.com/items?itemName=SirTori.indenticator)
 * [indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
@@ -48,6 +48,8 @@ Add the following [user setting](https://code.visualstudio.com/docs/getstarted/s
     "indenticator.inner.showHighlight": true
 }
 ```
+
+Easy :+1:.
 
 ## Tabs, spaces and line endings
 
@@ -101,9 +103,9 @@ We can use [VSCode Tasks](https://code.visualstudio.com/docs/editor/tasks) to ma
 
 Inside your CloudFormation repositories, create a `.vscode` folder in the root. Add a `tasks.json` file with the following content:
 
-> :warning: The below will only work on Mac, you will probably need to call Start-Process as a PowerShell Task on Windows.
-
 {% gist be12f2437bd77c9730c43454b4fdcdd1 %}
+
+> :warning: The above will only work on Mac, you will probably need to call Start-Process as a PowerShell Task on Windows.
 
 From the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), choose `> Tasks: Run Task`, and select `CF Resource List`. This quick launches the [AWS Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) page.
 
@@ -130,7 +132,7 @@ Verify the install worked by running `cfn-lint --version`.
 Next, install the [
 vscode-cfn-lint](https://marketplace.visualstudio.com/items?itemName=kddejong.vscode-cfn-lint) plugin.
 
-Now when you are editing a CloudFormation template, you will get issues underlined and *Problems* listed when you made a mistake.
+Now when you are editing a CloudFormation template, you will get issues underlined and *Problems* listed when you make a mistake.
 
 ![Linting Error In CloudFormation](/images/posts/up-your-aws-cloudformation-game/cloudformation-linting-error-vscode.png)
 
@@ -138,7 +140,7 @@ Now when you are editing a CloudFormation template, you will get issues underlin
 
 ## Jumping around CloudFormation templates quickly
 
-Got a template with a few thousand lines? Navigating it and finding the block you are looking for soon becomes a scroll or search-fest.
+Got a template with a few thousand lines? Navigating it, and finding the block you are looking for, soon becomes a scroll or search-fest.
 
 First, install the [YAML Support by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) extension.
 
@@ -160,4 +162,4 @@ Inside your YAML file you will be able to see the logical names of all your reso
 
 Even though CloudFormation frees up a HUGE amount of time for you as an Operations engineer, it doesn't mean you shouldn't keep optimizing your processes to be as efficient as possible.
 
-Hopefully with these tips go from a CloudFormation user to a CloudFormation rock star :star:!
+Hopefully with these tips, you can go from a CloudFormation user to a CloudFormation rock star :star:!
