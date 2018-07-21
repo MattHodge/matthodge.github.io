@@ -2,7 +2,7 @@
 layout: post
 title: Up your AWS CloudFormation game with Visual Studio Code
 date: 2018-07-21T13:37:00.000Z
-comments: false
+comments: true
 description: How to improve efficiency when working with AWS CloudFormation in Visual Studio Code.
 ---
 
@@ -22,7 +22,7 @@ This article assumes you are familiar with Visual Studio Code and are using YAML
 {:toc}
 
 
-# YAML indentation
+## YAML indentation
 
 One that always catches out people with editing YAML is indentation. This is especially true for large CloudFormation files.
 
@@ -49,7 +49,7 @@ Add the following [user setting](https://code.visualstudio.com/docs/getstarted/s
 }
 ```
 
-# Tabs, spaces and line endings
+## Tabs, spaces and line endings
 
 Tabs? Spaces? What style of line endings? Use [EditorConfig](https://editorconfig.org/) and end all the discussions.
 
@@ -81,7 +81,7 @@ trim_trailing_whitespace = true
 
 Every time someone with EditorConfig saves a file, it will update the YAML file according to your rules :muscle:.
 
-# Sorting things alphabetically
+## Sorting things alphabetically
 
 Do you like to keep things sorted alphabetically? It makes it easier when you are looking over massive files or IAM policy statements.
 
@@ -93,7 +93,7 @@ Highlight a block of the CloudFormation template, open the [command palette](htt
 
 ![Sort CloudFormation Alphabetically](https://i.imgur.com/SUT3JBG.gif)
 
-# Fast access to CloudFormation documentation
+## Fast access to CloudFormation documentation
 
 If you are like me, you can't remember the few hundred CloudFormation resource types and properties.
 
@@ -113,7 +113,7 @@ This will take you to the AWS Documentation search page for the resource:
 
 ![Search for CloudFormation Resource](https://i.imgur.com/XEG4lU0.gif)
 
-# CloudFormation linting
+## CloudFormation linting
 
 Recently, AWS created a tool called [cfn-python-lint](https://github.com/awslabs/cfn-python-lint), which checks your CloudFormation templates for errors. This gives early feedback and reduces cycle time when creating or updating CloudFormation templates.
 
@@ -136,7 +136,7 @@ Now when you are editing a CloudFormation template, you will get issues underlin
 
 > :white_check_mark: You should also use cfn-lint as part of your validation of pull requests on your CloudFormation repositories.
 
-# Jumping around CloudFormation templates quickly
+## Jumping around CloudFormation templates quickly
 
 Got a template with a few thousand lines? Navigating it and finding the block you are looking for soon becomes a scroll or search-fest.
 
@@ -156,7 +156,7 @@ Inside your YAML file you will be able to see the logical names of all your reso
 
 ![CloudFormation Outline](https://i.imgur.com/9Dp3VUt.gif)
 
-# Conclusion
+## Conclusion
 
 Even though CloudFormation frees up a HUGE amount of time for you as an Operations engineer, it doesn't mean you shouldn't keep optimizing your processes to be as efficient as possible.
 
