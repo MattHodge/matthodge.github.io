@@ -8,7 +8,7 @@ description: How to improve efficiency when working with AWS CloudFormation in V
 
 AWS CloudFormation is an amazing tool for infrastructure as code.
 
-What used to take weeks to do on premises is now possible in a few minutes with some JSON, or better yet, YAML.
+What used to take weeks to do on-premises, is now possible in a few minutes with some JSON, or better yet, YAML.
 
 This doesn't mean we can't do better and improve our efficiency even more.
 
@@ -24,7 +24,7 @@ This article assumes you are familiar with Visual Studio Code and are using YAML
 
 ## YAML indentation
 
-One that always catches out people with editing YAML is indentation. This is especially true for large CloudFormation files.
+One thing that always catches out people with editing YAML, is indentation. This is especially true for large CloudFormation files.
 
 Take a look at this snippet, can you see the error at a quick glance :eyes: ?
 
