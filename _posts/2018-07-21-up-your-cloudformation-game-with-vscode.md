@@ -26,7 +26,7 @@ This article assumes you are familiar with Visual Studio Code and are using YAML
 
 One thing that always catches out people with editing YAML, is indentation. This is especially true for large CloudFormation files.
 
-Take a look at this snippet. Can you see the error at a quick glance :eyes: ?
+Take a look at this snippet. Can you see the error at a quick glance 👀 ?
 
 ![AWS CloudFormation with Indent Error](/images/posts/up-your-aws-cloudformation-game/cloudformation-with-error.png)
 
@@ -105,7 +105,7 @@ Inside your CloudFormation repositories, create a `.vscode` folder in the root. 
 
 {% gist be12f2437bd77c9730c43454b4fdcdd1 %}
 
-> :warning: The above will only work on Mac, you will probably need to call Start-Process as a PowerShell Task on Windows.
+> ⚠️ The above will only work on Mac, you will probably need to call Start-Process as a PowerShell Task on Windows.
 
 From the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette), choose `> Tasks: Run Task`, and select `CF Resource List`. This quick launches the [AWS Resource Types Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html) page.
 
@@ -136,7 +136,7 @@ Now when you are editing a CloudFormation template, you will get issues underlin
 
 ![Linting Error In CloudFormation](/images/posts/up-your-aws-cloudformation-game/cloudformation-linting-error-vscode.png)
 
-> :white_check_mark: You should also use cfn-lint as part of your validation of pull requests on your CloudFormation repositories.
+> ✅ You should also use cfn-lint as part of your validation of pull requests on your CloudFormation repositories.
 
 ## Jumping around CloudFormation templates quickly
 
@@ -144,7 +144,7 @@ Got a template with a few thousand lines? Navigating it, and finding the block y
 
 First, install the [YAML Support by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) extension.
 
-Unfortunately, due to a [bug](https://github.com/redhat-developer/yaml-language-server/issues/77) :bug: we are going to need to disable the YAML validation this extension provides. It currently has issues supporting CloudFormation intrinsic functions. I will update this post when this issue is fixed.
+Unfortunately, due to a [bug](https://github.com/redhat-developer/yaml-language-server/issues/77) 🐛 we are going to need to disable the YAML validation this extension provides. It currently has issues supporting CloudFormation intrinsic functions. I will update this post when this issue is fixed.
 
 Add the following [user setting](https://code.visualstudio.com/docs/getstarted/settings) to disable validation.
 
@@ -162,4 +162,4 @@ Inside your YAML file you will be able to see the logical names of all your reso
 
 Even though CloudFormation frees up a HUGE amount of time for you as an Operations engineer, it doesn't mean you shouldn't keep optimizing your processes to be as efficient as possible.
 
-Hopefully with these tips, you can go from a CloudFormation user to a CloudFormation rock star :star:!
+Hopefully with these tips, you can go from a CloudFormation user to a CloudFormation rock star ⭐!
