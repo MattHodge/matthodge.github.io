@@ -49,7 +49,7 @@ Add the following [user setting](https://code.visualstudio.com/docs/getstarted/s
 }
 ```
 
-Easy :+1:.
+Easy 👍.
 
 ## Tabs, spaces and line endings
 
