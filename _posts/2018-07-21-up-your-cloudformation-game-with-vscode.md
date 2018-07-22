@@ -81,7 +81,7 @@ indent_size = 2
 trim_trailing_whitespace = true
 ```
 
-Every time someone with EditorConfig saves a file, it will update the YAML file according to your rules :muscle:.
+Every time someone with EditorConfig saves a file, it will update the YAML file according to your rules 💪 .
 
 ## Sorting things alphabetically
 
