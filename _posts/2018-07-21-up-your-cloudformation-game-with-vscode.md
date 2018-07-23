@@ -150,7 +150,7 @@ Add the following [user setting](https://code.visualstudio.com/docs/getstarted/s
 
 ```json
 {
-    "yaml.validate": true
+    "yaml.validate": false
 }
 ```
 
