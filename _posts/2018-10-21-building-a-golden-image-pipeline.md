@@ -2,7 +2,7 @@
 layout: post
 title: Building a Golden Image Pipeline
 date: 2018-10-21T13:37:00.000Z
-comments: false
+comments: true
 description: A step by step guide to creating a golden image pipeline (base images) for your infrastructure using Packer and Ansible with Windows.
 ---
 
