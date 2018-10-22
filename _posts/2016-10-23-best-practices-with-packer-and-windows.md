@@ -138,7 +138,9 @@ Here is a snippet of `02-win_updates-wmf5.json`:
   "builders": [
     {
       "type": "virtualbox-ovf",
+      {%- raw -%}
       "source_path": "{{user `source_path`}}"
+      {% endraw -%}
     }
   ],
   "variables": {
@@ -165,7 +167,9 @@ You will also need to un-mount the attached ISO after the build completes using 
       "vboxmanage_post": [
         [
           "storageattach",
-          "{{.Name}}",
+          {%- raw -%}
+          "{{.Name}} }}",
+          {% endraw -%}
           "--storagectl",
           "IDE Controller",
           "--port",
