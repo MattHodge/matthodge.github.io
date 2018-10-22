@@ -140,3 +140,5 @@ Now we have covered the concepts of golden images and golden image pipelines, we
 * **[Packer](https://www.packer.io/)**; golden images as code
 
 * **[Ansible](https://docs.ansible.com)**; a configuration management tool we will use to provision our golden images
+
+Want to know when the next post is out? [Follow me on Twitter](https://twitter.com/matthodge)!
