@@ -31,6 +31,8 @@ By the end of the article, you should be able to make a dashboard that looks som
 
 ![Full Hyper-V Dashboard](/images/posts/influxdb_grafana_windows/fulldashboard.png "Full Hyper-V Dashboard")
 
+> :loudspeaker: Want to be notified when I post more like this? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
+
 * TOC
 {:toc}
 

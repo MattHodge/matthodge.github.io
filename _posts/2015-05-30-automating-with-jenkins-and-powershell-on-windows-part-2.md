@@ -14,6 +14,8 @@ Jenkins provides a means to do this, which is to install a Jenkins agent onto ea
 
 If you are new to PowerShell remoting, you will be able to follow along, but I recommend reading the free eBook [Secrets of PowerShell Remoting](https://www.penflip.com/powershellorg/secrets-of-powershell-remoting) to get up to speed.
 
+> :loudspeaker: Want to be notified when I post more like this? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
+
 * TOC
 {:toc}
 

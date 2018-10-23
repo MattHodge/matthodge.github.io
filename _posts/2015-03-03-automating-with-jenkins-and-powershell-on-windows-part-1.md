@@ -16,6 +16,8 @@ Enter [Jenkins](http://jenkins-ci.org/).
 
 ![Enter Jenkins](/images/posts/automating_windows_jenkins_p1/01_jenkins-stickers.png "Enter Jenkins")
 
+> :loudspeaker: Want to be notified when I post more like this? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
+
 * TOC
 {:toc}
 

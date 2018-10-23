@@ -20,6 +20,8 @@ to this:
 
 By the end of the article you will have a great looking prompt, a nice Git setup using ssh keys and even be able to squash commits on Windows.
 
+> :loudspeaker: Want to be notified when I post more like this? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
+
 * TOC
 {:toc}
 
