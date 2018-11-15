@@ -8,19 +8,17 @@ description: A guide to automating semantic versioning of any git project (not j
 
 [Semantic versioning](https://semver.org/) is best known and most widely adopted convention for versioning software. If you aren't familiar with it, [read up on it before continuing](https://semver.org/).
 
-Once you start implementing semantic versioning for a project, you start to realize that you have given yourself a ton of manual work. Not only on first setup, but every time you release a new version of your software.
+Once you start implementing semantic versioning for a project, you realize that you have just given yourself a small check list of items to go through for every release:
 
-You need to:
+* Look through the pull requests since last release and determine if this will be a *major*, *minor* or *patch* release
 
-* Manage and think about when you should bump versions, bumping from the last released version
+* Decide on the new version number based on the changes and the current version number
 
-* Think about which part of your version to bump (major, minor or patch)
-
-* Store your versioned artifacts somewhere, for example using [Github Releases](https://help.github.com/articles/creating-releases/) or uploading them to a [NuGet repository](https://www.nuget.org)
+* Name your artifacts somewhere with the new version number and store them somewhere, for example using [Github Releases](https://help.github.com/articles/creating-releases/) or uploading them to a [NuGet repository](https://www.nuget.org)
 
 * Keep a [changelog](https://keepachangelog.com/en/1.0.0/) so your users know what is different between versions of your software
 
-Let's have a look how we can meet all of my requirements above, and the additional one that we don't want to do any manual work when we create a new release.
+Let's have a look how we can avoid having to go through a check list for every release, by handling this automatically in our Continuous Integration tool.
 
 > :loudspeaker: Want to know when more posts like this come out? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
 
@@ -31,7 +29,9 @@ Let's have a look how we can meet all of my requirements above, and the addition
 
 [Semantic-release](https://github.com/semantic-release/semantic-release) is a tool which can help us automate our whole release workflow, including determining the next version number, generating the release notes and publishing the package.
 
-It does with the use of several plugins.
+It is a Node.js command line tool, but it can be used to automate the semantic versioning of projects of any language.
+
+It does so with the use of several plugins.
 
 ### Plugin - commit-analyzer
 
@@ -94,8 +94,6 @@ You also get access to variables like `${nextRelease.version}` which you can pas
 Now that you have an idea of how [semantic-release](https://github.com/semantic-release/semantic-release) and its plugins work, its time to set them up on our repository.
 
 Most of the documentation for [semantic-release](https://github.com/semantic-release/semantic-release) is very specific to NPM packages, but it can work with any type of repository and software.
-
-In our case, want to get it enabled for a Terraform Provider, which is written in Go.
 
 For the rest of this guide I will assume you have some familiarity with Node.js and have it installed.
 
@@ -164,7 +162,7 @@ The two parts of the configuration file we are using are:
 
 * `plugins` - an array of plugins to load. The plugins will be executed in the order they are defined. You can also define some configuration for each plugin as I have done above.
 
-You can read me detailed documentation in the [configuration file](https://semantic-release.gitbook.io/semantic-release/usage/configuration) page of the semantic-release documentation.
+You can read more details about the [configuration file](https://semantic-release.gitbook.io/semantic-release/usage/configuration) page of the semantic-release documentation.
 
 ## Create and set a GitHub token
 
@@ -184,7 +182,7 @@ export GITHUB_TOKEN=PUT-YOUR-TOKEN-HERE
 
 ## Running locally
 
-Ideally, you will run semantic-release inside a continuos integration (CI) tool. Let's test it out locally first though.
+Ideally, you will run semantic-release inside a Continuous Integration (CI) tool. Let's test it out locally first though.
 
 I opened a repository of mine and ran the following command:
 
@@ -264,7 +262,7 @@ In this step I could, for example:
 * Generate a binary from my repository
 * Add the binary to a zip file
 * Have the zip files name containing the semantic version for my release
-* Put it in a folder to be pushed as a Github release with the `@semantic-release/github"` plugin
+* Put it in a folder to be pushed as a Github release with the `@semantic-release/github` plugin
 * Publish it to an artifact repository, for example a [NuGet](https://www.nuget.org) feed
 
 The options here are endless.
