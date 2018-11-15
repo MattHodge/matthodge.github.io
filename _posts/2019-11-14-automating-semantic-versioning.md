@@ -6,7 +6,7 @@ comments: false
 description: A guide to automating semantic versioning of any git project (not just NPM!) with the semantic-release tool.
 ---
 
-[Semantic versioning](https://semver.org/) is best known and most widely adopted convention for versioning software. If you aren't familiar with it, [read up on it before continuing](https://semver.org/).
+[Semantic versioning](https://semver.org/) is the best known and most widely adopted convention for versioning software. If you aren't familiar with it, [read up on it before continuing](https://semver.org/).
 
 Once you start implementing semantic versioning for a project, you realize that you have just given yourself a small check list of items to go through for every release:
 
