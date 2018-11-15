@@ -1,77 +1,31 @@
 ---
 layout: post
-title: Automating Semantic Versioning For Any Project
-date: 2018-11-10-T13:37:00.000Z
+title: Automating Semantic Versioning for any Project
+date: 2018-11-14-T13:37:00.000Z
 comments: false
-description: A guide to automating semantic versioning of any project in Git with the semantic-release tool.
+description: A guide to automating semantic versioning of any git project (not just NPM!) with the semantic-release tool.
 ---
 
-When are developing a tool or application for yourself, the furthest thing from your mind is "how should I version this?". You are the only consumer, so what does it matter! You know what is changing, and you will always just use the latest version.
+[Semantic versioning](https://semver.org/) is best known and most widely adopted convention for versioning software. If you aren't familiar with it, [read up on it before continuing](https://semver.org/).
 
-This all changes as soon as other people or applications start to depend on your application. Changes you make can have a massive impact, and even break your application for people that depend on it.
+Once you start implementing semantic versioning for a project, you start to realize that you have given yourself a ton of manual work. Not only on first setup, but every time you release a new version of your software.
 
-Let's use my [Octopus Deploy Terraform Provider](https://github.com/MattHodge/terraform-provider-octopusdeploy) as an example. One of the `resources` in the provider allows people to create an *environment*.
+You need to:
 
-For my end user, they use the resource like this:
+* Manage and think about when you should bump versions, bumping from the last released version
 
-```hcl
-# main.tf - Creates the users production environment in Octopus Deploy
+* Think about which part of your version to bump (major, minor or patch)
 
-# Configure the provider
-provider "octopusdeploy" {
-  address = "http://octopus-deploy:8081/"
-  apikey  = "API-XXXXXXXXXXXXXXXXXXXX"
-}
+* Ideally, start using [Github Releases](https://help.github.com/articles/creating-releases/) to store the versions you release
 
-# Create the produduction environment
-resource "octopusdeploy_environment" "production" {
-    name             = "Production"
-    description      = "The production environment. If this breaks we are in trouble."
-    useguidedfailure = "true"
-}
-```
+* Keep a [changelog](https://keepachangelog.com/en/1.0.0/) so your users know what is different between versions of your software
 
-The user stores the above Teraform code it in their git repository, and feel great knowing they are automating their processes.
-
-A Terraform resource and its arguments is the contract between my provider and the user. They use the contract and they get the resource they want, in this case, an *environment*.
-
-The user is happy 😁!
-
-I then decide I would like to standardize on [snake case](https://en.wikipedia.org/wiki/Snake_case) for all of my argument names in my [Octopus Deploy Terraform Provider](https://github.com/MattHodge/terraform-provider-octopusdeploy). I go and modify my code and change the argument `useguidedfailure` to `use_guided_failure` instead. I share the new version of the provider to the world!
-
-Unfortunately he next time my unlucky user pulls down the latest version of my provider and tries to run a `terraform plan` he is going to have a bad time 😟:
-
-`Error: octopusdeploy_environment.production: : invalid or unknown key: useguidedfailure`
-
-What I have done here is make a **breaking change** or an **incompatible change** in the contract I have with the user. Their code is now broken due to my change.
-
-Let's see if we can use semantic versioning and automation to help us improve this situation.
+Let's have a look how we can meet all of my requirements above, and the additional one that we don't want to do any manual work when we create a new release.
 
 > :loudspeaker: Want to know when more posts like this come out? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
 
 * TOC
 {:toc}
-
-## What is semantic versioning?
-
-[Semantic versioning](https://semver.org/) is best known and most widely adopted convention for versioning software. It uses a sequence of 3 digits to represent the version of the software. If you haven't heard of it I recommend you [read up on it before continuing](https://semver.org/).
-
-## Applying semantic versioning
-
-Semantic versioning tells us if we make a breaking change to the API like we did in our example in the introduction, we need to bump our *MAJOR* version number (so from **1**.0.0 to **2**.0.0).
-
-I want to do better. I should properly version the releases of my provider, but this means a ton of manual work not only now, but every time I release a new version.
-
-I'm going to need to:
-
-* Manage and think about when I should bump versions according to [semantic versioning](https://semver.org/)
-* Think about which part of my version to bump (major, minor or patch)
-* Start using [Github Releases](https://help.github.com/articles/creating-releases/) to store the versions I release
-* Keep a [changelog](https://keepachangelog.com/en/1.0.0/) so my users know what is different between versions of my provider
-
-I really do not like doing things manually. Let's use something that meet all of my requirements above, and the additional one that I am lazy.
-
-🤫 P.S. My users should probably also be using [Terraform provider versioning](https://www.terraform.io/docs/configuration/providers.html#provider-versions) too! But that's out of scope for this post.
 
 ## Automating using semantic-release
 
@@ -127,9 +81,13 @@ Using the `refactor` commit above as an example, the following GitHub release wo
 
 ![GitHub Release example](images/posts/automating-semantic-versioning/github_release_example.png)
 
-### Plugin - last-release-git
+### Plugin - exec
 
-The [last-release-git](https://github.com/finom/last-release-git) extracts the latest version of your software from git tags. Usually, semantic-release is used for releasing NPM packages. We will need this plugin so the previous version of our release can be read from our git tags instead.
+The [exec](https://github.com/semantic-release/exec) plugin allows you to execute any arbitrary command at the [different stages](https://github.com/semantic-release/exec#configuration) of a release.
+
+This allows you to use semantic-release with *any* repository or language you wish.
+
+You also get access to variables like `${nextRelease.version}` which you can pass to your scripts / commands. You can find all of the available variables in the [JavaScript Developers Guide](https://semantic-release.gitbook.io/semantic-release/developer-guide/js-api#result).
 
 ## Installation
 
@@ -146,10 +104,10 @@ Install [semantic-release](https://github.com/semantic-release/semantic-release)
 ```bash
 npm install -g semantic-release               \
     @semantic-release/changelog               \
-    @semantic-release/git                     \
     @semantic-release/commit-analyzer         \
-    @semantic-release/release-notes-generator \
-    last-release-git
+    @semantic-release/exec                    \
+    @semantic-release/git                     \
+    @semantic-release/release-notes-generator
 ```
 
 ## Configuration
@@ -171,31 +129,44 @@ The following is configuration for my Terraform provider repository:
                 "changelogTitle": "# Semantic Versioning Changelog"
             }
         ],
-        "@semantic-release/github",
+        [
+            "@semantic-release/exec",
+            {
+                "prepareCmd": "./prepare-release.sh ${nextRelease.version}"
+            }
+        ],
         [
             "@semantic-release/git",
             {
-                "assets": [ "CHANGELOG.md" ]
+                "assets": [
+                    "CHANGELOG.md"
+                ]
+            }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    {
+                        "path": "dist/**"
+                    }
+                ]
             }
         ]
-    ],
-    "release": {
-        "getLastRelease": "last-release-git"
-    }
+    ]
 }
+
 ```
 
-Let's run through the main parts of the configuration file.
+The two parts of the configuration file we are using are:
 
-* `branch` chooses which git branch to create releases from.
+* `branch` - chooses which git branch to create releases from.
 
-* `plugins` an array of plugins to load. The plugins will be executed in the order they are defined. You can also define some configuration for each plugin as I have done above.
-
-* `release` sets the method used to determine the latest release for the project. We will use `last-release-git` for this.
+* `plugins` - an array of plugins to load. The plugins will be executed in the order they are defined. You can also define some configuration for each plugin as I have done above.
 
 You can read me detailed documentation in the [configuration file](https://semantic-release.gitbook.io/semantic-release/usage/configuration) page of the semantic-release documentation.
 
-## Create a GitHub Token
+## Create and set a GitHub token
 
 We need to create a GitHub token to allow semantic-release to create GitHub releases.
 
@@ -265,3 +236,56 @@ Now we are in-line with our previous release 😎.
 
 ![Semantic Release With Change](images/posts/automating-semantic-versioning/semantic-release-output-with-change-specific-version.png)
 
+## Building your release
+
+Once semantic-release has decided a new version needs to be created, and generated a version number for you, we need a way to trigger a build of our software.
+
+This is where the [exec](https://github.com/semantic-release/exec) plugin comes in.
+
+For example, using the following option:
+
+```json
+{
+    "plugins": [
+        [
+            "@semantic-release/exec",
+            {
+                "prepareCmd": "./prepare-release.sh ${nextRelease.version}"
+            }
+        ]
+    ]
+}
+```
+
+When ever the `prepare` step is run by semantic-release, it will execute the `prepare-release.sh` script, passing the version of the new release with `${nextRelease.version}`.
+
+In this step I could, for example:
+
+* Generate a binary from my repository (eg. a `go build`)
+* Add the binary to a zip file
+* Have the zip files name containing the semantic version for my release
+* Put it in a folder to be pushed as a Github release with the `@semantic-release/github"` plugin
+
+The options here are endless.
+
+> :white_check_mark: The `prepare` step **does not** run in dry run mode. You will need to run it in CI to get this step to trigger.
+
+## Get your build running in CI
+
+Now we have all the pieces together, we want to start the build using a build server.
+
+This part is now pretty easy. You just need to:
+
+* Check the `.releaserc` into the root of your repository
+
+* Install the required NPM packages from the [Installation](#Installation) section of the article, and any other plugins you require
+
+* Set the `GITHUB_TOKEN` environment variable (as a **secret** 🤫)
+
+* As part of your build process, run the `npx semantic-release` command where it suits you, which will start the release process
+
+## Conclusion
+
+Following a semantic release process doesn't have to mean manual work. With the ground work set using [semantic-release](https://github.com/semantic-release/semantic-release), you can automate all this work for ANY type of project.
+
+Go and get automating ⭐!
