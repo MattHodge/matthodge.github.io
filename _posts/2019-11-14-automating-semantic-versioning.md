@@ -16,7 +16,7 @@ You need to:
 
 * Think about which part of your version to bump (major, minor or patch)
 
-* Ideally, start using [Github Releases](https://help.github.com/articles/creating-releases/) to store the versions you release
+* Store your versioned artifacts somewhere, for example using [Github Releases](https://help.github.com/articles/creating-releases/) or uploading them to a [NuGet repository](https://www.nuget.org)
 
 * Keep a [changelog](https://keepachangelog.com/en/1.0.0/) so your users know what is different between versions of your software
 
@@ -261,10 +261,11 @@ When ever the `prepare` step is run by semantic-release, it will execute the `pr
 
 In this step I could, for example:
 
-* Generate a binary from my repository (eg. a `go build`)
+* Generate a binary from my repository
 * Add the binary to a zip file
 * Have the zip files name containing the semantic version for my release
 * Put it in a folder to be pushed as a Github release with the `@semantic-release/github"` plugin
+* Publish it to an artifact repository, for example a [NuGet](https://www.nuget.org) feed
 
 The options here are endless.
 
