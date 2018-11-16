@@ -10,11 +10,11 @@ description: A guide to automating semantic versioning of any git project (not j
 
 Once you start implementing semantic versioning for a project, you realize that you have just given yourself a small check list of items to go through for every release:
 
-* Look through the pull requests since last release and determine if this will be a *major*, *minor* or *patch* release
+* Look through the commits since last release and determine if this will be a *major*, *minor* or *patch* release
 
 * Decide on the new version number based on the changes and the current version number
 
-* Name your artifacts somewhere with the new version number and store them somewhere, for example using [Github Releases](https://help.github.com/articles/creating-releases/) or uploading them to a [NuGet repository](https://www.nuget.org)
+* Name your artifacts with the new version number and store them somewhere, for example using [Github Releases](https://help.github.com/articles/creating-releases/) or uploading them to a [NuGet repository](https://www.nuget.org)
 
 * Keep a [changelog](https://keepachangelog.com/en/1.0.0/) so your users know what is different between versions of your software
 
@@ -87,6 +87,8 @@ The [exec](https://github.com/semantic-release/exec) plugin allows you to execut
 
 This allows you to use semantic-release with *any* repository or language you wish.
 
+For example, you could use the `prepareCmd` to generate release artifacts and a `publishCmd` to push them to an artifact repository like [NuGet](https://nuget.org).
+
 You also get access to variables like `${nextRelease.version}` which you can pass to your scripts / commands. You can find all of the available variables in the [JavaScript Developers Guide](https://semantic-release.gitbook.io/semantic-release/developer-guide/js-api#result).
 
 ## Installation
@@ -95,7 +97,7 @@ Now that you have an idea of how [semantic-release](https://github.com/semantic-
 
 Most of the documentation for [semantic-release](https://github.com/semantic-release/semantic-release) is very specific to NPM packages, but it can work with any type of repository and software.
 
-For the rest of this guide I will assume you have some familiarity with Node.js and have it installed.
+For the rest of this guide I will assume you have some familiarity with Node.js and have it at least version 8.3 installed.
 
 Install [semantic-release](https://github.com/semantic-release/semantic-release) and the plugins we need via NPM. We will install them globally.
 
@@ -262,7 +264,7 @@ In this step I could, for example:
 * Generate a binary from my repository
 * Add the binary to a zip file
 * Have the zip files name containing the semantic version for my release
-* Put it in a folder to be pushed as a Github release with the `@semantic-release/github` plugin
+* Put it in a folder to be pushed as a Github release with the `github` plugin
 * Publish it to an artifact repository, for example a [NuGet](https://www.nuget.org) feed
 
 The options here are endless.
@@ -275,13 +277,15 @@ Now we have all the pieces together, we want to start the build using a build se
 
 This part is now pretty easy. You just need to:
 
+* Make sure you have at least Node.js 8.3 installed
+
 * Check the `.releaserc` into the root of your repository
 
 * Install the required NPM packages from the [Installation](#Installation) section of the article, and any other plugins you require
 
 * Set the `GITHUB_TOKEN` environment variable (as a **secret** 🤫)
 
-* As part of your build process, run the `npx semantic-release` command where it suits you, which will start the release process
+* As part of your build process, run the `npx semantic-release` command after all your tests have passed successfully and you are ready to release
 
 ## Conclusion
 
