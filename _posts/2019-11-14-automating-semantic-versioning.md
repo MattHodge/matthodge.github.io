@@ -20,7 +20,7 @@ Once you start implementing semantic versioning for a project, you realize that 
 
 Let's have a look how we can avoid having to go through a check list for every release, by handling this automatically in our Continuous Integration tool.
 
-> :loudspeaker: Want to know when more posts like this come out? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
+> 📢 Want to know when more posts like this come out? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) 📢
 
 * TOC
 {:toc}

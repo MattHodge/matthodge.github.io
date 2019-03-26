@@ -16,7 +16,7 @@ The series will focus on using Packer, Ansible and Windows, but the content will
 
 Let's dive in!
 
-> :loudspeaker: Want to know when the new posts in the series are out? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) :loudspeaker:
+> 📢 Want to know when the new posts in the series are out? [Follow me on Twitter: @MattHodge](https://twitter.com/matthodge) 📢
 
 * TOC
 {:toc}
