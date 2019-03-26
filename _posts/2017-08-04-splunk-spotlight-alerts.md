@@ -296,7 +296,7 @@ With our scenario setup, lets create our alert:
 * Use a Slack webhook and set the message as:
 
 {% highlight plaintext %}
-:x: The random number didn't run as scheduled!
+❌ The random number didn't run as scheduled!
 {% endhighlight %}
 
 Your alert should look something like this:
