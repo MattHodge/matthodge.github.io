@@ -2,8 +2,8 @@ name: Docker Image CI
 
 on:
   push:
-    paths:
-    - '*.md'
+    # paths:
+    # - '*.md'
 
 jobs:
   build:
