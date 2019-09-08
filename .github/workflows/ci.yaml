@@ -12,3 +12,4 @@ jobs:
     - uses: actions/checkout@v1
     - name: My first step
       uses: docker://alpine:3.8
+      run: ls -lah
