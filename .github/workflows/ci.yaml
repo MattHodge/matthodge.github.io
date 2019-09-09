@@ -18,4 +18,4 @@ jobs:
     - uses: ./.github/actions/vale
       name: vale
       with:
-        fileGlob: '*.{md,rst}'
+        fileGlob: '*.{md}'
