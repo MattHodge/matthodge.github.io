@@ -17,3 +17,5 @@ jobs:
     #     GH_COMMENT_TOKEN: ${{ secrets.GH_COMMENT_TOKEN }}
     - uses: ./.github/actions/vale
       name: vale
+      with:
+        lintDirectory: _posts/
