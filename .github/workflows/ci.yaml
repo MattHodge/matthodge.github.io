@@ -6,10 +6,12 @@ on:
     # - '*.md'
 
 jobs:
-  build:
+  vale-lint-PR:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: My first step
-      uses: docker://alpine:3.8
-      run: ls -lah
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 1
+    - uses: gaurav-nelson/github-action-vale-lint@v0.0.3
+      env:
+        GH_COMMENT_TOKEN: ${{ secrets.GH_COMMENT_TOKEN }}
