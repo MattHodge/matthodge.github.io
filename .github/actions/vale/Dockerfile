@@ -1,6 +1,5 @@
 FROM alpine:3.9
 ENV VALE_SHA=239765ab91992fdc9e7482f73de087fd038222bec05b44e7c1f4fff637110b3e
-ENV INPUT_LINTALLFILES=${INPUT_LINTALLFILES}
 RUN apk update \
   && apk upgrade \
   && apk add --no-cache \
