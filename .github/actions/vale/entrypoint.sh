@@ -5,5 +5,7 @@ IFS=$'\n\t'
 
 vale --version
 
-echo $GITHUB_WORKSPACE
-ls -lah $GITHUB_WORKSPACE
+echo "Settings:"
+echo ""
+echo "lintAllFiles: ${INPUT_LINTALLFILES}"
+echo "lintDirectory: ${INPUT_LINTDIRECTORY}"

@@ -6,6 +6,9 @@ inputs:
     description: 'Uses Vale to lint all files, even ones that didn't change. By default only files that have changed will be linted.'
     required: false
     default: 'true'
+  lintDirectory:
+    description: 'If specified, Vale will only look for files to validate inside this directory'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
