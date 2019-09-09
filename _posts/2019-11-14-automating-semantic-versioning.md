@@ -2,7 +2,7 @@
 layout: post
 title: Automating Semantic Versioning for any Project
 date: 2018-11-14-T13:37:00.000Z
-comments: false
+comments: true
 description: A guide to automating semantic versioning of any git project (not just NPM!) with the semantic-release tool.
 ---
 
