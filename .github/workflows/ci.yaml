@@ -15,5 +15,4 @@ jobs:
     # - uses: gaurav-nelson/github-action-vale-lint@v0.0.3
     #   env:
     #     GH_COMMENT_TOKEN: ${{ secrets.GH_COMMENT_TOKEN }}
-    - name: vale lint
-      uses: .github/actions/vale
+    - uses: ./.github/actions/vale
