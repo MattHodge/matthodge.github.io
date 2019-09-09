@@ -1,0 +1,14 @@
+---
+name: vale
+author: Matthew Hodgkins
+inputs:
+  lintAllFiles:
+    description: 'Uses Vale to lint all files, even ones that didn't change. By default only files that have changed will be linted.'
+    required: false
+    default: 'true'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+branding:
+  icon: 'tag'
+  color: 'green'
