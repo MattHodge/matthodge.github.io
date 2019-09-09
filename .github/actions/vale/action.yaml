@@ -9,6 +9,11 @@ inputs:
   lintDirectory:
     description: 'If specified, Vale will only look for files to validate inside this directory'
     required: false
+    default: '.'
+  fileGlob:
+    description: 'File glob of what files to run vale against'
+    required: false
+    default: '*.{md,rst}'
 runs:
   using: 'docker'
   image: 'Dockerfile'
