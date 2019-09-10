@@ -3,12 +3,12 @@
 set -eo pipefail
 IFS=$'\n\t'
 
-vale --version
-
 printenv
 
 echo "Settings:"
 echo ""
-echo "lintAllFiles: ${INPUT_LINTALLFILES}"
+echo "lintUnchangedFiles: ${INPUT_LINTUNCHANGEDFILES}"
 echo "lintDirectory: ${INPUT_LINTDIRECTORY}"
-echo "fileGlob: $INPUT_FILEGLOB"
+echo "fileGlob: ${INPUT_FILEGLOB}"
+
+vale --glob="${INPUT_FILEGLOB}" "${INPUT_LINTDIRECTORY}" --output=JSON

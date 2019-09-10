@@ -1,6 +1,10 @@
 FROM alpine:3.9
 ENV VALE_SHA=239765ab91992fdc9e7482f73de087fd038222bec05b44e7c1f4fff637110b3e
-ENV INPUT_FILEGLOB=*.{md,rst}
+# Default inputs defined here due to defaults not working in GitHub Actions
+# BUG: https://github.community/t5/GitHub-Actions/Metadata-Syntax-for-Inputs-Defaults-Not-Working-for-Actions/m-p/31067#M660
+ENV INPUT_FILEGLOB="*.{md,rst}"
+ENV INPUT_LINTDIRECTORY="."
+ENV INPUT_LINTUNCHANGEDFILES="true"
 RUN apk update \
   && apk upgrade \
   && apk add --no-cache \
@@ -15,7 +19,7 @@ RUN mkdir /temp-download && \
     tar -zxvf vale_1.7.1_Linux_64-bit.tar.gz && \
     chmod +x vale && \
     mv vale /usr/local/bin/ && \
-    rm -rf /temp-deownload
+    rm -rf /temp-download
 COPY .vale.ini /root
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

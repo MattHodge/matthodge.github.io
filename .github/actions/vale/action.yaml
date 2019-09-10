@@ -2,7 +2,7 @@
 name: vale
 author: Matthew Hodgkins
 inputs:
-  lintAllFiles:
+  lintUnchangedFiles:
     description: 'Uses Vale to lint all files, even ones that didn't change. By default only files that have changed will be linted.'
     required: false
     default: 'bot'
