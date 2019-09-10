@@ -5,6 +5,7 @@ ENV VALE_SHA=239765ab91992fdc9e7482f73de087fd038222bec05b44e7c1f4fff637110b3e
 ENV INPUT_FILEGLOB="*.{md,rst}"
 ENV INPUT_LINTDIRECTORY="."
 ENV INPUT_LINTUNCHANGEDFILES="true"
+ENV INPUT_CONFIGFILEPATH=".vale.ini"
 RUN apk update \
   && apk upgrade \
   && apk add --no-cache \
@@ -20,7 +21,7 @@ RUN mkdir /temp-download && \
     chmod +x vale && \
     mv vale /usr/local/bin/ && \
     rm -rf /temp-download
-COPY .vale.ini /root
+COPY .vale.ini /etc/vale/.vale.ini
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

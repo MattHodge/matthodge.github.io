@@ -14,6 +14,10 @@ inputs:
     description: 'File glob of what files to run vale against.'
     required: false
     default: '*.{md,rst}'
+  configFilePath:
+    description: 'The path of your own custom Vale configuration file'
+    required: false
+    default: '.vale.ini'
 runs:
   using: 'docker'
   image: 'Dockerfile'
