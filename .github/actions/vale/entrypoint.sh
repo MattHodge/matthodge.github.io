@@ -10,5 +10,7 @@ echo ""
 echo "lintUnchangedFiles: ${INPUT_LINTUNCHANGEDFILES}"
 echo "lintDirectory: ${INPUT_LINTDIRECTORY}"
 echo "fileGlob: ${INPUT_FILEGLOB}"
+echo ""
 
+cd $GITHUB_WORKSPACE
 vale --glob="${INPUT_FILEGLOB}" "${INPUT_LINTDIRECTORY}" --output=JSON
