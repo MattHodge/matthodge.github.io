@@ -70,8 +70,15 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println("GitHub event:")
-	fmt.Print(github.LoadActionsEvent(githubEventPath))
+	evt, err := github.LoadActionsEvent(githubEventName, githubEventPath)
+
+	if err != nil {
+		fmt.Printf("%v", err)
+		os.Exit(1)
+	}
+
+	fmt.Println("GitHub parsed event:")
+	fmt.Printf("%v", evt)
 }
 
 func fileExists(filePath string) bool {

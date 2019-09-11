@@ -16,8 +16,8 @@ RUN mkdir /temp-download && \
 ENV GO111MODULE on
 WORKDIR /go/src/github.com/MattHodge/.github/actions/vale
 COPY go.mod .
-#COPY go.sum .
-#RUN go mod download
+COPY go.sum .
+RUN go mod download
 COPY . .
 # static compile artifact-generator
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /output/vale-entrypoint && \
