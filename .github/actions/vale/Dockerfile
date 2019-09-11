@@ -13,8 +13,9 @@ RUN mkdir /temp-download && \
     chmod +x vale && \
     mv vale /output/vale
 
-#ENV GO111MODULE on
-#COPY go.mod .
+ENV GO111MODULE on
+WORKDIR /go/src/github.com/MattHodge/.github/actions/vale
+COPY go.mod .
 #COPY go.sum .
 #RUN go mod download
 COPY . .

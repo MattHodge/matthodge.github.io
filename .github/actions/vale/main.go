@@ -3,11 +3,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"strings"
-	"text/template"
+
+	"github.com/MattHodge/matthodge.github.io/.github/actions/vale/pkg/github"
+	"github.com/MattHodge/matthodge.github.io/.github/actions/vale/pkg/vale"
 )
 
 func main() {
@@ -25,6 +26,7 @@ func main() {
 	fileGlob := os.Getenv("INPUT_FILEGLOB")
 	githubWorkspace := os.Getenv("GITHUB_WORKSPACE")
 	githubEventPath := os.Getenv("GITHUB_EVENT_PATH")
+	githubEventName := os.Getenv("GITHUB_EVENT_NAME")
 
 	fmt.Printf("lintUnchangedFiles: %s\n", lintUnchangedFiles)
 	fmt.Printf("lintDirectory: %s\n", lintDirectory)
@@ -32,6 +34,7 @@ func main() {
 	fmt.Printf("configFilePath: %s\n", configFilePath)
 	fmt.Printf("githubWorkspace: %s\n", githubWorkspace)
 	fmt.Printf("githubEventPath: %s\n", githubEventPath)
+	fmt.Printf("githubEventName: %s\n", githubEventName)
 
 	valeCmd := []string{
 		"--no-exit",
@@ -53,36 +56,22 @@ func main() {
 		os.Exit(1)
 	}
 
-	results := make(map[string][]ValeResult)
+	results := make(map[string][]vale.Result)
 	err = json.Unmarshal(out, &results)
 	if err != nil {
 		fmt.Printf("Unable to unmarshal vale results: %v", err)
 		os.Exit(1)
 	}
 
-	const prTemplate = `
-{{ range $key, $value := . }}
-### ` + "`{{ $key }}`" +
-		`
-Check Name | Line | Message | Severity
---- | --- | --- | ---
-{{ range $value := . -}}
-{{ .Check }} | {{ .Line }} | {{ .Message }} | {{ .Severity }}
-{{ end -}}
-{{ end -}}
-`
+	err = vale.ResultToMarkdown(results)
 
-	// Create a new template and parse the letter into it.
-	tm := template.Must(template.New("pr-comment").Parse(prTemplate))
-
-	err = tm.Execute(os.Stdout, results)
 	if err != nil {
-		fmt.Printf("Unable to render pr comment: %v", err)
+		fmt.Printf("Unable to convert results to markdown: %v", err)
 		os.Exit(1)
 	}
 
 	fmt.Println("GitHub event:")
-	fmt.Print(loadGitHubEvent(githubEventPath))
+	fmt.Print(github.LoadActionsEvent(githubEventPath))
 }
 
 func fileExists(filePath string) bool {
@@ -91,26 +80,4 @@ func fileExists(filePath string) bool {
 	}
 
 	return true
-}
-
-func loadGitHubEvent(filePath string) (string, error) {
-	c, err := ioutil.ReadFile(filePath)
-
-	if err != nil {
-		return "", fmt.Errorf("unable to find github event at %s", filePath)
-	}
-
-	return string(c), nil
-}
-
-type ValeResult struct {
-	Check       string `json:"Check"`
-	Description string `json:"Description"`
-	Line        int    `json:"Line"`
-	Link        string `json:"Link"`
-	Message     string `json:"Message"`
-	Severity    string `json:"Severity"`
-	Span        []int  `json:"Span"`
-	Hide        bool   `json:"Hide"`
-	Match       string `json:"Match"`
 }
