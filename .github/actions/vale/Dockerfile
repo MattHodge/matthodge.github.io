@@ -1,19 +1,10 @@
 FROM golang:1.12.5 as builder
 ENV GOPROXY https://proxy.golang.org
-#ENV GO111MODULE on
-#COPY go.mod .
-#COPY go.sum .
-#RUN go mod download
-COPY . .
-RUN mkdir /output && \
-  # static compile artifact-generator
-  CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /output/vale-entrypoint && \
-  chmod +x /output/vale-entrypoint
 
 # Download Vale
 ENV VALE_VERSION 1.7.1
 ENV VALE_SHA 239765ab91992fdc9e7482f73de087fd038222bec05b44e7c1f4fff637110b3e
-
+RUN mkdir /output
 RUN mkdir /temp-download && \
     cd /temp-download && \
     curl -OL https://github.com/errata-ai/vale/releases/download/v${VALE_VERSION}/vale_${VALE_VERSION}_Linux_64-bit.tar.gz && \
@@ -21,6 +12,17 @@ RUN mkdir /temp-download && \
     tar -zxvf vale_${VALE_VERSION}_Linux_64-bit.tar.gz && \
     chmod +x vale && \
     mv vale /output/vale
+
+#ENV GO111MODULE on
+#COPY go.mod .
+#COPY go.sum .
+#RUN go mod download
+COPY . .
+# static compile artifact-generator
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /output/vale-entrypoint && \
+    chmod +x /output/vale-entrypoint
+
+
 
 # Output Container
 FROM alpine:3.9
