@@ -3,7 +3,7 @@ layout: post
 title: Securing Home Assistant with Cloudflare
 date: 2020-07-27-T00:00:00.000Z
 comments: true
-description: A guide to setting up your Home Assistant with the Cloudflare CDN in-front of it.
+description: A guide to securing your Home Assistant installation with the Cloudflare CDN.
 ---
 
 I've just started using [Home Assistant](https://www.home-assistant.io/) through building my own smart garage door opener that I could control using my phone.
