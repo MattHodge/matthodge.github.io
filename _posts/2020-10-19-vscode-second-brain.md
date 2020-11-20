@@ -37,7 +37,7 @@ I wanted to keep my workflow fairly simple:
 
 ## 🔧 Tools
 
-Based on my research there were many tools that people were using for capturing their knowledge such as [Roam Research](https://roamresearch.com/), [The Archive](https://zettelkasten.de/the-archive/), [Obsidian](https://obsidian.md/), [Foam](https://foambubble.github.io/), [Dendron](https://www.dendron.so/) and [Notion](https://www.notion.so/).
+Based on my research there were many tools that people were using for capturing their knowledge such as [Roam Research](https://roamresearch.com/), [The Archive](https://zettelkasten.de/the-archive/), [Obsidian](https://obsidian.md/), [Foam](https://foambubble.github.io/), [Dendron](https://www.dendron.so/), [Notable](https://notable.app/), [Joplin](https://joplinapp.org/) and [Notion](https://www.notion.so/).
 
 I had a set of my own requirements for the tool I wanted to use:
 
@@ -47,6 +47,8 @@ I had a set of my own requirements for the tool I wanted to use:
 - The tool *should* be open source
 
 Of all the tools I tried, [Foam](https://foambubble.github.io/) came the closet to what I chose. It's a simple tool, just a [VS Code](https://code.visualstudio.com/) extension that brings in a few other plugins for working with markdown documents.
+
+Joplin was also close, I like that you could click a button to edit notes in VSCode, and they have a really nice iOS + Android app.
 
 The advantage for me is that VSCode is already my editor of choice, so I am already efficient with using it. Foam gave me the inspiration to piece together my own VS Code Second brain based on plugins that already existed.
 
