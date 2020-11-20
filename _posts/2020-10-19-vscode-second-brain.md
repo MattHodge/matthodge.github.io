@@ -14,7 +14,7 @@ I have been diving into the topic of a "[second brain](https://fortelabs.co/blog
 
 - To improve my thinking by linking thoughts, concepts and subjects together. This was inspired by reading about the [Zettelkasten Method](https://zettelkasten.de/posts/overview/).
 
-- A large part of my job as an engineering lead is understanding many complex problems, and trying to write a roadmaps on how my team aims to solve them. I wanted to improve my ability to distill complex topics down into written plans in [plain english](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html) so they were easily consumable.
+- A large part of my job as an engineering lead is understanding many complex problems, and trying to write roadmaps on how my team aims to solve them. I wanted to improve my ability to distill complex topics down into written plans in [plain english](http://www.plainenglish.co.uk/how-to-write-in-plain-english.html) so they were easily consumable for others.
 
 - Cut down on [open loops](https://habitgrowth.com/open-loops/) (commitments I made to myself or someone else that I haven't done yet) in my brain. I would do this by writing down ideas or to do's as soon as they popped into my head.
 
@@ -22,6 +22,17 @@ This post shares takes a look at some of the tools, workflows and observations I
 
 - TOC
 {:toc}
+
+## 🗣 High Level Workflow
+
+I wanted to keep my workflow fairly simple:
+
+- When I read or learn something I summarize it in 1 or 2 paragraphs and create a note
+- I have a think about other topics and try and relate it to other ideas I've taken notes about
+- When I have meetings or technical discussions, I offer to be the note taker. I share my summary to the people in the meeting so they can validate that what I summarized was right. It helps my personal understanding, my summarization skills and provides a meeting history for everyone.
+- I spend a few times a week going through notes, tidying them up and thinking about what I wrote down. I try to link it to other topics, or write down new ideas
+- Every time I think of something when I am away from my laptop, I add it to  my `todo.md` or `inbox.md` (ideas / thoughts). These are just rapid brain dumps to try and close my "open loops"
+- I start every day by looking by reviewing `todo.md` and `inbox.md`
 
 
 ## 🔧 Tools
@@ -32,12 +43,12 @@ I had a set of my own requirements for the tool I wanted to use:
 
 - I *must* own the files in my knowledge archive, and be able to interact with them on disk
 - I *must* be able to interact with my knowledge base offline
-- I *must* be work on my second brain from my laptop or iPhone
+- I *must* be able to work on my second brain from my laptop or iPhone
 - The tool *should* be open source
 
 Of all the tools I tried, [Foam](https://foambubble.github.io/) came the closet to what I chose. It's a simple tool, just a [VS Code](https://code.visualstudio.com/) extension that brings in a few other plugins for working with markdown documents.
 
-The advantage was VSCode was already my editor of choice, so I was already efficient with using it. Foam gave me the inspiration to piece together my own VS Code Second brain based on plugins that already existed.
+The advantage for me is that VSCode is already my editor of choice, so I am already efficient with using it. Foam gave me the inspiration to piece together my own VS Code Second brain based on plugins that already existed.
 
 Below is a list of the plugins I now use for my VSCode Second Brain, with some of the main features they provide.
 
@@ -68,7 +79,7 @@ Below is a list of the plugins I now use for my VSCode Second Brain, with some o
 
 **Features:**
 
-  - Adds to do checkboxes to VSCode markdown preview
+  - Adds "to do" checkboxes to VSCode markdown preview
 
 ### Markdown Preview Github Styling
 
@@ -79,7 +90,7 @@ Below is a list of the plugins I now use for my VSCode Second Brain, with some o
 
 **Features:**
 
-  - Makes the VSCode markdown preview look like it would on GitHub
+  - Makes the VSCode markdown preview look as it would on GitHub
 
 ### Markdown Memo svsool.markdown-memo
 
@@ -100,7 +111,7 @@ Below is a list of the plugins I now use for my VSCode Second Brain, with some o
 
 **Features:**
 
-  - Enables using the `> Paste Image` in the command pallet to paste into the markdown document from clipboard. The image is then saved to the file system.
+  - Enables using `> Paste Image` in the command pallet to paste into the markdown document from clipboard. The image is then saved to the file system.
 
 **Recommended Settings:**
 
@@ -261,39 +272,28 @@ If you want a quick way to setup extensions:
 
 To make sure I could make notes or add to do's when I was on the go, I needed a way to work with the markdown documents on my iPhone.
 
-[1Writer](https://1writerapp.com/) was the app I choose:
+[1Writer](https://1writerapp.com/) was the app I chose:
 
 - Wikilinks, including creating new notes from them if they don't exist works
 - It has a shortcut bar with lots of most the actions when working with markdown
-- It supports syncing using iCloud or Dropbox, allowing to edit on my laptop or phone
+- It supports syncing using iCloud or Dropbox, allowing me to edit on my laptop or phone
 - It's possible to automate using [iOS URL Scheme](https://1writerapp.com/docs/urlscheme) and even [Javascript](https://1writerapp.com/docs/js)
 - It has a clean and simple editing and preview view with several customization options
 
 ![](../images/posts/2020-10-19-vscode-second-brain/20201120063902.png)
 
-
-## 🗣 High Level Workflow
-
-My workflow on using this system is fairly simple:
-
-- When I read or learn something I summarize it in 1 or 2 paragraphs and create a note
-- I have a think about other topics and try and relate it to other ideas I've taken notes about
-- When I have meetings or technical discussions, I offer to be the note taker. At breaks in the flow of the discussion i'll read my summary to the people in the meeting to see I summarized correctly
-- I spend a few times a week going through notes, tidying them up and thinking about what I wrote down. I try and link it to other topics or ideas, or write down new ideas
-- Every time I think of something when I am away from my laptop, I add it to  my `todo.md` or `inbox.md` (ideas / thoughts). I think go and process these lists at the start of each day
-
 ## 🤔 Impact
 
-I've noticed several positive things in my first few weeks of using this system.
+I've already noticed several positive things in my first few weeks of using this system.
 
-- I am able to very quickly pull up information from previous discussions, or find documents I have read based on the references I am making. I just do a search VSCode and can pull up the relevant information. I deal with a lot of documents, and this saving me a lot of minutes each day.
+- I am able to very quickly refer back to information from previous discussions, or find documents I have read based on the references I am making. I just do a search VSCode and can pull up the relevant information. I deal with a lot of documents, and this saving me a lot of minutes each day.
 - My stress levels feel lower, as I am not constantly thinking about all the things I have to do. I know that it is safely stored and I can find it easily.
-- I've always considered myself as "not great" at coming up with ideas or visions for the future of what we should do or build at work. I've had 2 cases in the last few weeks where I've had an "AHA!" moment just randomly. I am not sure if it is because my brain is clear, or because the complex information is laid out in a way that is easier for me to comprehend, but so far this seems to be improving.
+- I've always considered myself as "not great" at coming up with ideas or visions for the future of what we should do or build at work. I've had 2 cases in the last few weeks where I've had an "AHA!" moment just randomly. I am not sure if it is because my brain is clearer, or because the complex information is laid out in a way that is easier for me to comprehend, but so far this seems to be improving.
 - I am reading less articles or blogs due the barrier of entry of forcing myself to make notes about them. I'm not sure if this is a bad or a good thing just yet.
-- This blog post was actually written based on a note I was taking to track all my VSCode extensions and what they did. It's handy being able to spin my thoughts easily out into blog posts.
+- This blog post was actually written based on a note I was taking to track all my VSCode extensions and what they did. It's handy being able to spin my thoughts easily out into blog posts to share.
 
 ## Conclusion
 
-So far my experiment with using VSCode as a *second brain* has been fairly successful. I can see myself sticking the workflow for a while and tweaking the workflow based on things I discover.
+So far my experiment with using VSCode as a *second brain* has been fairly successful. I can see myself sticking the workflow for a while and tweaking the things based on things I discover along the way.
 
 The next thing I want to work on is a way to dictate notes to my Apple Watch when I am out on a bike ride and have them be inserted into my `inbox.md`. It's always the places that it's hard to take notes where you come up with the ideas. 🚿
