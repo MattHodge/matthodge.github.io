@@ -8,7 +8,7 @@ description: How to setup VSCode to act as a "second brain", or personal knowled
 
 I have been diving into the topic of a "[second brain](https://fortelabs.co/blog/basboverview/)", a method of saving and linking  our ideas, insights and thoughts. I was interested in this for a few reasons:
 
-- To assist in active reading. I've read a lot of books and blog posts which often resinate with me. One week later i've forgotten the advice or ideas that the reading inspired. I wanted to reduce the amount of reading I was doing, while increasing the value I was getting out of it.
+- To assist in active reading. I've read a lot of books and blog posts which often resonate with me. One week later I've forgotten the advice or ideas that the reading inspired. I wanted to reduce the amount of reading I was doing, while increasing the value I was getting out of it.
 
 - To act as a personal knowledge base of things I was researching or working on (eg. personal electronics projects or [home automation](https://hodgkins.io/securing-home-assitant-with-cloudflare)).
 
@@ -18,7 +18,7 @@ I have been diving into the topic of a "[second brain](https://fortelabs.co/blog
 
 - Cut down on [open loops](https://habitgrowth.com/open-loops/) (commitments I made to myself or someone else that I haven't done yet) in my brain. I would do this by writing down ideas or to do's as soon as they popped into my head.
 
-This post shares takes a look at some of the tools, workflows and observations i've discovered along the way.
+This post shares takes a look at some of the tools, workflows and observations I've discovered along the way.
 
 - TOC
 {:toc}
@@ -277,7 +277,7 @@ To make sure I could make notes or add to do's when I was on the go, I needed a 
 My workflow on using this system is fairly simple:
 
 - When I read or learn something I summarize it in 1 or 2 paragraphs and create a note
-- I have a think about other topics and try and relate it to other ideas i've taken notes about
+- I have a think about other topics and try and relate it to other ideas I've taken notes about
 - When I have meetings or technical discussions, I offer to be the note taker. At breaks in the flow of the discussion i'll read my summary to the people in the meeting to see I summarized correctly
 - I spend a few times a week going through notes, tidying them up and thinking about what I wrote down. I try and link it to other topics or ideas, or write down new ideas
 - Every time I think of something when I am away from my laptop, I add it to  my `todo.md` or `inbox.md` (ideas / thoughts). I think go and process these lists at the start of each day
@@ -288,7 +288,7 @@ I've noticed several positive things in my first few weeks of using this system.
 
 - I am able to very quickly pull up information from previous discussions, or find documents I have read based on the references I am making. I just do a search VSCode and can pull up the relevant information. I deal with a lot of documents, and this saving me a lot of minutes each day.
 - My stress levels feel lower, as I am not constantly thinking about all the things I have to do. I know that it is safely stored and I can find it easily.
-- I've always considered myself as "not great" at coming up with ideas or visions for the future of what we should do or build at work. I've had 2 cases in the last few weeks where i've had an "AHA!" moment just randomly. I am not sure if it is because my brain is clear, or because the complex information is laid out in a way that is easier for me to comprehend, but so far this seems to be improving.
+- I've always considered myself as "not great" at coming up with ideas or visions for the future of what we should do or build at work. I've had 2 cases in the last few weeks where I've had an "AHA!" moment just randomly. I am not sure if it is because my brain is clear, or because the complex information is laid out in a way that is easier for me to comprehend, but so far this seems to be improving.
 - I am reading less articles or blogs due the barrier of entry of forcing myself to make notes about them. I'm not sure if this is a bad or a good thing just yet.
 - This blog post was actually written based on a note I was taking to track all my VSCode extensions and what they did. It's handy being able to spin my thoughts easily out into blog posts.
 
