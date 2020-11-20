@@ -2,7 +2,7 @@
 layout: post
 title: Creating a VSCode Second Brain
 date: 2020-10-19-T00:00:00.000Z
-comments: false
+comments: true
 description: How to setup VSCode to act as a "second brain", or personal knowledge base.
 ---
 
