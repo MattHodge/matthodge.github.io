@@ -143,7 +143,7 @@ Below is a list of the plugins I now use for my VSCode Second Brain, with some o
 
 **Features:**
 
-  - When you paste a markdown link, it can lookup its title and insert it into the document. This is create for linking to references or the source of ideas for your notes.
+  - When you paste a markdown link, it can lookup its title and insert it into the document. This is great for linking to references or the source of ideas for your notes.
 
 ![Expand URL](/images/posts/2020-10-19-vscode-second-brain/expand_url.gif)
 
