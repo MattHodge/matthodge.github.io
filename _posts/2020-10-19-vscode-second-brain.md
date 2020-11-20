@@ -8,7 +8,7 @@ description: How to setup VSCode to act as a "second brain", or personal knowled
 
 I have been diving into the topic of a "[second brain](https://fortelabs.co/blog/basboverview/)", a method of saving and linking  our ideas, insights and thoughts. I was interested in this for a few reasons:
 
-- To assist in active reading. I've read a lot of books and blog posts which often resonate with me. One week later I've forgotten the advice or ideas that the reading inspired. I wanted to reduce the amount of reading I was doing, while increasing the value I was getting out of it.
+- To assist in active reading. I've read a lot of books and blog posts which often resonate with me. I find one week later, I've forgotten the advice or ideas that the reading inspired. I wanted to reduce the amount of reading (and re-reading) I was doing, while increasing the value I was getting out of it.
 
 - To act as a personal knowledge base of things I was researching or working on (eg. personal electronics projects or [home automation](https://hodgkins.io/securing-home-assitant-with-cloudflare)).
 
