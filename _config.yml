@@ -4,7 +4,9 @@ description: '❤️er of Automation, AWS, DevOps, CI/CD, Python, Golang and Obs
 url: 'https://hodgkins.io'
 enforce_ssl: hodgkins.io
 baseurl: ''
-google_analytics: 'UA-72498951-1'
+# Disable Google Analytics
+# google_analytics: 'UA-72498951-1'
+goat_counter: true
 
 author:
   name: 'Matthew Hodgkins'
