@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Downloading a file with PowerShell without renaming it
+title: Downloading a file with PowerShell without specifying its name
 date: 2021-04-11-T00:00:00.000Z
 comments: false
-description: How to download a file using PowerShell using the name of the download instead of specifiying it yourself.
+description: How to download a file using PowerShell using the name of the download instead of specifying it yourself.
 ---
 
 I'm going to show you how to download a file from the web using PowerShell _without_ having to specify the filename on download.
