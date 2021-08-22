@@ -6,6 +6,8 @@ comments: true
 description: A guide to securing your Home Assistant installation with the Cloudflare CDN.
 ---
 
+*Updated: Aug 22nd, 2021 due to a [HTTP Proxy breaking change](https://github.com/home-assistant/core/pull/51839) in Home Assistant.*
+
 I've just started using [Home Assistant](https://www.home-assistant.io/) through building my own smart garage door opener that I could control using my phone.
 
 It's an amazing piece of open source software, and very easy to get setup locally, but I wanted to expose it to the internet so I could see the status of my garage door when away from the house using the [Home Assistant App](https://www.home-assistant.io/integrations/mobile_app/).
@@ -141,6 +143,34 @@ I am using **ufw** on Ubuntu, and used Ansible to configure the firewall on the 
 ```
 
 Now only Cloudflare IPs will be able to access your Home Assistant
+
+## Allow Proxy Requests to Home Assistant
+
+Home Assistant provides some built in protection for proxy servers (for example CloudFlare) access to your Home Assistant installation as of version [2021.7](https://www.home-assistant.io/blog/2021/07/07/release-20217/).
+
+To allow CloudFlare to work as a proxy, modify your `http` config (part of your `configuration.yaml`):
+
+```yaml
+# Add use_x_forwarded_for
+use_x_forwarded_for: true
+# Add the Cloudflare IPs as trusted proxies https://www.cloudflare.com/ips-v4
+trusted_proxies:
+  - 173.245.48.0/20
+  - 103.21.244.0/22
+  - 103.22.200.0/22
+  - 103.31.4.0/22
+  - 141.101.64.0/18
+  - 108.162.192.0/18
+  - 190.93.240.0/20
+  - 188.114.96.0/20
+  - 197.234.240.0/22
+  - 198.41.128.0/17
+  - 162.158.0.0/15
+  - 104.16.0.0/13
+  - 104.24.0.0/14
+  - 172.64.0.0/13
+  - 131.0.72.0/22
+```
 
 ## Using the Cloudflare Firewall
 
