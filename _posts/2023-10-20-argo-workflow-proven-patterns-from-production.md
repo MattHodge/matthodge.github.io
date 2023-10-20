@@ -3,6 +3,7 @@ layout: post
 title: Argo Workflows - Proven Patterns from Production
 date: 2023-10-20-T00:00:00.000Z
 comments: false
+utterances: true
 description: Discover hard-earned insights on leveraging Argo Workflows for infrastructure automation. This guide outlines essential lessons, from managing workflow TTL and pod garbage collection to running synthetic tests with CronWorkflow. Plus, explore advanced patterns to optimize your workflows, including Parameter Output Facade, Semaphore, and Workflow Injection techniques. Arm yourself with these best practices to avoid common pitfalls and save yourself some pain.
 ---
 
