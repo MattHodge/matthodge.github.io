@@ -1,0 +1,59 @@
+
+get-dbs: {
+  label: WorkflowTemplate - get-dbs
+  get-dbs: {}
+}
+
+db-auditing: {
+  label: WorkflowTemplate - db-auditing
+  get-row-count-for-all-dbs: {
+    get-dbs: {
+      style: {
+        stroke: "#FF9800"
+      }
+    }
+
+    get-row-count: {
+      get-table-row-count-as-child-wfs: {
+        style: {
+          stroke: "#FF9800"
+        }
+      }
+
+      style: {
+        stroke: "#FF9800"
+      }
+    }
+
+    get-row-count.style.multiple: true
+
+    get-dbs -> get-row-count: for each db
+
+    style: {
+      stroke: "#FF9800"
+    }
+  }
+
+  get-row-count-and-log: {
+    send-log-event: {}
+    get-table-row-count: {}
+
+    get-table-row-count -> send-log-event
+  }
+}
+
+db-auditing.get-row-count-for-all-dbs.get-dbs -> get-dbs: depends
+
+"get-row-count-<generated-name>": {}
+
+# "get-row-count-<generated-name>".style.multiple: true
+"db-auditing"."get-row-count-for-all-dbs"."get-row-count"."get-table-row-count-as-child-wfs" -> "get-row-count-<generated-name>": creates child workflows {
+  style: {
+    stroke-dash: 3
+  }
+}
+"get-row-count-<generated-name>" -> "db-auditing"."get-row-count-and-log": workflowTemplateRef to {
+  style: {
+    stroke-dash: 3
+  }
+}

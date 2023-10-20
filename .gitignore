@@ -7,3 +7,9 @@ _site
 Gemfile.lock
 _vendor
 .bundle
+
+# Diagrams generated via watch
+diagrams/**/*.svg
+
+# Taskfile
+.task/**

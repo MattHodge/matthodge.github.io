@@ -1,0 +1,51 @@
+get-dbs: {
+  label: WorkflowTemplate - get-dbs
+  get-dbs: {}
+  for-each-db: {
+    get-dbs: {
+      style: {
+        stroke: "#008B02"
+      }
+    }
+    zz-internal-child-workflow: {
+      style: {
+        multiple: true
+        stroke: "#008B02"
+      }
+    }
+    get-dbs -> zz-internal-child-workflow: for each db
+
+    style: {
+      stroke: "#008B02"
+    }
+  }
+  get-dbs -> for-each-db.get-dbs: depends
+}
+
+"child-<environment>-<db-host>": {}
+get-dbs.for-each-db.zz-internal-child-workflow -> "child-<environment>-<db-host>": creates child workflows {
+  style: {
+    stroke-dash: 3
+  }
+}
+
+db-auditing: {
+  label: WorkflowTemplate - db-auditing
+  for-each-db: {}
+
+  get-row-count-and-log: {
+    send-log-event: {}
+    get-table-row-count: {}
+
+    get-table-row-count -> send-log-event
+  }
+
+  get-row-count-and-log -> for-each-db: uses template as parameters to
+}
+
+db-auditing.for-each-db -> get-dbs.for-each-db: injects "get-row-count-and-log" template into
+"child-<environment>-<db-host>" -> db-auditing.get-row-count-and-log: workflowTemplateRef to {
+  style: {
+    stroke-dash: 3
+  }
+}

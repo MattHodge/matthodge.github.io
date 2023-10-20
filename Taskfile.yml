@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  generate:d2:
+    sources:
+      - diagrams/**/*.d2
+    cmds:
+      - for: sources
+        cmd: ci/generate_diagrams.sh {{ .ITEM }}
+
+  watch:d2:
+    requires:
+      env:
+        - D2_FILE
+    cmds:
+      - D2_WATCH=true ci/generate_diagrams.sh {{.D2_FILE}}

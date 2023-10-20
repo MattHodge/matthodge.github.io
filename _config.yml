@@ -1,6 +1,6 @@
 # Site settings
 title: Matthew Hodgkins Blog
-description: '❤️er of Automation, AWS, DevOps, CI/CD, Python, Golang and Observability. Aussie living in the Netherlands.'
+description: '❤️er of Platform Engineering, SRE, K8s, Golang, Observability and working with nice humans. Aussie living in the Netherlands.'
 url: 'https://hodgkins.io'
 enforce_ssl: hodgkins.io
 baseurl: ''
@@ -41,3 +41,4 @@ exclude:
   - Gemfile.lock
   - screenshot.png
   - _vendor
+  - _posts/diagrams/ # Exclude diagrams from coming up as posts
