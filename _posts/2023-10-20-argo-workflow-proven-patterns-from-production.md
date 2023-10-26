@@ -47,6 +47,8 @@ Next, in your [Default Workflow Spec](https://argoproj.github.io/argo-workflows/
 
 Also, don't run massive workflows with 1500 pods, use the [Workflow of Workflows Pattern](#pattern---workflow-of-workflows-with-semaphore) instead.
 
+If you _really_ need big workflows and can't use the Workflow of Workflow Pattern, you can also use the [nodeStatusOffload feature](https://argoproj.github.io/argo-workflows/offloading-large-workflows/).
+
 ## Lesson - Use a CronWorkflow to run synthetic tests
 
 Ever made a really small change, just a tiny little tweak to something in your cluster that would *never* break anything... and then it breaks something? Same.
